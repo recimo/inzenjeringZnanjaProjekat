@@ -190,13 +190,13 @@ public class NewMedicalExamination extends JDialog {
 					NewAnamnesis newAnamnesisDialog = new NewAnamnesis(newPatient);
 					newAnamnesisDialog.setVisible(true);
 
-					PatientFrame patientFrame = new PatientFrame(newPatient);
-					PatientPanel patientPanel = new PatientPanel(newPatient);
-
-					AnamnesisPanel anamnesisPanel = new AnamnesisPanel();
-					DiagnosisPanel diagnosisPanel = new DiagnosisPanel();
-					patientFrame.initTabs(patientPanel, anamnesisPanel, diagnosisPanel);
-					patientFrame.setVisible(true);
+					// PatientFrame patientFrame = new PatientFrame(newPatient);
+					// PatientPanel patientPanel = new PatientPanel(newPatient);
+					// sluzi za prikaz onih tabova
+					// AnamnesisPanel anamnesisPanel = new AnamnesisPanel();
+					// DiagnosisPanel diagnosisPanel = new DiagnosisPanel();
+					// patientFrame.initTabs(patientPanel, anamnesisPanel, diagnosisPanel);
+					// patientFrame.setVisible(true);
 				}
 
 			}

@@ -273,7 +273,12 @@ public class NewAnamnesis extends JDialog {
 					newAnamnesis.setFamilyAnamnesis(newFamilyAnamnesis);
 					newAnamnesis.setPatient(patient);
 
+					NewPhysicalExamination newPhysical = new NewPhysicalExamination();
+					newPhysical.setVisible(true);
+					
 					dispose();
+
+					
 				}
 
 			}
