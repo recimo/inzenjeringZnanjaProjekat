@@ -4,7 +4,7 @@ import neurology.app.enumerations.ChangeOfSight;
 import neurology.app.enumerations.HeadacheType;
 import neurology.app.model.anamnesis.PersonalAnamnesis;
 
-public class AnamnesisCreateAction {
+public class PersonalAnamnesisCreateAction {
 	public void action(PersonalAnamnesis newPersonalAnamnesis, boolean vaccined, boolean febrileState, 
 			boolean lackOfEnergyAndInterest, boolean disturbanceOfMemory, String headache,
 			String sight, boolean hearingLoss, boolean balanceLoss, boolean vertigo, boolean limbsPain) {
