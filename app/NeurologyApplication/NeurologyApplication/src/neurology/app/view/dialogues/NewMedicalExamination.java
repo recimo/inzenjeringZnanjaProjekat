@@ -22,6 +22,10 @@ import javax.swing.SwingUtilities;
 import neurology.app.controller.PatientCreateAction;
 import neurology.app.enumerations.Gender;
 import neurology.app.model.Patient;
+import neurology.app.view.patientFrame.PatientFrame;
+import neurology.app.view.patientFrame.tabbedPane.AnamnesisPanel;
+import neurology.app.view.patientFrame.tabbedPane.DiagnosisPanel;
+import neurology.app.view.patientFrame.tabbedPane.PatientPanel;
 
 public class NewMedicalExamination extends JDialog {
 
@@ -185,6 +189,14 @@ public class NewMedicalExamination extends JDialog {
 
 					NewAnamnesis newAnamnesisDialog = new NewAnamnesis(newPatient);
 					newAnamnesisDialog.setVisible(true);
+
+					PatientFrame patientFrame = new PatientFrame(newPatient);
+					PatientPanel patientPanel = new PatientPanel(newPatient);
+
+					AnamnesisPanel anamnesisPanel = new AnamnesisPanel();
+					DiagnosisPanel diagnosisPanel = new DiagnosisPanel();
+					patientFrame.initTabs(patientPanel, anamnesisPanel, diagnosisPanel);
+					patientFrame.setVisible(true);
 				}
 
 			}
