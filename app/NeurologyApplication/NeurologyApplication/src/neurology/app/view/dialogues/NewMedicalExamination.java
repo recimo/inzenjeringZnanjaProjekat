@@ -174,7 +174,7 @@ public class NewMedicalExamination extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (validation()) {
-
+					
 					PatientCreateAction createAction = new PatientCreateAction();
 					createAction.action(newPatient, firstNameField.getText(), lastNameField.getText(),
 							identificationNumberField.getText(), dateOfBirthField.getText(),
@@ -182,6 +182,9 @@ public class NewMedicalExamination extends JDialog {
 
 					print();
 					dispose();
+					
+					NewAnamnesis newAnamnesisDialog = new NewAnamnesis();
+					newAnamnesisDialog.setVisible(true);
 				}
 
 			}
