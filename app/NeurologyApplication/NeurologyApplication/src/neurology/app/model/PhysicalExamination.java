@@ -1,5 +1,7 @@
 package neurology.app.model;
 
+import java.util.ArrayList;
+
 public class PhysicalExamination {
 
 	private boolean musclesRecognition;
@@ -9,8 +11,9 @@ public class PhysicalExamination {
 	private int lowerBloodPressure;
 	private int upperBloodPressure;
 
-	public PhysicalExamination() {
 
+	public PhysicalExamination() {
+		
 	}
 
 	public boolean isMusclesRecognition() {

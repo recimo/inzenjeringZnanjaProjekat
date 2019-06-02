@@ -14,13 +14,16 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import neurology.app.model.Examination;
 import neurology.app.model.PhysicalExamination;
+import neurology.app.model.Symptom;
+import neurology.app.model.anamnesis.Anamnesis;
 
 public class NewPhysicalExamination extends JDialog {
 
 	private static final long serialVersionUID = 1L;
 
-	private PhysicalExamination newPhysicalExamination;
+	private Examination examination;
 	private JPanel mainPanel;
 	private JPanel leftPanel;
 	private JPanel centerPanel;
@@ -47,28 +50,28 @@ public class NewPhysicalExamination extends JDialog {
 	private JLabel legPain;
 	private JLabel chestPain;
 
-	private JCheckBox musclesRecognitionCheck;
-	private final String[] visual = { "1", "2", "3", "4", "5", "6", "7" };
-	private JComboBox<String> visualAcuityCombo;
-	private final String[] strength = { "0", "1", "2", "3", "4", "5" };
-	private JComboBox<String> musclesStrengthCombo;
-	private JTextField pulseField;
-	private JTextField lowerBloodPressureField;
-	private JTextField upperBloodPressureField;
+	public JCheckBox musclesRecognitionCheck;
+	public final String[] visual = { "1", "2", "3", "4", "5", "6", "7" };
+	public JComboBox<String> visualAcuityCombo;
+	public final String[] strength = { "0", "1", "2", "3", "4", "5" };
+	public JComboBox<String> musclesStrengthCombo;
+	public JTextField pulseField;
+	public JTextField lowerBloodPressureField;
+	public JTextField upperBloodPressureField;
 
-	private JCheckBox problemsWithMovementCheck;
-	private JCheckBox abnormalInvoluntaryMovementsCheck;
-	private JCheckBox seizuresCheck;
-	private JCheckBox disturbanceOfMemoryCheck;
-	private JCheckBox dizzinessCheck;
-	private JCheckBox weaknessCheck;
+	public JCheckBox problemsWithMovementCheck;
+	public JCheckBox abnormalInvoluntaryMovementsCheck;
+	public JCheckBox seizuresCheck;
+	public JCheckBox disturbanceOfMemoryCheck;
+	public JCheckBox dizzinessCheck;
+	public JCheckBox weaknessCheck;
 
 	private JLabel painsNull;
-	private JCheckBox kneePainCheck;
-	private JCheckBox hipPainCheck;
-	private JCheckBox backPainCheck;
-	private JCheckBox legPainCheck;
-	private JCheckBox chestPainCheck;
+	public JCheckBox kneePainCheck;
+	public JCheckBox hipPainCheck;
+	public JCheckBox backPainCheck;
+	public JCheckBox legPainCheck;
+	public JCheckBox chestPainCheck;
 
 	private JButton nextButton;
 	private JButton resetButton;
@@ -78,8 +81,8 @@ public class NewPhysicalExamination extends JDialog {
 	private Dimension fieldDim;
 	private Dimension labelDim;
 
-	public NewPhysicalExamination() {
-		this.newPhysicalExamination = new PhysicalExamination();
+	public NewPhysicalExamination(Examination examination) {
+		this.examination = examination;
 		this.initDialog();
 
 	}
@@ -292,7 +295,18 @@ public class NewPhysicalExamination extends JDialog {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-
+				PhysicalExamination physicalExamination = new PhysicalExamination();
+				
+				//ovde preuzeti sve vrednosti koje je korisnik uneo i dodati i u psysical i u examination, sad ide zakucavanje
+				//physicalExamination.setMusclesRecognition(NewPhysicalExamination.this.); 
+				NewPhysicalExamination.this.examination.getSymptoms().add(new Symptom("headache"));
+				NewPhysicalExamination.this.examination.getSymptoms().add(new Symptom("dizziness"));
+				
+				NewPhysicalExamination.this.examination.setPhysicalExamination(physicalExamination);
+				NewAdditionalExamination newAdditional = new NewAdditionalExamination(examination);
+				newAdditional.setVisible(true);
+				
+				dispose();
 			}
 		});
 
