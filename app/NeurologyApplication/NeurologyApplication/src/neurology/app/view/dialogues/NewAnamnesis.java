@@ -2,7 +2,6 @@ package neurology.app.view.dialogues;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,6 +17,7 @@ import neurology.app.controller.FamilyAnamnesisCreateAction;
 import neurology.app.controller.PersonalAnamnesisCreateAction;
 import neurology.app.enumerations.ChangeOfSight;
 import neurology.app.enumerations.HeadacheType;
+import neurology.app.model.Examination;
 import neurology.app.model.Patient;
 import neurology.app.model.anamnesis.Anamnesis;
 import neurology.app.model.anamnesis.FamilyAnamnesis;
@@ -272,8 +272,12 @@ public class NewAnamnesis extends JDialog {
 					newAnamnesis.setPersonalAnamnesis(newPersonalAnamnesis);
 					newAnamnesis.setFamilyAnamnesis(newFamilyAnamnesis);
 					newAnamnesis.setPatient(patient);
+					Examination examination = new Examination();
+					examination.setPatient(patient);
+					examination.setAnamnesis(newAnamnesis);
+					//dodati u simptome nesto ako treba
 
-					NewPhysicalExamination newPhysical = new NewPhysicalExamination();
+					NewPhysicalExamination newPhysical = new NewPhysicalExamination(examination);
 					newPhysical.setVisible(true);
 					
 					dispose();
