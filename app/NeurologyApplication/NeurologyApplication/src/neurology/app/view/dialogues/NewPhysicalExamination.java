@@ -245,7 +245,7 @@ public class NewPhysicalExamination extends JDialog {
 		this.rightPanel.add(pains);
 		this.rightPanel.add(painsNull);
 
-		this.kneePain = new JLabel("Knew pain:");
+		this.kneePain = new JLabel("Knee pain:");
 		this.kneePainCheck = new JCheckBox();
 		this.kneePain.setPreferredSize(labelDim);
 
@@ -273,7 +273,7 @@ public class NewPhysicalExamination extends JDialog {
 		this.rightPanel.add(legPain);
 		this.rightPanel.add(legPainCheck);
 
-		this.chestPain = new JLabel("ChestPain:");
+		this.chestPain = new JLabel("Chest Pain:");
 		this.chestPainCheck = new JCheckBox();
 		this.chestPain.setPreferredSize(labelDim);
 
