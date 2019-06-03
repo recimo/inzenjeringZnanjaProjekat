@@ -129,8 +129,8 @@ public class NewAdditionalExamination extends JDialog {
 					System.out.println(s.getName());
 				}
 				
-				// novi windown
-				// set visible true
+				NewDiagnosis diagnosisDialog = new NewDiagnosis(examination);
+				diagnosisDialog.setVisible(true);
 
 				dispose();
 			}
