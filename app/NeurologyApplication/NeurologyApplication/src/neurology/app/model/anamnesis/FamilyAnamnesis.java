@@ -60,5 +60,21 @@ public class FamilyAnamnesis {
 	public void setMentalIllnesses(boolean mentalIllnesses) {
 		this.mentalIllnesses = mentalIllnesses;
 	}
+	
+	@Override
+	public String toString() {
+		String retVal = "";
+		retVal+="************************************\n";
+		retVal+="FAMILY ANAMNESIS:\n";
+		retVal+="Diabetes: " + this.isDiabetes() + "\n";
+		retVal+="Endokrine: " + this.isEndocrineDiseases() + "\n";
+		retVal+="Hipertension: " + this.isHypertension() + "\n";
+		retVal+="Headache: " + this.isHeadache() + "\n";
+		retVal+="Cerebrovascular: " + this.isCerebrovascularDiseases() + "\n";
+		retVal+="Mental illness: " + this.isMentalIllnesses() + "\n";
+		retVal+="************************************\n";
+		
+		return retVal;
+	}
 
 }

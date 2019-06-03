@@ -8,16 +8,15 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import neurology.app.controller.PhysicalExaminationCreateAction;
 import neurology.app.model.Examination;
 import neurology.app.model.PhysicalExamination;
 import neurology.app.model.Symptom;
-import neurology.app.model.anamnesis.Anamnesis;
 
 public class NewPhysicalExamination extends JDialog {
 
@@ -30,8 +29,8 @@ public class NewPhysicalExamination extends JDialog {
 	private JPanel rightPanel;
 
 	private JLabel musclesRecognition;
-	private JLabel visualAcuity;
-	private JLabel musclesStrength;
+	//private JLabel visualAcuity;
+	//private JLabel musclesStrength;
 	private JLabel pulse;
 	private JLabel lowerBloodPressure;
 	private JLabel upperBloodPressure;
@@ -41,7 +40,7 @@ public class NewPhysicalExamination extends JDialog {
 	private JLabel seizures;
 	private JLabel disturbanceOfMemory;
 	private JLabel dizziness;
-	private JLabel weakness;
+	private JLabel focalWeakness;
 
 	private JLabel pains;
 	private JLabel kneePain;
@@ -49,12 +48,15 @@ public class NewPhysicalExamination extends JDialog {
 	private JLabel backPain;
 	private JLabel legPain;
 	private JLabel chestPain;
+	private JLabel lossOfSensation;
+	private JLabel apraxia;
 
 	public JCheckBox musclesRecognitionCheck;
-	public final String[] visual = { "1", "2", "3", "4", "5", "6", "7" };
-	public JComboBox<String> visualAcuityCombo;
-	public final String[] strength = { "0", "1", "2", "3", "4", "5" };
-	public JComboBox<String> musclesStrengthCombo;
+	//public final String[] visual = { "1", "2", "3", "4", "5", "6", "7" };
+	//public JComboBox<String> visualAcuityCombo;
+	//public final String[] strength = { "0", "1", "2", "3", "4", "5" };
+	//public JComboBox<String> musclesStrengthCombo;
+	
 	public JTextField pulseField;
 	public JTextField lowerBloodPressureField;
 	public JTextField upperBloodPressureField;
@@ -65,6 +67,8 @@ public class NewPhysicalExamination extends JDialog {
 	public JCheckBox disturbanceOfMemoryCheck;
 	public JCheckBox dizzinessCheck;
 	public JCheckBox weaknessCheck;
+	private JCheckBox lossOfSensationCheck;
+	private JCheckBox apraxiaCheck;
 
 	private JLabel painsNull;
 	public JCheckBox kneePainCheck;
@@ -83,6 +87,11 @@ public class NewPhysicalExamination extends JDialog {
 
 	public NewPhysicalExamination(Examination examination) {
 		this.examination = examination;
+		System.out.println(this.examination.getAnamnesis().getPersonalAnamnesis().toString());
+		System.out.println(this.examination.getAnamnesis().getFamilyAnamnesis().toString());
+		for (Symptom s : examination.getSymptoms()) {
+			System.out.println(s.getName());
+		}
 		this.initDialog();
 
 	}
@@ -142,21 +151,35 @@ public class NewPhysicalExamination extends JDialog {
 		this.leftPanel.add(musclesRecognition);
 		this.leftPanel.add(musclesRecognitionCheck);
 
-		this.visualAcuity = new JLabel("Visual Acuity (x/60):");
+		/*this.visualAcuity = new JLabel("Visual Acuity (x/60):");
 		this.visualAcuityCombo = new JComboBox<String>(visual);
 		this.visualAcuity.setPreferredSize(labelDim);
 		this.visualAcuityCombo.setPreferredSize(fieldDim);
 
 		this.leftPanel.add(visualAcuity);
-		this.leftPanel.add(visualAcuityCombo);
+		this.leftPanel.add(visualAcuityCombo);*/
+		
+		this.lossOfSensation = new JLabel("Loss of sensation:");
+		this.lossOfSensationCheck = new JCheckBox();
+		this.lossOfSensation.setPreferredSize(labelDim);
 
-		this.musclesStrength = new JLabel("Muscles Strength:");
+		this.leftPanel.add(lossOfSensation);
+		this.leftPanel.add(lossOfSensationCheck);
+
+		/*this.musclesStrength = new JLabel("Muscles Strength:");
 		this.musclesStrengthCombo = new JComboBox<String>(strength);
 		this.musclesStrength.setPreferredSize(labelDim);
 		this.musclesStrengthCombo.setPreferredSize(fieldDim);
 
 		this.leftPanel.add(musclesStrength);
-		this.leftPanel.add(musclesStrengthCombo);
+		this.leftPanel.add(musclesStrengthCombo);*/
+		
+		this.apraxia = new JLabel("Apraxia:");
+		this.apraxiaCheck = new JCheckBox();
+		this.apraxia.setPreferredSize(labelDim);
+
+		this.leftPanel.add(apraxia);
+		this.leftPanel.add(apraxiaCheck);
 
 		this.pulse = new JLabel("Pulse:");
 		this.pulseField = new JTextField();
@@ -225,11 +248,11 @@ public class NewPhysicalExamination extends JDialog {
 		this.centerPanel.add(dizziness);
 		this.centerPanel.add(dizzinessCheck);
 
-		this.weakness = new JLabel("Weakness:");
+		this.focalWeakness = new JLabel("Focal weakness:");
 		this.weaknessCheck = new JCheckBox();
-		this.weakness.setPreferredSize(labelDim);
+		this.focalWeakness.setPreferredSize(labelDim);
 
-		this.centerPanel.add(weakness);
+		this.centerPanel.add(focalWeakness);
 		this.centerPanel.add(weaknessCheck);
 
 		this.resetButton = new JButton("Reset");
@@ -295,18 +318,29 @@ public class NewPhysicalExamination extends JDialog {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				PhysicalExamination physicalExamination = new PhysicalExamination();
-				
-				//ovde preuzeti sve vrednosti koje je korisnik uneo i dodati i u psysical i u examination, sad ide zakucavanje
-				//physicalExamination.setMusclesRecognition(NewPhysicalExamination.this.); 
-				NewPhysicalExamination.this.examination.getSymptoms().add(new Symptom("headache"));
-				NewPhysicalExamination.this.examination.getSymptoms().add(new Symptom("dizziness"));
-				
-				NewPhysicalExamination.this.examination.setPhysicalExamination(physicalExamination);
-				NewAdditionalExamination newAdditional = new NewAdditionalExamination(examination);
-				newAdditional.setVisible(true);
-				
-				dispose();
+
+				if (validation()) {
+
+					PhysicalExamination physicalExamination = new PhysicalExamination();
+
+					PhysicalExaminationCreateAction createAction = new PhysicalExaminationCreateAction();
+					createAction.action(physicalExamination, musclesRecognitionCheck.isSelected(),
+							abnormalInvoluntaryMovementsCheck.isSelected(), seizuresCheck.isSelected(),
+							problemsWithMovementCheck.isSelected(), "4", "1",  //jer ne treba za sad visual i muscle
+							disturbanceOfMemoryCheck.isSelected(), dizzinessCheck.isSelected(), 
+							weaknessCheck.isSelected(), kneePainCheck.isSelected(), 
+							hipPainCheck.isSelected(),backPainCheck.isSelected(), legPainCheck.isSelected(),
+							chestPainCheck.isSelected(), lossOfSensationCheck.isSelected(),
+							apraxiaCheck.isSelected(),examination);
+					
+					examination.setPhysicalExamination(physicalExamination);
+
+					NewAdditionalExamination newAdditional = new NewAdditionalExamination(examination);
+					newAdditional.setVisible(true);
+
+					dispose();
+
+				}
 			}
 		});
 
@@ -325,6 +359,11 @@ public class NewPhysicalExamination extends JDialog {
 
 			}
 		});
+	}
+
+	public boolean validation() {
+
+		return true;
 	}
 
 }

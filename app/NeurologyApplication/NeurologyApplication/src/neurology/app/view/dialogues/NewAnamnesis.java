@@ -49,26 +49,20 @@ public class NewAnamnesis extends JDialog {
 
 	private JPanel mainPanel;
 
-	private JLabel vaccinedLabel;
-	private JLabel febrileStateLabel; // temperature nepoznatog porekla
 	private JLabel lackOfEnergyAndInterestLabel;
 	private JLabel disturbanceOfMemoryLabel;
 	private JLabel headacheLabel; // combo box
 	private JLabel sightLabel; // combo box
 	private JLabel hearingLossLabel;
 	private JLabel balanceLossLabel;
-	private JLabel vertigoLabel;
 	private JLabel limbsPainLabel;
 
-	private JCheckBox vaccineCheckBox;
-	private JCheckBox febrileStateCheckBox;
 	private JCheckBox lackOfEnergyAndInterestCheckBox;
 	private JCheckBox disturbanceOfMemoryCheckBox;
 	private JComboBox<String> headacheField;
 	private JComboBox<String> sightField;
 	private JCheckBox hearingLossCheckBox;
 	private JCheckBox balanceLossCheckBox;
-	private JCheckBox vertigoCheckBox;
 	private JCheckBox limbsPainCheckBox;
 
 	private Dimension buttonDim;
@@ -167,20 +161,6 @@ public class NewAnamnesis extends JDialog {
 
 		// personal
 
-		this.vaccinedLabel = new JLabel("Vaccined?");
-		this.vaccineCheckBox = new JCheckBox();
-		this.vaccinedLabel.setPreferredSize(labelDim);
-
-		this.mainPanel.add(vaccinedLabel);
-		this.mainPanel.add(vaccineCheckBox);
-
-		this.febrileStateLabel = new JLabel("Febrile State?");
-		this.febrileStateCheckBox = new JCheckBox();
-		this.febrileStateLabel.setPreferredSize(labelDim);
-
-		this.mainPanel.add(febrileStateLabel);
-		this.mainPanel.add(febrileStateCheckBox);
-
 		this.lackOfEnergyAndInterestLabel = new JLabel("Lack of energy/interest?");
 		this.lackOfEnergyAndInterestCheckBox = new JCheckBox();
 		this.lackOfEnergyAndInterestLabel.setPreferredSize(labelDim);
@@ -225,13 +205,6 @@ public class NewAnamnesis extends JDialog {
 		this.mainPanel.add(balanceLossLabel);
 		this.mainPanel.add(balanceLossCheckBox);
 
-		this.vertigoLabel = new JLabel("Vertigo?");
-		this.vertigoCheckBox = new JCheckBox();
-		this.vertigoLabel.setPreferredSize(labelDim);
-
-		this.mainPanel.add(vertigoLabel);
-		this.mainPanel.add(vertigoCheckBox);
-
 		this.limbsPainLabel = new JLabel("Limbs pain?");
 		this.limbsPainCheckBox = new JCheckBox();
 		this.limbsPainLabel.setPreferredSize(labelDim);
@@ -255,14 +228,15 @@ public class NewAnamnesis extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (validation()) {
-
+					
+					Examination examination = new Examination();
+					examination.setPatient(patient);
+					
 					PersonalAnamnesisCreateAction createAction = new PersonalAnamnesisCreateAction();
-					createAction.action(newPersonalAnamnesis, vaccineCheckBox.isSelected(),
-							febrileStateCheckBox.isSelected(), lackOfEnergyAndInterestCheckBox.isSelected(),
+					createAction.action(newPersonalAnamnesis,lackOfEnergyAndInterestCheckBox.isSelected(),
 							disturbanceOfMemoryCheckBox.isSelected(), headacheField.getSelectedItem().toString(),
 							sightField.getSelectedItem().toString(), hearingLossCheckBox.isSelected(),
-							balanceLossCheckBox.isSelected(), vertigoCheckBox.isSelected(),
-							limbsPainCheckBox.isSelected());
+							balanceLossCheckBox.isSelected(), limbsPainCheckBox.isSelected(),examination);
 
 					FamilyAnamnesisCreateAction familyCreateAction = new FamilyAnamnesisCreateAction();
 					familyCreateAction.action(newFamilyAnamnesis, diabetesCheck.isSelected(), endoCheck.isSelected(),
@@ -272,9 +246,9 @@ public class NewAnamnesis extends JDialog {
 					newAnamnesis.setPersonalAnamnesis(newPersonalAnamnesis);
 					newAnamnesis.setFamilyAnamnesis(newFamilyAnamnesis);
 					newAnamnesis.setPatient(patient);
-					Examination examination = new Examination();
-					examination.setPatient(patient);
+					
 					examination.setAnamnesis(newAnamnesis);
+					
 					//dodati u simptome nesto ako treba
 
 					NewPhysicalExamination newPhysical = new NewPhysicalExamination(examination);

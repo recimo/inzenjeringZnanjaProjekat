@@ -41,6 +41,7 @@ public class NewAdditionalExamination extends JDialog {
 		// List<Symptoms>
 		this.examination = e;
 		additionalExamination = new AdditionalExamination();
+		System.out.println(examination.getPhysicalExamination().toString());
 		ArrayList<Symptom> calculatedSymptoms = MySymptomFinder.findRelatedSymptoms(examination.getSymptoms());
 		ArrayList<Symptom> filteredSymptoms = MySymptomFinder.getOnlyImportantSymptoms(calculatedSymptoms, examination.getPatient());
 		additionalExamination.setSymptomsToCheck(filteredSymptoms);
@@ -82,8 +83,9 @@ public class NewAdditionalExamination extends JDialog {
 		this.fieldDim = new Dimension(200, 25);
 
 		for (Symptom symptom : additionalExamination.getSymptomsToCheck()) {
-			JLabel label = new JLabel(symptom.getName() + "?");
+			JLabel label = new JLabel(symptom.getName());
 			JCheckBox checkBox = new JCheckBox();
+			checkBox.setName(symptom.getName());
 
 			label.setPreferredSize(labelDim);
 
@@ -112,10 +114,21 @@ public class NewAdditionalExamination extends JDialog {
 				// ovde preuzeti sve vrednosti koje je korisnik uneo i dodati i u additional i u
 				// examination, sad ide zakucavanje
 				// physicalExamination.setMusclesRecognition(NewPhysicalExamination.this.);
+				for(JCheckBox jcb : checkBoxList) {
+					if(jcb.isSelected()) {
+						examination.getSymptoms().add(new Symptom(jcb.getName()));
+					}
+				}
+				
 
 				NewAdditionalExamination.this.examination
-						.setAdditionalExamination(NewAdditionalExamination.this.additionalExamination);
+					.setAdditionalExamination(NewAdditionalExamination.this.additionalExamination);
 
+				System.out.println("Simptomi iz liste:");
+				for(Symptom s : examination.getSymptoms()) {
+					System.out.println(s.getName());
+				}
+				
 				// novi windown
 				// set visible true
 

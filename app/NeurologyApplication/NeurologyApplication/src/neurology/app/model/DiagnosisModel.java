@@ -3,17 +3,15 @@ package neurology.app.model;
 public class DiagnosisModel {
 	
 	private String diagnosisName;
-	private String nodeState;
 	private float diagnosisPercentage;
 	
 	public DiagnosisModel() {
-		
+		diagnosisPercentage = 0;
 	}
 	
-	public DiagnosisModel(String diagnosisName, String nodeState, float diagnosisPercentage) {
+	public DiagnosisModel(String diagnosisName, float diagnosisPercentage) {
 		super();
 		this.diagnosisName = diagnosisName;
-		this.nodeState = nodeState;
 		this.diagnosisPercentage = diagnosisPercentage;
 	}
 
@@ -25,13 +23,6 @@ public class DiagnosisModel {
 		this.diagnosisName = diagnosisName;
 	}
 
-	public String getNodeState() {
-		return nodeState;
-	}
-
-	public void setNodeState(String nodeState) {
-		this.nodeState = nodeState;
-	}
 
 	public float getDiagnosisPercentage() {
 		return diagnosisPercentage;

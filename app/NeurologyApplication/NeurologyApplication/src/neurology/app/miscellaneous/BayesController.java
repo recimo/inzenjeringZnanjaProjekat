@@ -2,9 +2,11 @@ package neurology.app.miscellaneous;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import neurology.app.model.DiagnosisModel;
+import neurology.app.model.Symptom;
 import unbbayes.io.BaseIO;
 import unbbayes.io.NetIO;
 import unbbayes.io.exception.LoadException;
@@ -21,7 +23,7 @@ public class BayesController {
 //									"epilepsy_bayes", "lumbago_bayes", "migraine_bayes", "parkinson_disease_bayes", 
 //									"stroke_bayes" };
 	
-	public DiagnosisModel CreateBayesNet(String bajesFileName) throws LoadException, IOException {
+	public DiagnosisModel CreateBayesNet(String bajesFileName, ArrayList<Symptom> symptoms) throws LoadException, IOException {
 			ProbabilisticNetwork net = new ProbabilisticNetwork("bayesNet");
 			
 			BaseIO io = new NetIO();
@@ -34,26 +36,45 @@ public class BayesController {
 			
 			// states overview
 			List<Node> nodeList = net.getNodes();
-			for (Node node: nodeList) {
-				System.out.println(node.getName());
-				for (int i = 0; i < node.getStatesSize(); i++) {
-					System.out.println(node.getStateAt(i) + ": " + ((ProbabilisticNode)node).getMarginalAt(i));
+			
+			boolean hasAtLeastOne = false;
+			for(Node node : nodeList) {
+				for(Symptom symptom : symptoms) {
+					if(node.getName().equals(symptom.getName())) {
+						hasAtLeastOne = true;
+						break;	
+					}
 				}
 			}
 			
-			//provera da li uopste ima simptoma u trenutno ucitanoj mrezi, ako nema nastavlja se
-			for(Node node : net.getNodes()) {
-				if(node.getName().equals("imeNoda")) {
-					continue;
-				}
+			if(!hasAtLeastOne) {
+				return new DiagnosisModel();
 			}
+			
+//			for (Node node: nodeList) {
+//				System.out.println(node.getName());
+//				for (int i = 0; i < node.getStatesSize(); i++) {
+//					System.out.println(node.getStateAt(i) + ": " + ((ProbabilisticNode)node).getMarginalAt(i));
+//				}
+//			}
+			
 			
 			// adding an evidence
 			// namestaju se simptomi koji ulaze u obzir iz liste simptoma koja je popunjena...
 			// mora ici for / foreach petlja...
 			for(Node node : net.getNodes()) {
+				
+				boolean found = false;
+				for(Symptom s : symptoms) {
+					if(node.getName().equals(s.getName())) {
+						found = true;
+						break;
+					}
+				}
+				
 				ProbabilisticNode factNode = (ProbabilisticNode)node;
-				if(node.getName().equals("imeNoda")) {
+				//if(node.getName().equals("imeNoda")) {
+				if(!found) {
 					int stateIndex = 1;
 					factNode.addFinding(stateIndex);
 				}
@@ -80,7 +101,6 @@ public class BayesController {
 			
 			diagnosis.setDiagnosisName(nodeList.get(0).getName());
 			diagnosis.setDiagnosisPercentage(((ProbabilisticNode)nodeList.get(0)).getMarginalAt(0));
-			diagnosis.setNodeState(nodeList.get(0).getStateAt(0));
 			
 			return diagnosis;
 	}
