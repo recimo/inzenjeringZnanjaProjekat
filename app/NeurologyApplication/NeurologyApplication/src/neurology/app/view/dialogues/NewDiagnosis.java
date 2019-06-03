@@ -2,13 +2,17 @@ package neurology.app.view.dialogues;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.DefaultListModel;
+import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JList;
+import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
@@ -36,6 +40,8 @@ public class NewDiagnosis extends JDialog {
 
 	private Examination examination;
 
+	private JButton okButton;
+
 	public NewDiagnosis(Examination examination) throws LoadException, IOException {
 		// kad napravis to za uzimanje dijagnoza
 		// samo u konstruktor prosledi neku listu dojagnoza
@@ -60,7 +66,13 @@ public class NewDiagnosis extends JDialog {
 		this.scrollPane = new JScrollPane(this.diagnosisList);
 		this.scrollPane.setSize(380, 380);
 		this.scrollPane.setPreferredSize(new Dimension(380, 380));
-		this.add(scrollPane);
+		this.add(scrollPane, BorderLayout.CENTER);
+
+		JPanel panel = new JPanel();
+
+		panel.add(okButton);
+
+		this.add(panel, BorderLayout.SOUTH);
 
 	}
 
@@ -68,6 +80,16 @@ public class NewDiagnosis extends JDialog {
 		this.diagnosisList = new JList<String>();
 		this.modelList = new DefaultListModel<String>();
 		this.diagnosisList.setModel(modelList);
+		this.okButton = new JButton("Ok");
+		this.okButton.setPreferredSize(new Dimension(100, 25));
+
+		this.okButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+			}
+		});
 
 		this.diagnosisList.addListSelectionListener(new ListSelectionListener() {
 
@@ -75,8 +97,6 @@ public class NewDiagnosis extends JDialog {
 			public void valueChanged(ListSelectionEvent arg0) {
 				if (diagnosisList.getSelectedIndex() != -1) {
 					selectedDiagnosis = dijagnoze.get(diagnosisList.getSelectedIndex());
-
-					System.out.println(selectedDiagnosis.getDiagnosisName());
 
 				}
 			}
