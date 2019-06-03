@@ -6,14 +6,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.JProgressBar;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
@@ -87,7 +85,11 @@ public class NewDiagnosis extends JDialog {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				examination.setFinalDiagnosisModel(selectedDiagnosis);
+				NewMedicationProcedure newMed = new NewMedicationProcedure(examination);
+				newMed.setVisible(true);
 
+				dispose();
 			}
 		});
 

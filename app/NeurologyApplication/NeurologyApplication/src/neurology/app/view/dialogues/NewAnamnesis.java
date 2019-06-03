@@ -17,6 +17,7 @@ import neurology.app.controller.FamilyAnamnesisCreateAction;
 import neurology.app.controller.PersonalAnamnesisCreateAction;
 import neurology.app.enumerations.ChangeOfSight;
 import neurology.app.enumerations.HeadacheType;
+import neurology.app.model.DiagnosisModel;
 import neurology.app.model.Examination;
 import neurology.app.model.Patient;
 import neurology.app.model.anamnesis.FamilyAnamnesis;
@@ -259,7 +260,7 @@ public class NewAnamnesis extends JDialog {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				dispose();
+				
 			}
 		});
 	}
