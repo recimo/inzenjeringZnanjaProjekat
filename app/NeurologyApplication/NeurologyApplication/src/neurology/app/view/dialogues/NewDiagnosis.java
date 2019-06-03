@@ -8,20 +8,32 @@ import javax.swing.DefaultListModel;
 import javax.swing.JDialog;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import neurology.app.model.Examination;
+import neurology.app.model.Symptom;
 
-public class NewDiagnosis extends JDialog{
+public class NewDiagnosis extends JDialog {
 
-	private JPanel mainPanel;
-	//private JList diagnosisList;
-	private Examination exam;
-	
-	public NewDiagnosis(Examination e) {
-		this.exam = e;
+	private DefaultListModel<String> modelList;
+	private JList<String> diagnosisList;
+
+	// private List diagnosis
+	// popuni listu kad preuzmes
+
+	private JScrollPane scrollPane;
+
+	private Examination examination;
+
+	public NewDiagnosis(Examination examination) {
+		// kad napravis to za uzimanje dijagnoza
+		// samo u konstruktor prosledi neku listu dojagnoza
+		this.examination = examination;
 	}
-	
-	
+
 	public void initDialog() {
 		this.setTitle("Diagnosis result");
 		this.setPreferredSize(new Dimension(400, 400));
@@ -30,30 +42,49 @@ public class NewDiagnosis extends JDialog{
 		this.pack();
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-		this.initPanel();
-	}
-	
-	public void initPanel() {
-		this.mainPanel = new JPanel();
-		this.mainPanel.setLayout(new FlowLayout());
-		
-		this.add(mainPanel);
-		
+
 		this.initComponents();
-		//action listeners
+
+		this.diagnosisList.getVisibleRowCount();
+		this.diagnosisList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		this.scrollPane = new JScrollPane(this.diagnosisList);
+		this.scrollPane.setSize(380, 380);
+		this.scrollPane.setPreferredSize(new Dimension(380, 380));
+		this.add(scrollPane);
+
 	}
-	
+
 	public void initComponents() {
-	
-		DefaultListModel<String> model = new DefaultListModel<>();
-		JList<String> list = new JList<>(model);
+		this.diagnosisList = new JList<String>();
+		this.modelList = new DefaultListModel<String>();
+		this.diagnosisList.setModel(modelList);
+
+		this.diagnosisList.addListSelectionListener(new ListSelectionListener() {
+
+			@Override
+			public void valueChanged(ListSelectionEvent arg0) {
+				if (diagnosisList.getSelectedIndex() != -1) {
+
+				}
+			}
+		});
+
+		// for(int i = 0; i < prosledjenaLista.size(): i++){
+		// this.modelList.add(i, prosledjenaLista.get(i).getName());
+		// }
+		// this.diagnosisList.setVisibleRowCount(prosledjenaLista.size());
 		
-		//TESTNI PRIMER
-		for(int i = 0; i < 5; ++i) {
-			model.addElement("Test: " + i);
+		//ovo ubacis umesto ovoga dole
+		
+		//
+
+		for (int i = 0; i < 5; i++) {
+			this.modelList.add(i, "TEMP: " + i);
+
 		}
-		
-		
-		this.mainPanel.add(list);
+
+		this.diagnosisList.setVisibleRowCount(5);
+
 	}
+
 }
