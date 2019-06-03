@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -17,6 +18,7 @@ import neurology.app.miscellaneous.MySymptomFinder;
 import neurology.app.model.AdditionalExamination;
 import neurology.app.model.Examination;
 import neurology.app.model.Symptom;
+import unbbayes.io.exception.LoadException;
 
 public class NewAdditionalExamination extends JDialog {
 
@@ -129,7 +131,16 @@ public class NewAdditionalExamination extends JDialog {
 					System.out.println(s.getName());
 				}
 				
-				NewDiagnosis diagnosisDialog = new NewDiagnosis(examination);
+				NewDiagnosis diagnosisDialog = null;
+				try {
+					diagnosisDialog = new NewDiagnosis(examination);
+				} catch (LoadException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				diagnosisDialog.setVisible(true);
 
 				dispose();

@@ -27,7 +27,8 @@ public class BayesController {
 			ProbabilisticNetwork net = new ProbabilisticNetwork("bayesNet");
 			
 			BaseIO io = new NetIO();
-			net = (ProbabilisticNetwork)io.load(new File(bajesFileName));
+			String fileName = "data/bajesMreze/" + bajesFileName +".net";
+			net = (ProbabilisticNetwork)io.load(new File(fileName));
 			
 			//compiling
 			IInferenceAlgorithm algorithm = new JunctionTreeAlgorithm();
@@ -48,7 +49,10 @@ public class BayesController {
 			}
 			
 			if(!hasAtLeastOne) {
-				return new DiagnosisModel();
+				DiagnosisModel dm = new DiagnosisModel();
+				dm.setDiagnosisName("Empty");
+				dm.setDiagnosisPercentage(0);
+				return dm;
 			}
 			
 //			for (Node node: nodeList) {
@@ -57,7 +61,6 @@ public class BayesController {
 //					System.out.println(node.getStateAt(i) + ": " + ((ProbabilisticNode)node).getMarginalAt(i));
 //				}
 //			}
-			
 			
 			// adding an evidence
 			// namestaju se simptomi koji ulaze u obzir iz liste simptoma koja je popunjena...
@@ -75,7 +78,7 @@ public class BayesController {
 				ProbabilisticNode factNode = (ProbabilisticNode)node;
 				//if(node.getName().equals("imeNoda")) {
 				if(!found) {
-					int stateIndex = 1;
+					int stateIndex = 0;
 					factNode.addFinding(stateIndex);
 				}
 			}
@@ -94,6 +97,8 @@ public class BayesController {
 					System.out.println(node.getStateAt(i) + ": " + ((ProbabilisticNode)node).getMarginalAt(i));
 				}
 			}
+			
+			System.out.println("OVAJ SALJEM: " + nodeList.get(0).getName());
 			
 			//setuj sve vrednosti za dijagnozu koje trebaju da se prikazu
 			
