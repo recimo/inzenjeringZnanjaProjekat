@@ -87,13 +87,7 @@ public class NewPhysicalExamination extends JDialog {
 
 	public NewPhysicalExamination(Examination examination) {
 		this.examination = examination;
-		System.out.println(this.examination.getAnamnesis().getPersonalAnamnesis().toString());
-		System.out.println(this.examination.getAnamnesis().getFamilyAnamnesis().toString());
-		for (Symptom s : examination.getSymptoms()) {
-			System.out.println(s.getName());
-		}
 		this.initDialog();
-
 	}
 
 	public void initDialog() {

@@ -19,7 +19,6 @@ import neurology.app.enumerations.ChangeOfSight;
 import neurology.app.enumerations.HeadacheType;
 import neurology.app.model.Examination;
 import neurology.app.model.Patient;
-import neurology.app.model.anamnesis.Anamnesis;
 import neurology.app.model.anamnesis.FamilyAnamnesis;
 import neurology.app.model.anamnesis.PersonalAnamnesis;
 
@@ -28,8 +27,6 @@ public class NewAnamnesis extends JDialog {
 	private PersonalAnamnesis newPersonalAnamnesis;
 	private FamilyAnamnesis newFamilyAnamnesis;
 	private Patient patient;
-
-	private Anamnesis newAnamnesis;
 
 	private JPanel familyPanel;
 
@@ -82,7 +79,6 @@ public class NewAnamnesis extends JDialog {
 		this.newPersonalAnamnesis = new PersonalAnamnesis();
 		this.newFamilyAnamnesis = new FamilyAnamnesis();
 		this.patient = patient;
-		this.newAnamnesis = new Anamnesis();
 		this.initDialog();
 	}
 
@@ -243,11 +239,8 @@ public class NewAnamnesis extends JDialog {
 							hyperCheck.isSelected(), cereCheck.isSelected(), headCheck.isSelected(),
 							mentalCheck.isSelected());
 
-					newAnamnesis.setPersonalAnamnesis(newPersonalAnamnesis);
-					newAnamnesis.setFamilyAnamnesis(newFamilyAnamnesis);
-					newAnamnesis.setPatient(patient);
-					
-					examination.setAnamnesis(newAnamnesis);
+					examination.setPersonalAnamnesis(newPersonalAnamnesis);
+					examination.setFamilyAnamnesis(newFamilyAnamnesis);
 					
 					//dodati u simptome nesto ako treba
 

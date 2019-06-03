@@ -2,12 +2,14 @@ package neurology.app.model;
 
 import java.util.ArrayList;
 
-import neurology.app.model.anamnesis.Anamnesis;
+import neurology.app.model.anamnesis.FamilyAnamnesis;
+import neurology.app.model.anamnesis.PersonalAnamnesis;
 
 public class Examination {
 	
 	private Patient patient;
-	private Anamnesis anamnesis;
+	private PersonalAnamnesis personalAnamnesis;
+	private FamilyAnamnesis familyAnamnesis;
 	private PhysicalExamination physicalExamination;
 	private AdditionalExamination additionalExamination;
 	private ArrayList<Symptom> symptoms = new ArrayList<>();
@@ -20,14 +22,6 @@ public class Examination {
 
 	public void setPatient(Patient patient) {
 		this.patient = patient;
-	}
-
-	public Anamnesis getAnamnesis() {
-		return anamnesis;
-	}
-
-	public void setAnamnesis(Anamnesis anamnesis) {
-		this.anamnesis = anamnesis;
 	}
 
 	public PhysicalExamination getPhysicalExamination() {
@@ -52,6 +46,22 @@ public class Examination {
 
 	public void setSymptoms(ArrayList<Symptom> symptoms) {
 		this.symptoms = symptoms;
+	}
+
+	public PersonalAnamnesis getPersonalAnamnesis() {
+		return personalAnamnesis;
+	}
+
+	public void setPersonalAnamnesis(PersonalAnamnesis personalAnamnesis) {
+		this.personalAnamnesis = personalAnamnesis;
+	}
+
+	public FamilyAnamnesis getFamilyAnamnesis() {
+		return familyAnamnesis;
+	}
+
+	public void setFamilyAnamnesis(FamilyAnamnesis familyAnamnesis) {
+		this.familyAnamnesis = familyAnamnesis;
 	}
 	
 	
