@@ -6,15 +6,17 @@ import neurology.app.model.anamnesis.FamilyAnamnesis;
 import neurology.app.model.anamnesis.PersonalAnamnesis;
 
 public class Examination {
-	
+
 	private Patient patient;
 	private PersonalAnamnesis personalAnamnesis;
 	private FamilyAnamnesis familyAnamnesis;
 	private PhysicalExamination physicalExamination;
 	private AdditionalExamination additionalExamination;
 	private ArrayList<Symptom> symptoms = new ArrayList<>();
-	
-	public Examination() {}
+	private DiagnosisModel finalDiagnosisModel;
+
+	public Examination() {
+	}
 
 	public Patient getPatient() {
 		return patient;
@@ -63,7 +65,12 @@ public class Examination {
 	public void setFamilyAnamnesis(FamilyAnamnesis familyAnamnesis) {
 		this.familyAnamnesis = familyAnamnesis;
 	}
-	
-	
 
+	public DiagnosisModel getFinalDiagnosisModel() {
+		return finalDiagnosisModel;
+	}
+
+	public void setFinalDiagnosisModel(DiagnosisModel finalDiagnosisModel) {
+		this.finalDiagnosisModel = finalDiagnosisModel;
+	}
 }

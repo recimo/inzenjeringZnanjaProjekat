@@ -9,6 +9,7 @@ import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.JDialog;
 import javax.swing.JList;
+import javax.swing.JProgressBar;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
@@ -24,11 +25,12 @@ public class NewDiagnosis extends JDialog {
 	private DefaultListModel<String> modelList;
 	private JList<String> diagnosisList;
 	private String[] bajesFajlovi = { "alcohol_abuse_bayes", "anxiety_bayes", "chronic_back_pain_bayes",
-			"chronic_sinusitis", "concussion_bayes", "dementia_bayes", "depression_bayes", 
-			"epilepsy_bayes", "lumbago_bayes", "migraine_bayes", "parkinson_disease_bayes", 
-			"stroke_bayes" };
+			"chronic_sinusitis", "concussion_bayes", "dementia_bayes", "depression_bayes", "epilepsy_bayes",
+			"lumbago_bayes", "migraine_bayes", "parkinson_disease_bayes", "stroke_bayes" };
 
-	private ArrayList<DiagnosisModel> dijagnoze; 
+	private ArrayList<DiagnosisModel> dijagnoze;
+
+	private DiagnosisModel selectedDiagnosis;
 
 	private JScrollPane scrollPane;
 
@@ -38,6 +40,7 @@ public class NewDiagnosis extends JDialog {
 		// kad napravis to za uzimanje dijagnoza
 		// samo u konstruktor prosledi neku listu dojagnoza
 		this.examination = examination;
+		this.selectedDiagnosis = new DiagnosisModel();
 		initDialog();
 	}
 
@@ -71,30 +74,46 @@ public class NewDiagnosis extends JDialog {
 			@Override
 			public void valueChanged(ListSelectionEvent arg0) {
 				if (diagnosisList.getSelectedIndex() != -1) {
+					selectedDiagnosis = dijagnoze.get(diagnosisList.getSelectedIndex());
+
+					System.out.println(selectedDiagnosis.getDiagnosisName());
 
 				}
 			}
 		});
-		
+
 		dijagnoze = new ArrayList<>();
 		BayesController bc = new BayesController();
-		//for(int i = 0; i < bajesFajlovi.length; ++i) {
-			DiagnosisModel dijagnoza = bc.CreateBayesNet("stroke_bayes", examination.getSymptoms());
-			dijagnoze.add(dijagnoza);
-		//}
+		for (int i = 0; i < bajesFajlovi.length; ++i) {
+			DiagnosisModel dijagnoza = bc.CreateBayesNet(bajesFajlovi[i], examination.getSymptoms());
+			if (!dijagnoza.getDiagnosisName().equals("Empty")) {
+				dijagnoze.add(dijagnoza);
+			}
 
-		for(int i = 0; i < dijagnoze.size(); i++){		
-			this.modelList.add(i, dijagnoze.get(i).getDiagnosisName());
+		}
+
+//		for (int i = 0; i < dijagnoze.size() - 1; i++) {
+//			for (int j = 1; j < dijagnoze.size(); j++) {
+//				if (dijagnoze.get(i).getDiagnosisPercentage() < dijagnoze.get(j).getDiagnosisPercentage()) {
+//					DiagnosisModel temp = dijagnoze.get(i);
+//
+//					dijagnoze.set(i, dijagnoze.get(j));
+//					dijagnoze.set(j, temp);
+//				}
+//			}
+//		}
+//		
+
+		int n = 0;
+		for (int i = 0; i < dijagnoze.size(); i++) {
+			if (!dijagnoze.get(i).getDiagnosisName().equals("Empty")) {
+
+				this.modelList.add(n, this.dijagnoze.get(i).getDiagnosisName() + " "
+						+ this.dijagnoze.get(i).getDiagnosisPercentage());
+				n++;
+			}
 		}
 		this.diagnosisList.setVisibleRowCount(dijagnoze.size());
-		
-
-//		for (int i = 0; i < 5; i++) {
-//			this.modelList.add(i, "TEMP: " + i);
-//
-//		}
-
-		//this.diagnosisList.setVisibleRowCount(5);
 
 	}
 
