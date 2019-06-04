@@ -24,7 +24,6 @@ public class NewMedicationProcedure extends JDialog {
 
 	private Examination examination;
 	private JPanel mainPanel;
-	private JPanel searchPanel;
 
 	private JLabel chooseMedication;
 	private JLabel chooseProcedure;
@@ -54,7 +53,7 @@ public class NewMedicationProcedure extends JDialog {
 
 	public void initDialog() {
 		this.setTitle("New Medical Examination: Procedures and Medications");
-		this.setPreferredSize(new Dimension(800, 500));
+		this.setPreferredSize(new Dimension(500, 400));
 		this.setResizable(false);
 		this.setLayout(new BorderLayout());
 		this.pack();
@@ -65,13 +64,10 @@ public class NewMedicationProcedure extends JDialog {
 
 	public void initPanel() {
 		this.mainPanel = new JPanel();
-		this.mainPanel.setLayout(new GridLayout(9, 2, 10, 30));
+		this.mainPanel.setLayout(new GridLayout(7, 2, 10, 30));
 
-		this.add(mainPanel, BorderLayout.WEST);
+		this.add(mainPanel, BorderLayout.CENTER);
 
-		this.searchPanel = new JPanel();
-		this.searchPanel.setLayout(new FlowLayout());
-		this.add(searchPanel, BorderLayout.EAST);
 		this.initComponents();
 		this.initActionListeners();
 
@@ -81,7 +77,7 @@ public class NewMedicationProcedure extends JDialog {
 
 		this.labelDim = new Dimension(100, 25);
 		this.buttonDim = new Dimension(100, 25);
-		this.fieldDim = new Dimension(200, 25);
+		this.fieldDim = new Dimension(100, 25);
 
 		this.chooseMedication = new JLabel("Choose Medication:");
 		this.chooseMedication.setPreferredSize(labelDim);
@@ -91,13 +87,12 @@ public class NewMedicationProcedure extends JDialog {
 		this.possibleMedicationsCombo = new JComboBox<String>(medications);
 		this.possibleMedicationsCombo.setPreferredSize(fieldDim);
 
-		
 		this.mainPanel.add(chooseMedication);
 		this.mainPanel.add(possibleMedicationsCombo);
 
 		this.chooseProcedure = new JLabel("Choose Procedure:");
 		this.chooseProcedure.setPreferredSize(labelDim);
-		
+
 		String[] procedures = new String[calculatedProcedures.size()];
 		procedures = calculatedProcedures.toArray(procedures);
 		this.possibleProceduresCombo = new JComboBox<String>(procedures);
@@ -111,8 +106,11 @@ public class NewMedicationProcedure extends JDialog {
 		this.okButton.setPreferredSize(buttonDim);
 		this.cancelButton.setPreferredSize(buttonDim);
 
-		this.mainPanel.add(okButton);
-		this.mainPanel.add(cancelButton);
+		JPanel panel = new JPanel();
+
+		panel.add(okButton);
+		panel.add(cancelButton);
+		this.add(panel, BorderLayout.SOUTH);
 
 	}
 

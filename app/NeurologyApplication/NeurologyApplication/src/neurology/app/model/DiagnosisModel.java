@@ -1,14 +1,14 @@
 package neurology.app.model;
 
 public class DiagnosisModel {
-	
+
 	private String diagnosisName;
 	private float diagnosisPercentage;
-	
+
 	public DiagnosisModel() {
 		diagnosisPercentage = 0;
 	}
-	
+
 	public DiagnosisModel(String diagnosisName, float diagnosisPercentage) {
 		super();
 		this.diagnosisName = diagnosisName;
@@ -23,7 +23,6 @@ public class DiagnosisModel {
 		this.diagnosisName = diagnosisName;
 	}
 
-
 	public float getDiagnosisPercentage() {
 		return diagnosisPercentage;
 	}
@@ -31,5 +30,5 @@ public class DiagnosisModel {
 	public void setDiagnosisPercentage(float diagnosisPercentage) {
 		this.diagnosisPercentage = diagnosisPercentage;
 	}
-	
+
 }

@@ -13,11 +13,9 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
 
 import neurology.app.controller.PatientCreateAction;
 import neurology.app.enumerations.Gender;
@@ -27,24 +25,11 @@ import neurology.app.view.patientFrame.tabbedPane.AnamnesisPanel;
 import neurology.app.view.patientFrame.tabbedPane.DiagnosisPanel;
 import neurology.app.view.patientFrame.tabbedPane.PatientPanel;
 
-public class NewMedicalExamination extends JDialog {
+public class NewPatient extends JDialog {
 
 	private Patient newPatient;
 
 	private JPanel mainPanel;
-	private JPanel searchPanel;
-
-	private JLabel searchLabel;
-	private JTextField searchField;
-	private JButton searchButton;
-
-	private JLabel searchedNameLabel;
-	private JLabel searchedLastnameLabel;
-	private JLabel searchedDateLabel;
-
-	private JLabel searchedName;
-	private JLabel searchedLast;
-	private JLabel searchedDate;
 
 	private JLabel firstNameLabel;
 	private JLabel lastNameLabel;
@@ -68,13 +53,13 @@ public class NewMedicalExamination extends JDialog {
 	private Dimension fieldDim;
 	private Dimension labelDim;
 
-	public NewMedicalExamination() {
+	public NewPatient() {
 		this.newPatient = new Patient();
 		this.initDialog();
 	}
 
 	public void initDialog() {
-		this.setTitle("New Medical Examination: Patient");
+		this.setTitle("New Patient");
 		this.setPreferredSize(new Dimension(800, 500));
 		this.setResizable(false);
 		this.setLayout(new BorderLayout());
@@ -88,32 +73,17 @@ public class NewMedicalExamination extends JDialog {
 		this.mainPanel = new JPanel();
 		this.mainPanel.setLayout(new GridLayout(9, 2, 10, 30));
 
-		this.add(mainPanel, BorderLayout.WEST);
+		this.add(mainPanel, BorderLayout.CENTER);
 
-		this.searchPanel = new JPanel();
-		this.searchPanel.setLayout(new FlowLayout());
-		this.add(searchPanel, BorderLayout.EAST);
 		this.initComponents();
 		this.initActionListeners();
 
 	}
 
 	public void initComponents() {
-
 		this.labelDim = new Dimension(100, 25);
 		this.buttonDim = new Dimension(100, 25);
 		this.fieldDim = new Dimension(200, 25);
-
-		this.searchLabel = new JLabel("Search:");
-		this.searchField = new JTextField();
-		this.searchButton = new JButton("...");
-		this.searchLabel.setPreferredSize(labelDim);
-		this.searchField.setPreferredSize(fieldDim);
-		this.searchButton.setPreferredSize(new Dimension(25, 25));
-
-		this.searchPanel.add(searchLabel);
-		this.searchPanel.add(searchField);
-		this.searchPanel.add(searchButton);
 
 		this.firstNameLabel = new JLabel("Firstname:");
 		this.firstNameField = new JTextField();
@@ -189,18 +159,15 @@ public class NewMedicalExamination extends JDialog {
 
 					dispose();
 
-					NewAnamnesis newAnamnesisDialog = new NewAnamnesis(newPatient);
-					newAnamnesisDialog.setVisible(true);
+					PatientFrame patientFrame = new PatientFrame(newPatient);
+					PatientPanel patientPanel = new PatientPanel(newPatient);
+					// sluzi za prikaz onih tabova
+					AnamnesisPanel anamnesisPanel = new AnamnesisPanel();
+					DiagnosisPanel diagnosisPanel = new DiagnosisPanel();
+					patientFrame.initTabs(patientPanel, anamnesisPanel, diagnosisPanel);
+					patientFrame.setVisible(true);
 
-//					PatientFrame patientFrame = new PatientFrame(newPatient);
-//					PatientPanel patientPanel = new PatientPanel(newPatient);
-//					// sluzi za prikaz onih tabova
-//					AnamnesisPanel anamnesisPanel = new AnamnesisPanel();
-//					DiagnosisPanel diagnosisPanel = new DiagnosisPanel();
-//					patientFrame.initTabs(patientPanel, anamnesisPanel, diagnosisPanel);
-//					patientFrame.setVisible(true);
 				}
-
 			}
 		});
 
@@ -209,15 +176,6 @@ public class NewMedicalExamination extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-			}
-		});
-
-		this.searchButton.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				// prosledi joj id pacijenta i pacijenta za inicijalizaciju
-
 			}
 		});
 	}
@@ -238,15 +196,4 @@ public class NewMedicalExamination extends JDialog {
 		}
 		return true;
 	}
-
-	public void print() {
-		System.out.println("Patient");
-		System.out.println(newPatient.getFirstName());
-		System.out.println(newPatient.getLastName());
-		System.out.println(newPatient.getIdentificationNumber());
-		System.out.println(newPatient.getDateOfBirth());
-		System.out.println(newPatient.getGenderOfPatient().toString());
-		System.out.println(newPatient.isRightHanded());
-	}
-
 }

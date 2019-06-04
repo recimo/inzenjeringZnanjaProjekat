@@ -16,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import neurology.app.controller.AdditionalExaminationCreateAction;
 import neurology.app.miscellaneous.MySymptomFinder;
 import neurology.app.model.AdditionalExamination;
 import neurology.app.model.Examination;
@@ -129,6 +130,9 @@ public class NewAdditionalExamination extends JDialog {
 						examination.getSymptoms().add(new Symptom(jcb.getName()));
 					}
 				}
+
+				AdditionalExaminationCreateAction addCreateAction = new AdditionalExaminationCreateAction();
+				addCreateAction.action(examination.getSymptoms());
 
 				NewAdditionalExamination.this.examination
 						.setAdditionalExamination(NewAdditionalExamination.this.additionalExamination);

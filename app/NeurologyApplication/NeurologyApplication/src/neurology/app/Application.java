@@ -15,9 +15,24 @@ public class Application {
 
 			@Override
 			public void run() {
-				
+
 				try {
-					UIManager.setLookAndFeel("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
+					// UIManager.setLookAndFeel("com.jgoodies.looks.windows.WindowsLookAndFeel");
+					UIManager.setLookAndFeel("com.jgoodies.looks.plastic.PlasticLookAndFeel");
+					// UIManager.setLookAndFeel("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
+					// UIManager.setLookAndFeel("com.jtattoo.plaf.aero.AeroLookAndFeel");
+					// UIManager.setLookAndFeel("com.jtattoo.plaf.bernstein.BernsteinLookAndFeel");
+					// UIManager.setLookAndFeel("com.jtattoo.plaf.fast.FastLookAndFeel");
+					// UIManager.setLookAndFeel("com.jtattoo.plaf.graphite.GraphiteLookAndFeel");
+					// UIManager.setLookAndFeel("com.jtattoo.plaf.hifi.HiFiLookAndFeel");
+					// UIManager.setLookAndFeel("com.jtattoo.plaf.luna.LunaLookAndFeel");
+					// UIManager.setLookAndFeel("com.jtattoo.plaf.mcwin.McWinLookAndFeel");
+					// UIManager.setLookAndFeel("com.jtattoo.plaf.mint.MintLookAndFeel");
+					// UIManager.setLookAndFeel("com.jtattoo.plaf.noire.NoireLookAndFeel");
+					// UIManager.setLookAndFeel("com.jtattoo.plaf.smart.SmartLookAndFeel");
+					// UIManager.setLookAndFeel("com.jtattoo.plaf.texture.TextureLookAndFeel");
+
+					// UIManager.setLookAndFeel("com.jtattoo.plaf.acryl.AcrylLookAndFeel");
 
 					JFrame.setDefaultLookAndFeelDecorated(true);
 					JDialog.setDefaultLookAndFeelDecorated(true);
@@ -26,7 +41,6 @@ public class Application {
 					System.out.println("nije ucitan LookAndFeel!");
 				}
 
-				
 				MainFrame mainFrame = new MainFrame();
 				Singleton.getInstance().setMainFrame(mainFrame);
 

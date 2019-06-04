@@ -12,6 +12,7 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.border.Border;
 
 import neurology.app.controller.PhysicalExaminationCreateAction;
 import neurology.app.model.Examination;
@@ -29,8 +30,8 @@ public class NewPhysicalExamination extends JDialog {
 	private JPanel rightPanel;
 
 	private JLabel musclesRecognition;
-	//private JLabel visualAcuity;
-	//private JLabel musclesStrength;
+	// private JLabel visualAcuity;
+	// private JLabel musclesStrength;
 	private JLabel pulse;
 	private JLabel lowerBloodPressure;
 	private JLabel upperBloodPressure;
@@ -52,11 +53,11 @@ public class NewPhysicalExamination extends JDialog {
 	private JLabel apraxia;
 
 	public JCheckBox musclesRecognitionCheck;
-	//public final String[] visual = { "1", "2", "3", "4", "5", "6", "7" };
-	//public JComboBox<String> visualAcuityCombo;
-	//public final String[] strength = { "0", "1", "2", "3", "4", "5" };
-	//public JComboBox<String> musclesStrengthCombo;
-	
+	// public final String[] visual = { "1", "2", "3", "4", "5", "6", "7" };
+	// public JComboBox<String> visualAcuityCombo;
+	// public final String[] strength = { "0", "1", "2", "3", "4", "5" };
+	// public JComboBox<String> musclesStrengthCombo;
+
 	public JTextField pulseField;
 	public JTextField lowerBloodPressureField;
 	public JTextField upperBloodPressureField;
@@ -135,6 +136,13 @@ public class NewPhysicalExamination extends JDialog {
 		this.initCenter();
 		this.initRight();
 
+		JPanel panel = new JPanel();
+		panel.add(nextButton);
+		panel.add(resetButton);
+		panel.add(backButton);
+
+		this.add(panel, BorderLayout.SOUTH);
+
 	}
 
 	public void initLeft() {
@@ -145,14 +153,15 @@ public class NewPhysicalExamination extends JDialog {
 		this.leftPanel.add(musclesRecognition);
 		this.leftPanel.add(musclesRecognitionCheck);
 
-		/*this.visualAcuity = new JLabel("Visual Acuity (x/60):");
-		this.visualAcuityCombo = new JComboBox<String>(visual);
-		this.visualAcuity.setPreferredSize(labelDim);
-		this.visualAcuityCombo.setPreferredSize(fieldDim);
+		/*
+		 * this.visualAcuity = new JLabel("Visual Acuity (x/60):");
+		 * this.visualAcuityCombo = new JComboBox<String>(visual);
+		 * this.visualAcuity.setPreferredSize(labelDim);
+		 * this.visualAcuityCombo.setPreferredSize(fieldDim);
+		 * 
+		 * this.leftPanel.add(visualAcuity); this.leftPanel.add(visualAcuityCombo);
+		 */
 
-		this.leftPanel.add(visualAcuity);
-		this.leftPanel.add(visualAcuityCombo);*/
-		
 		this.lossOfSensation = new JLabel("Loss of sensation:");
 		this.lossOfSensationCheck = new JCheckBox();
 		this.lossOfSensation.setPreferredSize(labelDim);
@@ -160,14 +169,16 @@ public class NewPhysicalExamination extends JDialog {
 		this.leftPanel.add(lossOfSensation);
 		this.leftPanel.add(lossOfSensationCheck);
 
-		/*this.musclesStrength = new JLabel("Muscles Strength:");
-		this.musclesStrengthCombo = new JComboBox<String>(strength);
-		this.musclesStrength.setPreferredSize(labelDim);
-		this.musclesStrengthCombo.setPreferredSize(fieldDim);
+		/*
+		 * this.musclesStrength = new JLabel("Muscles Strength:");
+		 * this.musclesStrengthCombo = new JComboBox<String>(strength);
+		 * this.musclesStrength.setPreferredSize(labelDim);
+		 * this.musclesStrengthCombo.setPreferredSize(fieldDim);
+		 * 
+		 * this.leftPanel.add(musclesStrength);
+		 * this.leftPanel.add(musclesStrengthCombo);
+		 */
 
-		this.leftPanel.add(musclesStrength);
-		this.leftPanel.add(musclesStrengthCombo);*/
-		
 		this.apraxia = new JLabel("Apraxia:");
 		this.apraxiaCheck = new JCheckBox();
 		this.apraxia.setPreferredSize(labelDim);
@@ -202,7 +213,6 @@ public class NewPhysicalExamination extends JDialog {
 		this.nextButton = new JButton("Next");
 		this.nextButton.setPreferredSize(buttonDim);
 
-		this.leftPanel.add(nextButton);
 	}
 
 	public void initCenter() {
@@ -251,7 +261,6 @@ public class NewPhysicalExamination extends JDialog {
 
 		this.resetButton = new JButton("Reset");
 		this.resetButton.setPreferredSize(buttonDim);
-		this.centerPanel.add(resetButton);
 
 	}
 
@@ -303,7 +312,6 @@ public class NewPhysicalExamination extends JDialog {
 		this.backButton = new JButton("Back");
 		this.backButton.setPreferredSize(buttonDim);
 
-		this.rightPanel.add(backButton);
 	}
 
 	public void initActionListeners() {
@@ -320,13 +328,12 @@ public class NewPhysicalExamination extends JDialog {
 					PhysicalExaminationCreateAction createAction = new PhysicalExaminationCreateAction();
 					createAction.action(physicalExamination, musclesRecognitionCheck.isSelected(),
 							abnormalInvoluntaryMovementsCheck.isSelected(), seizuresCheck.isSelected(),
-							problemsWithMovementCheck.isSelected(), "4", "1",  //jer ne treba za sad visual i muscle
-							disturbanceOfMemoryCheck.isSelected(), dizzinessCheck.isSelected(), 
-							weaknessCheck.isSelected(), kneePainCheck.isSelected(), 
-							hipPainCheck.isSelected(),backPainCheck.isSelected(), legPainCheck.isSelected(),
-							chestPainCheck.isSelected(), lossOfSensationCheck.isSelected(),
-							apraxiaCheck.isSelected(),examination);
-					
+							problemsWithMovementCheck.isSelected(), "4", "1", // jer ne treba za sad visual i muscle
+							disturbanceOfMemoryCheck.isSelected(), dizzinessCheck.isSelected(),
+							weaknessCheck.isSelected(), kneePainCheck.isSelected(), hipPainCheck.isSelected(),
+							backPainCheck.isSelected(), legPainCheck.isSelected(), chestPainCheck.isSelected(),
+							lossOfSensationCheck.isSelected(), apraxiaCheck.isSelected(), examination);
+
 					examination.setPhysicalExamination(physicalExamination);
 
 					NewAdditionalExamination newAdditional = new NewAdditionalExamination(examination);

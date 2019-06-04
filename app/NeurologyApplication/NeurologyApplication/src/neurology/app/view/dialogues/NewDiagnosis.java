@@ -100,16 +100,24 @@ public class NewDiagnosis extends JDialog {
 				if (diagnosisList.getSelectedIndex() != -1) {
 					selectedDiagnosis = dijagnoze.get(diagnosisList.getSelectedIndex());
 
+					System.out.println("SELEKTOVANO:" + selectedDiagnosis.getDiagnosisName());
 				}
 			}
 		});
 
 		dijagnoze = new ArrayList<>();
 		BayesController bc = new BayesController();
+		DiagnosisModel dijagnoza = new DiagnosisModel();
 		for (int i = 0; i < bajesFajlovi.length; ++i) {
-			DiagnosisModel dijagnoza = bc.CreateBayesNet(bajesFajlovi[i], examination.getSymptoms());
-			if (!dijagnoza.getDiagnosisName().equals("Empty")) {
-				dijagnoze.add(dijagnoza);
+			try {
+				dijagnoza = bc.CreateBayesNet(bajesFajlovi[i], examination.getSymptoms());
+
+				if (!dijagnoza.getDiagnosisName().equals("Empty")) {
+					dijagnoze.add(dijagnoza);
+				}
+
+			} catch (Exception e) {
+				// sluzi ako naidje dijagnoza koja je null
 			}
 
 		}
@@ -130,8 +138,12 @@ public class NewDiagnosis extends JDialog {
 		for (int i = 0; i < dijagnoze.size(); i++) {
 			if (!dijagnoze.get(i).getDiagnosisName().equals("Empty")) {
 
-				this.modelList.add(n, this.dijagnoze.get(i).getDiagnosisName() + " "
-						+ this.dijagnoze.get(i).getDiagnosisPercentage());
+				String dij = this.dijagnoze.get(i).getDiagnosisName();
+				String output = dij.substring(0, 1).toUpperCase() + dij.substring(1);
+
+				float f = this.dijagnoze.get(i).getDiagnosisPercentage() * 100;
+
+				this.modelList.add(n, output + ": " + f + "%");
 				n++;
 			}
 		}

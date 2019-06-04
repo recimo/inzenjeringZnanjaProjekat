@@ -102,12 +102,12 @@ public class BayesController {
 
 		// states overview after propagation
 
-		for (Node node : nodeList) {
+		/*for (Node node : nodeList) {
 			System.out.println(node.getName());
 			for (int i = 0; i < node.getStatesSize(); i++) {
 				System.out.println(node.getStateAt(i) + ": " + ((ProbabilisticNode) node).getMarginalAt(i));
 			}
-		}
+		}*/
 
 		// System.out.println("OVAJ SALJEM: " + nodeList.get(0).getName());
 
@@ -115,13 +115,13 @@ public class BayesController {
 
 		DiagnosisModel diagnosis = new DiagnosisModel();
 
-		System.out.println("*******************");
+		//System.out.println("*******************");
 		for (Node node : net.getNodes()) {
-			System.out.println(node.getName());
-			System.out.println(bajesFileName);
+			//System.out.println(node.getName());
+			//System.out.println(bajesFileName);
 			if (node.getName().toUpperCase().equals(bajesFileName.toUpperCase())) {
-				System.out.println("DIJAGNOZA!!!!!!!!!!!!!!!!!!!!!");
-				System.out.println(bajesFileName);
+				//System.out.println("DIJAGNOZA!!!!!!!!!!!!!!!!!!!!!");
+				//System.out.println(bajesFileName);
 				diagnosis.setDiagnosisName(node.getName());
 				diagnosis.setDiagnosisPercentage(((ProbabilisticNode) node).getMarginalAt(0));
 			}

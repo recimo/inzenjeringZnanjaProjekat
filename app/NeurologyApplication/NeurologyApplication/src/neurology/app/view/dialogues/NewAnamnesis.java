@@ -214,9 +214,11 @@ public class NewAnamnesis extends JDialog {
 		this.okButton.setPreferredSize(buttonDim);
 		this.cancelButton.setPreferredSize(buttonDim);
 
-		this.mainPanel.add(okButton);
-		this.mainPanel.add(cancelButton);
+		JPanel panel = new JPanel();
+		panel.add(okButton);
+		panel.add(cancelButton);
 
+		this.add(panel, BorderLayout.SOUTH);
 	}
 
 	public void initActionListeners() {
@@ -225,15 +227,15 @@ public class NewAnamnesis extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (validation()) {
-					
+
 					Examination examination = new Examination();
 					examination.setPatient(patient);
-					
+
 					PersonalAnamnesisCreateAction createAction = new PersonalAnamnesisCreateAction();
-					createAction.action(newPersonalAnamnesis,lackOfEnergyAndInterestCheckBox.isSelected(),
+					createAction.action(newPersonalAnamnesis, lackOfEnergyAndInterestCheckBox.isSelected(),
 							disturbanceOfMemoryCheckBox.isSelected(), headacheField.getSelectedItem().toString(),
 							sightField.getSelectedItem().toString(), hearingLossCheckBox.isSelected(),
-							balanceLossCheckBox.isSelected(), limbsPainCheckBox.isSelected(),examination);
+							balanceLossCheckBox.isSelected(), limbsPainCheckBox.isSelected(), examination);
 
 					FamilyAnamnesisCreateAction familyCreateAction = new FamilyAnamnesisCreateAction();
 					familyCreateAction.action(newFamilyAnamnesis, diabetesCheck.isSelected(), endoCheck.isSelected(),
@@ -242,15 +244,14 @@ public class NewAnamnesis extends JDialog {
 
 					examination.setPersonalAnamnesis(newPersonalAnamnesis);
 					examination.setFamilyAnamnesis(newFamilyAnamnesis);
-					
-					//dodati u simptome nesto ako treba
+
+					// dodati u simptome nesto ako treba
 
 					NewPhysicalExamination newPhysical = new NewPhysicalExamination(examination);
 					newPhysical.setVisible(true);
-					
+
 					dispose();
 
-					
 				}
 
 			}
@@ -260,7 +261,7 @@ public class NewAnamnesis extends JDialog {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+
 			}
 		});
 	}

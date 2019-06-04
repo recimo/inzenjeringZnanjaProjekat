@@ -8,12 +8,14 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 import neurology.app.view.dialogues.NewMedicalExamination;
+import neurology.app.view.dialogues.NewPatient;
 
 public class MenuBar extends JMenuBar {
 
 	private JMenu file;
 	private JMenuItem addNewPatientItem;
-	private JMenu add;
+	private JMenuItem addNewExaminationItem;
+	private JMenu neW;
 	private JMenuItem exitItem;
 
 	public MenuBar() {
@@ -23,15 +25,23 @@ public class MenuBar extends JMenuBar {
 	}
 
 	public void initMenuBar() {
-		this.file = new JMenu("_File");
-		this.add = new JMenu("_Add");
+		this.file = new JMenu("File");
+		this.file.setMnemonic('F');
 
-		this.addNewPatientItem = new JMenuItem("_New Patient");
+		this.neW = new JMenu("New");
+		this.neW.setMnemonic('N');
 
-		this.exitItem = new JMenuItem("_Exit");
+		this.addNewPatientItem = new JMenuItem("New Patient");
+		this.addNewPatientItem.setMnemonic('P');
 
-		this.add.add(addNewPatientItem);
-		this.file.add(add);
+		this.addNewExaminationItem = new JMenuItem("New Examination");
+		this.addNewExaminationItem.setMnemonic('E');
+
+		this.exitItem = new JMenuItem("Exit");
+
+		this.neW.add(addNewPatientItem);
+		this.neW.add(addNewExaminationItem);
+		this.file.add(neW);
 
 		this.file.addSeparator();
 		this.file.add(exitItem);
@@ -47,9 +57,18 @@ public class MenuBar extends JMenuBar {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				NewPatient newPatient = new NewPatient();
+				newPatient.setVisible(true);
+
+			}
+		});
+
+		this.addNewExaminationItem.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
 				NewMedicalExamination newPatientDialog = new NewMedicalExamination();
 				newPatientDialog.setVisible(true);
-
 			}
 		});
 
