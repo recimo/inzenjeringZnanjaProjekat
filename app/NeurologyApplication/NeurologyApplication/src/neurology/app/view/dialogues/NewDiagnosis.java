@@ -2,6 +2,7 @@ package neurology.app.view.dialogues;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -10,8 +11,10 @@ import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JProgressBar;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
@@ -20,12 +23,13 @@ import javax.swing.event.ListSelectionListener;
 import neurology.app.miscellaneous.BayesController;
 import neurology.app.model.DiagnosisModel;
 import neurology.app.model.Examination;
+import neurology.app.model.ListRenderer;
 import unbbayes.io.exception.LoadException;
 
 public class NewDiagnosis extends JDialog {
 
-	private DefaultListModel<String> modelList;
-	private JList<String> diagnosisList;
+	private DefaultListModel<DiagnosisModel> modelList;
+	private JList<DiagnosisModel> diagnosisList;
 	private String[] bajesFajlovi = { "alcohol_abuse_bayes", "anxiety_bayes", "chronic_back_pain_bayes",
 			"chronic_sinusitis", "concussion_bayes", "dementia_bayes", "depression_bayes", "epilepsy_bayes",
 			"lumbago_bayes", "migraine_bayes", "parkinson_disease_bayes", "stroke_bayes" };
@@ -75,9 +79,10 @@ public class NewDiagnosis extends JDialog {
 	}
 
 	public void initComponents() throws LoadException, IOException {
-		this.diagnosisList = new JList<String>();
-		this.modelList = new DefaultListModel<String>();
+		this.diagnosisList = new JList<DiagnosisModel>();
+		this.modelList = new DefaultListModel<DiagnosisModel>();
 		this.diagnosisList.setModel(modelList);
+		this.diagnosisList.setCellRenderer(new ListRenderer());
 		this.okButton = new JButton("Ok");
 		this.okButton.setPreferredSize(new Dimension(100, 25));
 
@@ -143,7 +148,8 @@ public class NewDiagnosis extends JDialog {
 
 				float f = this.dijagnoze.get(i).getDiagnosisPercentage() * 100;
 
-				this.modelList.add(n, output + ": " + f + "%");
+				this.modelList.add(n, dijagnoze.get(i));
+				// this.modelList.add(n, output + ": " + f + "%");
 				n++;
 			}
 		}
