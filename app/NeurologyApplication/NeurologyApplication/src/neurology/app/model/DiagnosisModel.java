@@ -1,6 +1,6 @@
 package neurology.app.model;
 
-public class DiagnosisModel {
+public class DiagnosisModel implements Comparable<DiagnosisModel>{
 
 	private String diagnosisName;
 	private float diagnosisPercentage;
@@ -29,6 +29,14 @@ public class DiagnosisModel {
 
 	public void setDiagnosisPercentage(float diagnosisPercentage) {
 		this.diagnosisPercentage = diagnosisPercentage;
+	}
+
+	@Override
+	public int compareTo(DiagnosisModel o) {
+		
+		int compare = Float.compare(o.diagnosisPercentage, diagnosisPercentage);
+		
+		return compare;
 	}
 
 }

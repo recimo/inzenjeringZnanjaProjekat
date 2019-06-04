@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -121,6 +122,8 @@ public class NewDiagnosis extends JDialog {
 			}
 
 		}
+		
+		Collections.sort(dijagnoze);
 
 //		for (int i = 0; i < dijagnoze.size() - 1; i++) {
 //			for (int j = 1; j < dijagnoze.size(); j++) {
