@@ -5,9 +5,11 @@ import neurology.app.enumerations.HeadacheType;
 
 public class PersonalAnamnesis {
 
+	private String id;
 	private boolean lackOfEnergyAndInterest;
 	private boolean disturbanceOfMemory;
 	private HeadacheType headache;
+	private boolean hasHeadache;
 	private ChangeOfSight sight;
 	private boolean hearingLoss;
 	private boolean balanceLoss;
@@ -17,7 +19,6 @@ public class PersonalAnamnesis {
 
 	}
 
-	
 	public boolean isLackOfEnergyAndInterest() {
 		return lackOfEnergyAndInterest;
 	}
@@ -73,21 +74,37 @@ public class PersonalAnamnesis {
 	public void setLimbsPain(boolean limbsPain) {
 		this.limbsPain = limbsPain;
 	}
-	
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public boolean isHasHeadache() {
+		return hasHeadache;
+	}
+
+	public void setHasHeadache(boolean hasHeadache) {
+		this.hasHeadache = hasHeadache;
+	}
+
 	@Override
 	public String toString() {
 		String retVal = "";
-		retVal+="************************************\n";
-		retVal+="PERSONAL ANAMNESIS:\n";
-		retVal+="Lack Of Energy And Interest: " + this.isLackOfEnergyAndInterest() + "\n";
-		retVal+="Disturbance of memory: " + this.isDisturbanceOfMemory() + "\n";
-		retVal+="Headache Type: " + this.getHeadache() + "\n";
-		retVal+="Sight: " + this.getSight() + "\n";
-		retVal+="Hearing Loss: " + this.isHearingLoss() + "\n";
-		retVal+="Balance Loss: " + this.isBalanceLoss() + "\n";
-		retVal+="Limbs Pain: " + this.isLimbsPain() + "\n";
-		retVal+="************************************\n";
-		
+		retVal += "************************************\n";
+		retVal += "PERSONAL ANAMNESIS:\n";
+		retVal += "Lack Of Energy And Interest: " + this.isLackOfEnergyAndInterest() + "\n";
+		retVal += "Disturbance of memory: " + this.isDisturbanceOfMemory() + "\n";
+		retVal += "Headache Type: " + this.getHeadache() + "\n";
+		retVal += "Sight: " + this.getSight() + "\n";
+		retVal += "Hearing Loss: " + this.isHearingLoss() + "\n";
+		retVal += "Balance Loss: " + this.isBalanceLoss() + "\n";
+		retVal += "Limbs Pain: " + this.isLimbsPain() + "\n";
+		retVal += "************************************\n";
+
 		return retVal;
 	}
 

@@ -5,6 +5,8 @@ import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
+import neurology.app.controller.dataBase.patient.GetPatients;
+import neurology.app.model.Patient;
 import neurology.app.view.mainFrame.MainFrame;
 
 public class Application {
@@ -39,6 +41,19 @@ public class Application {
 
 				} catch (Exception e) {
 					System.out.println("nije ucitan LookAndFeel!");
+				}
+
+				GetPatients getPatients = new GetPatients();
+				if (getPatients.getPatients()) {
+					System.out.println("PACIJENTI: ");
+					for (Patient patient : Singleton.getInstance().getPatients().getPatients()) {
+						System.out.println(patient.getIdentificationNumber());
+						System.out.println(patient.getFirstName());
+						System.out.println(patient.getLastName());
+						System.out.println(patient.getDateOfBirth());
+						System.out.println(patient.getGenderOfPatient().toString());
+						System.out.println(patient.isRightHanded());
+					}
 				}
 
 				MainFrame mainFrame = new MainFrame();

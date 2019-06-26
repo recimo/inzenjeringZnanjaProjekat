@@ -1,5 +1,6 @@
 package neurology.app.controller;
 
+import neurology.app.controller.dataBase.patient.InsertPatient;
 import neurology.app.enumerations.Gender;
 import neurology.app.model.Patient;
 
@@ -17,6 +18,15 @@ public class PatientCreateAction {
 			newPatient.setGenderOfPatient(Gender.Male);
 		} else {
 			newPatient.setGenderOfPatient(Gender.Female);
+		}
+
+		InsertPatient insert = new InsertPatient(newPatient);
+
+		try {
+			insert.insert();
+		} catch (Exception e) {
+			System.out.println("NECE DA GA UPISE!");
+			e.printStackTrace();
 		}
 
 	}

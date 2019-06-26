@@ -2,26 +2,24 @@ package neurology.app.view.dialogues;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
+import neurology.app.controller.dataBase.examination.insert.InsertExamination;
 import neurology.app.miscellaneous.MyMedProFinder;
 import neurology.app.model.Examination;
 
 public class NewMedicationProcedure extends JDialog {
 
+	private static final long serialVersionUID = 1L;
 	private Examination examination;
 	private JPanel mainPanel;
 
@@ -120,8 +118,13 @@ public class NewMedicationProcedure extends JDialog {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// this.examination.medication = izabran iz kombo boxa
-				// this.examination.procedure = izabran iz kombo boxa
+
+				examination.setMedication(possibleMedicationsCombo.getSelectedItem().toString());
+				examination.setProcedure(possibleProceduresCombo.getSelectedItem().toString());
+
+				InsertExamination insertExamination = new InsertExamination(examination);
+				insertExamination.insert();
+				dispose();
 			}
 		});
 

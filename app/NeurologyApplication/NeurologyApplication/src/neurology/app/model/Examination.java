@@ -7,6 +7,7 @@ import neurology.app.model.anamnesis.PersonalAnamnesis;
 
 public class Examination {
 
+	private String id;
 	private Patient patient;
 	private PersonalAnamnesis personalAnamnesis;
 	private FamilyAnamnesis familyAnamnesis;
@@ -14,6 +15,8 @@ public class Examination {
 	private AdditionalExamination additionalExamination;
 	private ArrayList<Symptom> symptoms = new ArrayList<>();
 	private DiagnosisModel finalDiagnosisModel;
+	private String medication;
+	private String procedure;
 
 	public Examination() {
 	}
@@ -73,4 +76,29 @@ public class Examination {
 	public void setFinalDiagnosisModel(DiagnosisModel finalDiagnosisModel) {
 		this.finalDiagnosisModel = finalDiagnosisModel;
 	}
+
+	public String getMedication() {
+		return medication;
+	}
+
+	public void setMedication(String medication) {
+		this.medication = medication;
+	}
+
+	public String getProcedure() {
+		return procedure;
+	}
+
+	public void setProcedure(String procedure) {
+		this.procedure = procedure;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
 }

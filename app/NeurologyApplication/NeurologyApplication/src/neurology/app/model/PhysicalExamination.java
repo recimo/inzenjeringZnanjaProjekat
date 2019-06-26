@@ -8,22 +8,25 @@ public class PhysicalExamination {
 	private int pulse;
 	private int lowerBloodPressure;
 	private int upperBloodPressure;
-	boolean abnormalInvoluntaryMovements;
-	boolean seizures;
-	boolean problemsWithMovement;
-	boolean dizziness;
-	boolean focalWeakness;
-	boolean lossOfSensation;
-	boolean apraxia; //za sad, posle tulia test pomocu pravila iz prologa
-	boolean kneePain;
-	boolean hipPain;
-	boolean backPain; 
-	boolean legPain;
-	boolean chestPain;
-
+	private boolean abnormalInvoluntaryMovements;
+	private boolean seizures;
+	private boolean problemsWithMovement;
+	private boolean dizziness;
+	private boolean focalWeakness;
+	private boolean lossOfSensation;
+	private boolean apraxia; // za sad, posle tulia test pomocu pravila iz prologa
+	private boolean kneePain;
+	private boolean hipPain;
+	private boolean backPain;
+	private boolean legPain;
+	private boolean chestPain;
 
 	public PhysicalExamination() {
-		
+		this.visualAcuity = 0;
+		this.musclesStrength = 0;
+		this.pulse = 0;
+		this.lowerBloodPressure = 0;
+		this.upperBloodPressure = 0;
 	}
 
 	public boolean isMusclesRecognition() {
@@ -98,7 +101,6 @@ public class PhysicalExamination {
 		this.problemsWithMovement = problemsWithMovement;
 	}
 
-
 	public boolean isDizziness() {
 		return dizziness;
 	}
@@ -106,7 +108,6 @@ public class PhysicalExamination {
 	public void setDizziness(boolean dizziness) {
 		this.dizziness = dizziness;
 	}
-
 
 	public boolean isFocalWeakness() {
 		return focalWeakness;
@@ -183,7 +184,5 @@ public class PhysicalExamination {
 				+ ", hipPain=" + hipPain + ", backPain=" + backPain + ", legPain=" + legPain + ", chestPain="
 				+ chestPain + "]";
 	}
-
-	
 
 }
