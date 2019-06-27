@@ -1,23 +1,24 @@
 package neurology.app.view.dialogues;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.border.Border;
 
+import neurology.app.Singleton;
 import neurology.app.controller.PhysicalExaminationCreateAction;
 import neurology.app.model.Examination;
 import neurology.app.model.PhysicalExamination;
-import neurology.app.model.Symptom;
 
 public class NewPhysicalExamination extends JDialog {
 
@@ -79,7 +80,6 @@ public class NewPhysicalExamination extends JDialog {
 	public JCheckBox chestPainCheck;
 
 	private JButton nextButton;
-	private JButton resetButton;
 	private JButton backButton;
 
 	private Dimension buttonDim;
@@ -138,7 +138,7 @@ public class NewPhysicalExamination extends JDialog {
 
 		JPanel panel = new JPanel();
 		panel.add(nextButton);
-		panel.add(resetButton);
+		//panel.add(resetButton);
 		panel.add(backButton);
 
 		this.add(panel, BorderLayout.SOUTH);
@@ -259,8 +259,6 @@ public class NewPhysicalExamination extends JDialog {
 		this.centerPanel.add(focalWeakness);
 		this.centerPanel.add(weaknessCheck);
 
-		this.resetButton = new JButton("Reset");
-		this.resetButton.setPreferredSize(buttonDim);
 
 	}
 
@@ -336,20 +334,19 @@ public class NewPhysicalExamination extends JDialog {
 
 					examination.setPhysicalExamination(physicalExamination);
 
-					NewAdditionalExamination newAdditional = new NewAdditionalExamination(examination);
-					newAdditional.setVisible(true);
+					if (!Singleton.getInstance().isModeOfReasoning()) {
+						NewAdditionalExamination newAdditional = new NewAdditionalExamination(examination);
+						newAdditional.setVisible(true);
 
-					dispose();
+						dispose();
+					} else {
+						NewDiagnosisCaseBased ndcb = new NewDiagnosisCaseBased(examination);
+						ndcb.setVisible(true);
+
+						dispose();
+					}
 
 				}
-			}
-		});
-
-		this.resetButton.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
 			}
 		});
 
@@ -357,14 +354,29 @@ public class NewPhysicalExamination extends JDialog {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
+				NewPhysicalExamination.this.examination.getSymptoms().clear();
+				NewAnamnesis newAnamnesisDialog = new NewAnamnesis(NewPhysicalExamination.this.examination);
+				newAnamnesisDialog.setVisible(true);
+				dispose();
 			}
 		});
 	}
 
 	public boolean validation() {
-
+		if (this.pulseField.getText().equals("")) {
+			this.pulseField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+			return false;
+		} else if (this.lowerBloodPressureField.getText().equals("")) {
+			this.lowerBloodPressureField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+			return false;
+		} else if (this.lowerBloodPressureField.getText().equals("")) {
+			this.lowerBloodPressureField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+			return false;
+		} 
+		
 		return true;
 	}
+	
+	
 
 }

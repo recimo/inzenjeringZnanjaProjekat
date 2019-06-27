@@ -21,6 +21,7 @@ public class Singleton {
 	private DiagnosisModels diagnosisModels;
 	private Symptoms symptoms;
 	private PhysicalExaminations physicalExaminations;
+	private boolean modeOfReasoning = false;	// false RBR, true CBR
 
 	private Singleton() {
 
@@ -36,6 +37,14 @@ public class Singleton {
 
 	public void setMainFrame(MainFrame mainFrame) {
 		this.mainFrame = mainFrame;
+	}
+	
+	public boolean isModeOfReasoning() {
+		return modeOfReasoning;
+	}
+
+	public void setModeOfReasoning(boolean modeOfReasoning) {
+		this.modeOfReasoning = modeOfReasoning;
 	}
 
 	public Patients getPatients() {

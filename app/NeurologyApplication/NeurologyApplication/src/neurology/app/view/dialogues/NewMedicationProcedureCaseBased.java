@@ -5,8 +5,9 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -15,22 +16,12 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import neurology.app.GetAll;
-import neurology.app.InitAll;
-import neurology.app.controller.dataBase.examination.insert.InsertDiagnosisModel;
-import neurology.app.controller.dataBase.examination.insert.InsertExamination;
-import neurology.app.controller.dataBase.examination.insert.InsertFamilyAnamnesis;
-import neurology.app.controller.dataBase.examination.insert.InsertPersonalAnamnesis;
-import neurology.app.controller.dataBase.examination.insert.InsertPhysicalExamination;
-import neurology.app.controller.dataBase.examination.insert.InsertSymptom;
-import neurology.app.controller.dataBase.patient.InsertPatient;
-import neurology.app.miscellaneous.MyMedProFinder;
+import neurology.app.miscellaneous.CBRFinder;
+import neurology.app.miscellaneous.CbrResult;
 import neurology.app.model.Examination;
-import neurology.app.model.Symptom;
 
-public class NewMedicationProcedure extends JDialog {
-
-	private static final long serialVersionUID = 1L;
+public class NewMedicationProcedureCaseBased extends JDialog{
+	
 	private Examination examination;
 	private JPanel mainPanel;
 
@@ -40,26 +31,49 @@ public class NewMedicationProcedure extends JDialog {
 	public JComboBox<String> possibleMedicationsCombo;
 	public JComboBox<String> possibleProceduresCombo;
 
-	public ArrayList<String> calculatedMedications;
-	public ArrayList<String> calculatedProcedures;
+	public ArrayList<String> calculatedMedications = new ArrayList<String>();
+	public ArrayList<String> calculatedProcedures = new ArrayList<String>();
+	
+	public ArrayList<Double> calculatedMedicationsPercentages = new ArrayList<Double>();
+	public ArrayList<Double> calculatedProceduresPercantages = new ArrayList<Double>();
+	
+	public String selectedProcedure;
+	public String selectedMedication;
 
 	private JButton okButton;
 	private JButton cancelButton;
-	private JButton backButton = new JButton();
+	private JButton backButton;
 
 	private Dimension buttonDim;
 	private Dimension fieldDim;
 	private Dimension labelDim;
 
-	public NewMedicationProcedure(Examination examination) {
+	public NewMedicationProcedureCaseBased(Examination examination) {
 		this.examination = examination;
 
-		calculatedMedications = MyMedProFinder.findMedications(examination.getFinalDiagnosisModel());
-		calculatedProcedures = MyMedProFinder.findProcedures(examination.getFinalDiagnosisModel());
+		CBRFinder recommender = new CBRFinder();
+		recommender.predvidjajLekProceduru(1, this.examination); //1 da bi znao cycle za da treba da predvidja medication i procedure, jer cycle ne sme parametre da prima
+		
+		Iterator it = CbrResult.potentialMedications.entrySet().iterator();
+		while (it.hasNext()) {
+			Map.Entry pair = (Map.Entry) it.next();
+			calculatedMedications.add((String) pair.getKey());
+			calculatedMedicationsPercentages.add((Double) pair.getValue());
+			System.out.println(pair.getKey() + " = " + pair.getValue());
+		}
+		
+		Iterator it2 = CbrResult.potentialProcedures.entrySet().iterator();
+		while (it2.hasNext()) {
+			Map.Entry pair = (Map.Entry) it2.next();
+			calculatedProcedures.add((String) pair.getKey());
+			calculatedProceduresPercantages.add((Double) pair.getValue());
+			System.out.println(pair.getKey() + " = " + pair.getValue());
+		}
 
 		this.initDialog();
 	}
-
+	
+	
 	public void initDialog() {
 		this.setTitle("New Medical Examination: Procedures and Medications");
 		this.setPreferredSize(new Dimension(500, 400));
@@ -110,17 +124,23 @@ public class NewMedicationProcedure extends JDialog {
 		this.mainPanel.add(chooseProcedure);
 		this.mainPanel.add(possibleProceduresCombo);
 
+		this.backButton = new JButton("Back");
 		this.okButton = new JButton("Ok");
 		this.cancelButton = new JButton("Cancel");
+		this.backButton.setPreferredSize(buttonDim);
 		this.okButton.setPreferredSize(buttonDim);
 		this.cancelButton.setPreferredSize(buttonDim);
 
 		JPanel panel = new JPanel();
 
+		panel.add(backButton);
 		panel.add(okButton);
 		panel.add(cancelButton);
 		this.add(panel, BorderLayout.SOUTH);
-
+		
+		//kada se baza napravi onda iz baze dijagnoze
+		selectedProcedure = possibleProceduresCombo.getSelectedItem().toString();
+		selectedMedication = possibleMedicationsCombo.getSelectedItem().toString();
 	}
 
 	public void initActionListeners() {
@@ -129,46 +149,38 @@ public class NewMedicationProcedure extends JDialog {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				examination.setProcedure(selectedProcedure);
+				examination.setMedication(selectedMedication);
 
-				examination.setMedication(possibleMedicationsCombo.getSelectedItem().toString());
-				examination.setProcedure(possibleProceduresCombo.getSelectedItem().toString());
-
-				InsertPatient insert = new InsertPatient(examination.getPatient());
-				insert.insert();
-
-				InsertExamination insertExamination = new InsertExamination(examination);
-				insertExamination.insert();
-				examination.setId(insertExamination.getId());
-
-				InsertPersonalAnamnesis insertPersonalAnamnesis = new InsertPersonalAnamnesis(
-						examination.getPersonalAnamnesis(), examination.getId());
-				insertPersonalAnamnesis.insert();
-
-				InsertFamilyAnamnesis insertFamilyAnamnesis = new InsertFamilyAnamnesis(
-						examination.getFamilyAnamnesis(), examination.getId());
-				insertFamilyAnamnesis.insert();
-
-				InsertPhysicalExamination insertPhysicalExamination = new InsertPhysicalExamination(
-						examination.getPhysicalExamination(), examination.getId());
-				insertPhysicalExamination.insert();
-
-				for (Symptom sympton : examination.getAdditionalExamination().getSymptomsToCheck()) {
-					InsertSymptom insertSymptom = new InsertSymptom(sympton, examination.getId());
-					insertSymptom.insert();
-				}
-
-				InsertDiagnosisModel insertDiagnosisModel = new InsertDiagnosisModel(
-						examination.getFinalDiagnosisModel(), examination.getId());
-				insertDiagnosisModel.insert();
-
-				GetAll getAll = new GetAll();
-				getAll.action();
-
-				InitAll initAll = new InitAll();
-				initAll.action();
+				System.out.println("Examination  : ");
+				System.out.println("Dijagnoza : " + examination.getFinalDiagnosisModel().getDiagnosisName());
+				System.out.println("Medication : " + examination.getMedication());
+				System.out.println("Procedure : " + examination.getProcedure());
+				
+				//dodaj u bazu examination
 				JOptionPane.showMessageDialog(null, "End of examination");
 				dispose();
 			}
+		});
+		
+		this.possibleMedicationsCombo.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				selectedMedication =  possibleMedicationsCombo.getSelectedItem().toString();
+				//selectedDiagnosis = baza.getDiagnosis(possibleDiagnosis.getSelectedItem()) kada se baza uradi
+			}
+			
+		});
+		
+		this.possibleProceduresCombo.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				selectedProcedure =  possibleProceduresCombo.getSelectedItem().toString();
+				//selectedDiagnosis = baza.getDiagnosis(possibleDiagnosis.getSelectedItem()) kada se baza uradi
+			}
+			
 		});
 
 		this.cancelButton.addActionListener(new ActionListener() {
@@ -183,20 +195,14 @@ public class NewMedicationProcedure extends JDialog {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				try {
-					NewDiagnosis nd = new NewDiagnosis(NewMedicationProcedure.this.examination);
-					nd.setVisible(true);
-					dispose();
-				} catch (IOException e1) {
-					//e1.printStackTrace();
-				}
+				CbrResult.potentialMedications.clear();
+				CbrResult.potentialProcedures.clear();
+				NewDiagnosisCaseBased ndcb = new NewDiagnosisCaseBased(examination);
+				ndcb.setVisible(true);
+				dispose();
 			}
 		});
 	}
 
-	public boolean validation() {
-
-		return true;
-	}
 
 }

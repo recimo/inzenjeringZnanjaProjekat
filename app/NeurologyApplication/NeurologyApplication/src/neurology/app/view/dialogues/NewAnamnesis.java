@@ -261,7 +261,7 @@ public class NewAnamnesis extends JDialog {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
+				dispose();
 			}
 		});
 	}

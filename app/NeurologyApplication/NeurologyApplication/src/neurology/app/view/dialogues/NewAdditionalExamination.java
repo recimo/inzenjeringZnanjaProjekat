@@ -162,7 +162,7 @@ public class NewAdditionalExamination extends JDialog {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
+				dispose();
 			}
 		});
 	}

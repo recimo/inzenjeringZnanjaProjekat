@@ -44,7 +44,7 @@ public class NewDiagnosis extends JDialog {
 
 	public NewDiagnosis(Examination examination) throws LoadException, IOException {
 		// kad napravis to za uzimanje dijagnoza
-		// samo u konstruktor prosledi neku listu dojagnoza
+		// samo u konstruktor prosledi neku listu dijagnoza
 		this.examination = examination;
 		this.selectedDiagnosis = new DiagnosisModel();
 		initDialog();

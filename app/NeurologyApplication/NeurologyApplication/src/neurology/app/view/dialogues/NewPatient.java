@@ -3,7 +3,6 @@ package neurology.app.view.dialogues;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -109,7 +108,7 @@ public class NewPatient extends JDialog {
 		this.mainPanel.add(identificationNumberLabel);
 		this.mainPanel.add(identificationNumberField);
 
-		this.dateOfBirthLabel = new JLabel("Date of birth:");
+		this.dateOfBirthLabel = new JLabel("Age:");
 		this.dateOfBirthLabel.setPreferredSize(labelDim);
 		this.dateOfBirthField = new JTextField();
 		this.dateOfBirthField.setPreferredSize(fieldDim);
