@@ -13,9 +13,18 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import neurology.app.GetAll;
+import neurology.app.InitAll;
+import neurology.app.controller.dataBase.examination.insert.InsertDiagnosisModel;
 import neurology.app.controller.dataBase.examination.insert.InsertExamination;
+import neurology.app.controller.dataBase.examination.insert.InsertFamilyAnamnesis;
+import neurology.app.controller.dataBase.examination.insert.InsertPersonalAnamnesis;
+import neurology.app.controller.dataBase.examination.insert.InsertPhysicalExamination;
+import neurology.app.controller.dataBase.examination.insert.InsertSymptom;
+import neurology.app.controller.dataBase.patient.InsertPatient;
 import neurology.app.miscellaneous.MyMedProFinder;
 import neurology.app.model.Examination;
+import neurology.app.model.Symptom;
 
 public class NewMedicationProcedure extends JDialog {
 
@@ -122,8 +131,40 @@ public class NewMedicationProcedure extends JDialog {
 				examination.setMedication(possibleMedicationsCombo.getSelectedItem().toString());
 				examination.setProcedure(possibleProceduresCombo.getSelectedItem().toString());
 
+				InsertPatient insert = new InsertPatient(examination.getPatient());
+				insert.insert();
+
 				InsertExamination insertExamination = new InsertExamination(examination);
 				insertExamination.insert();
+				examination.setId(insertExamination.getId());
+
+				InsertPersonalAnamnesis insertPersonalAnamnesis = new InsertPersonalAnamnesis(
+						examination.getPersonalAnamnesis(), examination.getId());
+				insertPersonalAnamnesis.insert();
+
+				InsertFamilyAnamnesis insertFamilyAnamnesis = new InsertFamilyAnamnesis(
+						examination.getFamilyAnamnesis(), examination.getId());
+				insertFamilyAnamnesis.insert();
+
+				InsertPhysicalExamination insertPhysicalExamination = new InsertPhysicalExamination(
+						examination.getPhysicalExamination(), examination.getId());
+				insertPhysicalExamination.insert();
+
+				for (Symptom sympton : examination.getAdditionalExamination().getSymptomsToCheck()) {
+					InsertSymptom insertSymptom = new InsertSymptom(sympton, examination.getId());
+					insertSymptom.insert();
+				}
+
+				InsertDiagnosisModel insertDiagnosisModel = new InsertDiagnosisModel(
+						examination.getFinalDiagnosisModel(), examination.getId());
+				insertDiagnosisModel.insert();
+
+				GetAll getAll = new GetAll();
+				getAll.action();
+
+				InitAll initAll = new InitAll();
+				initAll.action();
+				
 				dispose();
 			}
 		});

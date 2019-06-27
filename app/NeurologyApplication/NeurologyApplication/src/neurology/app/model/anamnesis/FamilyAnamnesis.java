@@ -2,6 +2,7 @@ package neurology.app.model.anamnesis;
 
 public class FamilyAnamnesis {
 
+	private String id;
 	private boolean diabetes;
 	private boolean endocrineDiseases;
 	private boolean hypertension;
@@ -10,7 +11,7 @@ public class FamilyAnamnesis {
 	private boolean mentalIllnesses;
 
 	public FamilyAnamnesis() {
-		
+
 	}
 
 	public boolean isDiabetes() {
@@ -60,20 +61,28 @@ public class FamilyAnamnesis {
 	public void setMentalIllnesses(boolean mentalIllnesses) {
 		this.mentalIllnesses = mentalIllnesses;
 	}
-	
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
 	@Override
 	public String toString() {
 		String retVal = "";
-		retVal+="************************************\n";
-		retVal+="FAMILY ANAMNESIS:\n";
-		retVal+="Diabetes: " + this.isDiabetes() + "\n";
-		retVal+="Endokrine: " + this.isEndocrineDiseases() + "\n";
-		retVal+="Hipertension: " + this.isHypertension() + "\n";
-		retVal+="Headache: " + this.isHeadache() + "\n";
-		retVal+="Cerebrovascular: " + this.isCerebrovascularDiseases() + "\n";
-		retVal+="Mental illness: " + this.isMentalIllnesses() + "\n";
-		retVal+="************************************\n";
-		
+		retVal += "************************************\n";
+		retVal += "FAMILY ANAMNESIS:\n";
+		retVal += "Diabetes: " + this.isDiabetes() + "\n";
+		retVal += "Endokrine: " + this.isEndocrineDiseases() + "\n";
+		retVal += "Hipertension: " + this.isHypertension() + "\n";
+		retVal += "Headache: " + this.isHeadache() + "\n";
+		retVal += "Cerebrovascular: " + this.isCerebrovascularDiseases() + "\n";
+		retVal += "Mental illness: " + this.isMentalIllnesses() + "\n";
+		retVal += "************************************\n";
+
 		return retVal;
 	}
 

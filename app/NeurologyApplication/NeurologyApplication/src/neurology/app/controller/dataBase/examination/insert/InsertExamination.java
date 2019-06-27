@@ -6,6 +6,8 @@ import org.apache.jena.query.QueryExecutionFactory;
 import org.apache.jena.query.QueryFactory;
 import org.apache.jena.query.QuerySolution;
 import org.apache.jena.query.ResultSet;
+import org.apache.jena.query.ResultSetFactory;
+import org.apache.jena.query.ResultSetRewindable;
 import org.apache.jena.rdf.model.Literal;
 import org.apache.jena.update.UpdateExecutionFactory;
 import org.apache.jena.update.UpdateFactory;
@@ -17,7 +19,7 @@ import neurology.app.model.Examination;
 public class InsertExamination {
 
 	private Examination examination;
-	private int id = 0;
+	private int id;
 
 	private static final String QUERY_URL = "http://localhost:3030/inz/sparql";
 	private static final String UPDATE_URL = "http://localhost:3030/inz/update";
@@ -36,11 +38,14 @@ public class InsertExamination {
 			QueryExecution qexec = QueryExecutionFactory.sparqlService(QUERY_URL, query);
 
 			ResultSet results = qexec.execSelect();
-			while (results.hasNext()) {
-				QuerySolution solution = results.nextSolution();
+			ResultSetRewindable resultSetRewindble = ResultSetFactory.copyResults(results);
+
+			qexec.close();
+			while (resultSetRewindble.hasNext()) {
+				QuerySolution solution = resultSetRewindble.nextSolution();
 				Literal literal = solution.getLiteral("id");
 				this.id = Integer.parseInt(literal.getString());
-				this.id++;
+				++this.id;
 				System.out.println(this.id);
 			}
 			return true;
@@ -55,58 +60,39 @@ public class InsertExamination {
 
 	public void insert() {
 
-		setID();
-		String insertString = PREFIX + " INSERT DATA { ";
+		if (setID()) {
+			String insertString = PREFIX + " INSERT DATA { ";
 
-		insertString += " na:" + this.id + "Examination a na:Examination; ";
-		// id
-		insertString += " na:id " + "\"" + this.id +"Examination " + "\"^^xsd:string; ";
-		// patient
-		insertString += " na:patientId " + "\"" + examination.getPatient().getIdentificationNumber()
-				+ "\"^^xsd:string; ";
+			insertString += " na:" + this.id + "Examination a na:Examination; ";
+			// id
+			insertString += " na:id " + "\"" + this.id + "\"^^xsd:string; ";
+			// patient
+			insertString += " na:patientId " + "\"" + examination.getPatient().getIdentificationNumber()
+					+ "\"^^xsd:string; ";
 
-		// medication
-		insertString += " na:medication " + "\"" + examination.getMedication() + "\"^^xsd:string; ";
+			// medication
+			insertString += " na:medication " + "\"" + examination.getMedication() + "\"^^xsd:string; ";
 
-		// procedure
-		insertString += " na:procedure " + "\"" + examination.getProcedure() + "\"^^xsd:string .  }";
+			// procedure
+			insertString += " na:procedure " + "\"" + examination.getProcedure() + "\"^^xsd:string .  }";
 
-		UpdateRequest updateRequest = UpdateFactory.create(insertString);
-		UpdateProcessor updateProcessor = UpdateExecutionFactory.createRemote(updateRequest, UPDATE_URL);
-		updateProcessor.execute();
+			UpdateRequest updateRequest = UpdateFactory.create(insertString);
+			UpdateProcessor updateProcessor = UpdateExecutionFactory.createRemote(updateRequest, UPDATE_URL);
+			updateProcessor.execute();
 
-		String insertIntoID = PREFIX + " INSERT DATA { ";
-		insertIntoID += " na:IdExam a na:ExaminationId ;";
-		insertIntoID += " na:id na:" + this.id + "examination . }";
-		UpdateRequest updateId = UpdateFactory.create(insertIntoID);
-		UpdateProcessor updateProcessorId = UpdateExecutionFactory.createRemote(updateId, UPDATE_URL);
-		updateProcessorId.execute();
+			String insertIntoID = PREFIX + " INSERT DATA { ";
+			insertIntoID += " na:IdExam a na:ExaminationId ;";
+			insertIntoID += " na:id na:" + this.id + "Examination . }";
+			UpdateRequest updateId = UpdateFactory.create(insertIntoID);
+			UpdateProcessor updateProcessorId = UpdateExecutionFactory.createRemote(updateId, UPDATE_URL);
+			updateProcessorId.execute();
 
-		// personalAnamnesis
-		InsertPersonalAnamnesis insertPersonalAnamnesis = new InsertPersonalAnamnesis(
-				examination.getPersonalAnamnesis(), this.id + "Examination");
-		insertPersonalAnamnesis.insert();
+		}
 
-		// familyAnamnesis
-		InsertFamilyAnamnesis insertFamilyAnamnesis = new InsertFamilyAnamnesis(examination.getFamilyAnamnesis(),
-				this.id + "Examination");
-		insertFamilyAnamnesis.insert();
+	}
 
-		// physicalExamination
-		InsertPhysicalExamination insertPhysicalExamination = new InsertPhysicalExamination(
-				examination.getPhysicalExamination(), this.id + "Examination");
-		insertPhysicalExamination.insert();
-
-		// additionalExamination
-		InsertAdditionalExamination insertAdditionalExamination = new InsertAdditionalExamination(
-				examination.getSymptoms(), this.id + "Examination");
-		insertAdditionalExamination.insert();
-
-		// diagnosis model
-		InsertDiagnosisModel insertDiagnosisModel = new InsertDiagnosisModel(examination.getFinalDiagnosisModel(),
-				this.id + "Examination");
-		insertDiagnosisModel.insert();
-
+	public int getId() {
+		return id;
 	}
 
 }

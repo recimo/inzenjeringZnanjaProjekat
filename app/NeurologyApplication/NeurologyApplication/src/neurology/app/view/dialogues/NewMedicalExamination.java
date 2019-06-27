@@ -21,6 +21,7 @@ import javax.swing.SwingUtilities;
 
 import neurology.app.controller.PatientCreateAction;
 import neurology.app.enumerations.Gender;
+import neurology.app.model.Examination;
 import neurology.app.model.Patient;
 import neurology.app.view.patientFrame.PatientFrame;
 import neurology.app.view.patientFrame.tabbedPane.AnamnesisPanel;
@@ -30,6 +31,7 @@ import neurology.app.view.patientFrame.tabbedPane.PatientPanel;
 public class NewMedicalExamination extends JDialog {
 
 	private Patient newPatient;
+	private Examination examination;
 
 	private JPanel mainPanel;
 	private JPanel searchPanel;
@@ -70,6 +72,7 @@ public class NewMedicalExamination extends JDialog {
 
 	public NewMedicalExamination() {
 		this.newPatient = new Patient();
+		this.examination = new Examination();
 		this.initDialog();
 	}
 
@@ -188,8 +191,10 @@ public class NewMedicalExamination extends JDialog {
 							genderOfPatientField.getSelectedItem().toString(), rightHandBox.isSelected());
 
 					dispose();
+					
+					examination.setPatient(newPatient);
 
-					NewAnamnesis newAnamnesisDialog = new NewAnamnesis(newPatient);
+					NewAnamnesis newAnamnesisDialog = new NewAnamnesis(examination);
 					newAnamnesisDialog.setVisible(true);
 
 //					PatientFrame patientFrame = new PatientFrame(newPatient);

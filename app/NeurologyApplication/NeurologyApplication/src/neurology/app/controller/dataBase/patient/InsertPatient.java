@@ -6,6 +6,8 @@ import org.apache.jena.query.QueryExecutionFactory;
 import org.apache.jena.query.QueryFactory;
 import org.apache.jena.query.QuerySolution;
 import org.apache.jena.query.ResultSet;
+import org.apache.jena.query.ResultSetFactory;
+import org.apache.jena.query.ResultSetRewindable;
 import org.apache.jena.rdf.model.Literal;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.update.UpdateExecutionFactory;
@@ -62,10 +64,12 @@ public class InsertPatient {
 		Query query = QueryFactory.create(selectString);
 		try {
 			QueryExecution qexec = QueryExecutionFactory.sparqlService(QUERY_URL, query);
-
 			ResultSet results = qexec.execSelect();
-			while (results.hasNext()) {
-				QuerySolution solution = results.nextSolution();
+			ResultSetRewindable resultSetRewindble = ResultSetFactory.copyResults(results);
+			
+			qexec.close();
+			while (resultSetRewindble.hasNext()) {
+				QuerySolution solution = resultSetRewindble.nextSolution();
 				Literal literal = solution.getLiteral("id");
 				System.out.println(literal.getString().toUpperCase());
 				System.out.println(id.toUpperCase());

@@ -20,14 +20,7 @@ public class PatientCreateAction {
 			newPatient.setGenderOfPatient(Gender.Female);
 		}
 
-		InsertPatient insert = new InsertPatient(newPatient);
-
-		try {
-			insert.insert();
-		} catch (Exception e) {
-			System.out.println("NECE DA GA UPISE!");
-			e.printStackTrace();
-		}
+	
 
 	}
 

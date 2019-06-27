@@ -6,6 +6,8 @@ import org.apache.jena.query.QueryExecutionFactory;
 import org.apache.jena.query.QueryFactory;
 import org.apache.jena.query.QuerySolution;
 import org.apache.jena.query.ResultSet;
+import org.apache.jena.query.ResultSetFactory;
+import org.apache.jena.query.ResultSetRewindable;
 import org.apache.jena.rdf.model.Literal;
 
 import neurology.app.Singleton;
@@ -25,6 +27,9 @@ public class GetExaminations {
 	}
 
 	public boolean getExaminations() {
+
+		this.examinations.getExaminations().clear();
+		
 		String selectString = PREFIX + " SELECT ?id ?medication ?patientId ?procedure " + "WHERE {"
 				+ "	?examination a na:Examination; " + "    na:id ?id; " + "    na:medication ?medication; "
 				+ "	   na:patientId ?patientId; " + "    na:procedure  ?procedure . } ";
@@ -32,17 +37,18 @@ public class GetExaminations {
 		Query query = QueryFactory.create(selectString);
 		try {
 			QueryExecution qexec = QueryExecutionFactory.sparqlService(QUERY_URL, query);
-
 			ResultSet results = qexec.execSelect();
-			while (results.hasNext()) {
-				QuerySolution solution = results.nextSolution();
+			ResultSetRewindable resultSetRewindble = ResultSetFactory.copyResults(results);
+			qexec.close();
+			while (resultSetRewindble.hasNext()) {
+				QuerySolution solution = resultSetRewindble.nextSolution();
 				Literal literalId = solution.getLiteral("id");
 				Literal literalMedication = solution.getLiteral("medication");
 				Literal literalPatientId = solution.getLiteral("patientId");
 				Literal literalProcedure = solution.getLiteral("procedure");
 
 				Examination newExamination = new Examination();
-				newExamination.setId(literalId.getString());
+				newExamination.setId(Integer.parseInt(literalId.getString()));
 				newExamination.setMedication(literalMedication.getString());
 
 				for (Patient patient : Singleton.getInstance().getPatients().getPatients()) {

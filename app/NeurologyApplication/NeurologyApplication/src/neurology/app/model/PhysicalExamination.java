@@ -2,6 +2,7 @@ package neurology.app.model;
 
 public class PhysicalExamination {
 
+	private String id;
 	private boolean musclesRecognition;
 	private int visualAcuity;
 	private int musclesStrength;
@@ -171,6 +172,14 @@ public class PhysicalExamination {
 
 	public void setChestPain(boolean chestPain) {
 		this.chestPain = chestPain;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	@Override

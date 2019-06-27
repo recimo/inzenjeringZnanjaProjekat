@@ -28,6 +28,7 @@ public class NewAnamnesis extends JDialog {
 	private PersonalAnamnesis newPersonalAnamnesis;
 	private FamilyAnamnesis newFamilyAnamnesis;
 	private Patient patient;
+	private Examination examination;
 
 	private JPanel familyPanel;
 
@@ -76,10 +77,11 @@ public class NewAnamnesis extends JDialog {
 	private String[] changeOfSight = { ChangeOfSight.Blur.toString(), ChangeOfSight.DoubleVision.toString(),
 			ChangeOfSight.LoosingSightFull.toString(), ChangeOfSight.LoosingSightHalf.toString() };
 
-	public NewAnamnesis(Patient patient) {
+	public NewAnamnesis(Examination examination) {
+		this.examination = examination;
 		this.newPersonalAnamnesis = new PersonalAnamnesis();
 		this.newFamilyAnamnesis = new FamilyAnamnesis();
-		this.patient = patient;
+		this.patient = examination.getPatient();
 		this.initDialog();
 	}
 
@@ -228,8 +230,6 @@ public class NewAnamnesis extends JDialog {
 			public void actionPerformed(ActionEvent e) {
 				if (validation()) {
 
-					Examination examination = new Examination();
-					examination.setPatient(patient);
 
 					PersonalAnamnesisCreateAction createAction = new PersonalAnamnesisCreateAction();
 					createAction.action(newPersonalAnamnesis, lackOfEnergyAndInterestCheckBox.isSelected(),

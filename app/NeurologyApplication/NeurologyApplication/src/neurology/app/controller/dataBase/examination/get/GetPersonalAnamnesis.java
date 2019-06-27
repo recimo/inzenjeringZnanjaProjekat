@@ -6,6 +6,8 @@ import org.apache.jena.query.QueryExecutionFactory;
 import org.apache.jena.query.QueryFactory;
 import org.apache.jena.query.QuerySolution;
 import org.apache.jena.query.ResultSet;
+import org.apache.jena.query.ResultSetFactory;
+import org.apache.jena.query.ResultSetRewindable;
 import org.apache.jena.rdf.model.Literal;
 
 import neurology.app.Singleton;
@@ -27,6 +29,7 @@ public class GetPersonalAnamnesis {
 
 	public boolean getPersonalAnamnesis() {
 
+		this.anamnesisPersonal.getPersonalAnamnesis().clear();
 		String selectString = PREFIX
 				+ "SELECT ?id ?balanceLoss ?disturbanceOfMemory ?headacheType ?hearingLoss ?lackOfEnergyAndInterest ?limbsPain ?sight "
 				+ "WHERE { " + "	?examination a na:PersonalAnamnesis; " + "    na:id ?id; "
@@ -41,8 +44,11 @@ public class GetPersonalAnamnesis {
 			QueryExecution qexec = QueryExecutionFactory.sparqlService(QUERY_URL, query);
 
 			ResultSet results = qexec.execSelect();
-			while (results.hasNext()) {
-				QuerySolution solution = results.nextSolution();
+			ResultSetRewindable resultSetRewindble = ResultSetFactory.copyResults(results);
+
+			qexec.close();
+			while (resultSetRewindble.hasNext()) {
+				QuerySolution solution = resultSetRewindble.nextSolution();
 				Literal literalId = solution.getLiteral("id");
 				Literal literalBalanceLoss = solution.getLiteral("balanceLoss");
 				Literal literalDisturbanceOfMemory = solution.getLiteral("disturbanceOfMemory");
@@ -53,9 +59,20 @@ public class GetPersonalAnamnesis {
 				Literal literalSight = solution.getLiteral("sight");
 
 				PersonalAnamnesis newPersonalAnamnesis = new PersonalAnamnesis();
+
 				newPersonalAnamnesis.setId(literalId.getString());
-				newPersonalAnamnesis.setBalanceLoss(literalBalanceLoss.getBoolean());
-				newPersonalAnamnesis.setDisturbanceOfMemory(literalDisturbanceOfMemory.getBoolean());
+
+				if (literalBalanceLoss.getString().equals("true")) {
+					newPersonalAnamnesis.setBalanceLoss(true);
+				} else {
+					newPersonalAnamnesis.setBalanceLoss(false);
+				}
+
+				if (literalDisturbanceOfMemory.getString().equals("true")) {
+					newPersonalAnamnesis.setDisturbanceOfMemory(true);
+				} else {
+					newPersonalAnamnesis.setDisturbanceOfMemory(false);
+				}
 
 				if (literalHeadacheType.getString().equals(HeadacheType.NoHeadche.toString())) {
 					newPersonalAnamnesis.setHeadache(HeadacheType.NoHeadche);
@@ -74,9 +91,23 @@ public class GetPersonalAnamnesis {
 					newPersonalAnamnesis.setHasHeadache(true);
 				}
 
-				newPersonalAnamnesis.setHearingLoss(literalHearingLoss.getBoolean());
-				newPersonalAnamnesis.setLackOfEnergyAndInterest(literalLackOfEnergyAndInterest.getBoolean());
-				newPersonalAnamnesis.setLimbsPain(literalLimbsPain.getBoolean());
+				if (literalHearingLoss.getString().equals("true")) {
+					newPersonalAnamnesis.setHearingLoss(true);
+				} else {
+					newPersonalAnamnesis.setHearingLoss(false);
+				}
+
+				if (literalLackOfEnergyAndInterest.getString().equals("true")) {
+					newPersonalAnamnesis.setLackOfEnergyAndInterest(true);
+				} else {
+					newPersonalAnamnesis.setLackOfEnergyAndInterest(false);
+				}
+
+				if (literalLimbsPain.getString().equals("true")) {
+					newPersonalAnamnesis.setLimbsPain(true);
+				} else {
+					newPersonalAnamnesis.setLimbsPain(false);
+				}
 
 				if (literalSight.getString().equals(ChangeOfSight.Blur.toString())) {
 					newPersonalAnamnesis.setSight(ChangeOfSight.Blur);
