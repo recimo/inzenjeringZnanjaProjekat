@@ -20,7 +20,8 @@ public class PatientCreateAction {
 			newPatient.setGenderOfPatient(Gender.Female);
 		}
 
-	
+		InsertPatient insert = new InsertPatient(newPatient);
+		insert.insert();
 
 	}
 

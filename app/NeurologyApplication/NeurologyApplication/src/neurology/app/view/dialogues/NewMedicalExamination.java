@@ -13,13 +13,15 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
 
+import neurology.app.GetAll;
+import neurology.app.InitAll;
 import neurology.app.controller.PatientCreateAction;
+import neurology.app.controller.PatientSearchAction;
 import neurology.app.enumerations.Gender;
 import neurology.app.model.Examination;
 import neurology.app.model.Patient;
@@ -39,14 +41,9 @@ public class NewMedicalExamination extends JDialog {
 	private JLabel searchLabel;
 	private JTextField searchField;
 	private JButton searchButton;
-
-	private JLabel searchedNameLabel;
-	private JLabel searchedLastnameLabel;
-	private JLabel searchedDateLabel;
-
-	private JLabel searchedName;
-	private JLabel searchedLast;
-	private JLabel searchedDate;
+	
+	private JButton profileButton;
+	private JButton createPatient;
 
 	private JLabel firstNameLabel;
 	private JLabel lastNameLabel;
@@ -113,10 +110,15 @@ public class NewMedicalExamination extends JDialog {
 		this.searchLabel.setPreferredSize(labelDim);
 		this.searchField.setPreferredSize(fieldDim);
 		this.searchButton.setPreferredSize(new Dimension(25, 25));
+		
+		this.profileButton = new JButton("Medical carton");
+		this.profileButton.setPreferredSize(buttonDim);
+		this.profileButton.setEnabled(false);
 
 		this.searchPanel.add(searchLabel);
 		this.searchPanel.add(searchField);
 		this.searchPanel.add(searchButton);
+		this.searchPanel.add(profileButton);
 
 		this.firstNameLabel = new JLabel("Firstname:");
 		this.firstNameField = new JTextField();
@@ -142,7 +144,7 @@ public class NewMedicalExamination extends JDialog {
 		this.mainPanel.add(identificationNumberLabel);
 		this.mainPanel.add(identificationNumberField);
 
-		this.dateOfBirthLabel = new JLabel("Date of birth:");
+		this.dateOfBirthLabel = new JLabel("Age:");
 		this.dateOfBirthLabel.setPreferredSize(labelDim);
 		this.dateOfBirthField = new JTextField();
 		this.dateOfBirthField.setPreferredSize(fieldDim);
@@ -164,11 +166,17 @@ public class NewMedicalExamination extends JDialog {
 
 		this.mainPanel.add(rightHandedLabel);
 		this.mainPanel.add(rightHandBox);
+		
+		this.createPatient = new JButton("Create patient");
+		this.createPatient.setPreferredSize(buttonDim);
+		this.mainPanel.add(createPatient);
 
 		this.okButton = new JButton("Ok");
 		this.cancelButton = new JButton("Cancel");
 		this.okButton.setPreferredSize(buttonDim);
 		this.cancelButton.setPreferredSize(buttonDim);
+		this.okButton.setEnabled(false);
+		
 
 		JPanel panel = new JPanel();
 		panel.add(okButton);
@@ -185,17 +193,14 @@ public class NewMedicalExamination extends JDialog {
 			public void actionPerformed(ActionEvent e) {
 				if (validation()) {
 
-					PatientCreateAction createAction = new PatientCreateAction();
-					createAction.action(newPatient, firstNameField.getText(), lastNameField.getText(),
-							identificationNumberField.getText(), dateOfBirthField.getText(),
-							genderOfPatientField.getSelectedItem().toString(), rightHandBox.isSelected());
-
 					dispose();
 					
 					examination.setPatient(newPatient);
 
 					NewAnamnesis newAnamnesisDialog = new NewAnamnesis(examination);
 					newAnamnesisDialog.setVisible(true);
+					
+					
 
 //					PatientFrame patientFrame = new PatientFrame(newPatient);
 //					PatientPanel patientPanel = new PatientPanel(newPatient);
@@ -221,8 +226,63 @@ public class NewMedicalExamination extends JDialog {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// prosledi joj id pacijenta i pacijenta za inicijalizaciju
+				if(searchField.getText().equals("")) {
+					searchField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+				} else {					
+					PatientSearchAction psa = new PatientSearchAction();
+					psa.action(searchField.getText());
+					
+					try {
+						newPatient = psa.getPatient();
+						profileButton.setEnabled(true);
+						okButton.setEnabled(true);
+					} catch(Exception e) {
+						System.out.println("puko pacijent");
+					}
+				}
 
+			}
+			
+		});
+		
+		this.profileButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				PatientFrame patientFrame = new PatientFrame(newPatient);
+				PatientPanel patientPanel = new PatientPanel(newPatient);
+				// sluzi za prikaz onih tabova
+				AnamnesisPanel anamnesisPanel = new AnamnesisPanel();
+				DiagnosisPanel diagnosisPanel = new DiagnosisPanel();
+				patientFrame.initTabs(patientPanel, anamnesisPanel, diagnosisPanel);
+				patientFrame.setVisible(true);
+				
+			}
+		});
+		
+		this.createPatient.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				if(validation()) {
+					PatientCreateAction createAction = new PatientCreateAction();
+					createAction.action(newPatient, firstNameField.getText(), lastNameField.getText(),
+							identificationNumberField.getText(), dateOfBirthField.getText(),
+							genderOfPatientField.getSelectedItem().toString(), rightHandBox.isSelected());
+					
+					okButton.setEnabled(true);
+					
+					GetAll getAll = new GetAll();
+					getAll.action();
+
+					InitAll initAll = new InitAll();
+					initAll.action();
+					
+					JOptionPane.showMessageDialog(null, "Patient: " + newPatient.getFirstName() + " " + newPatient.getLastName() + " successfuly created. You can find him using search in future examinations.", 
+							"Successful creation", JOptionPane.INFORMATION_MESSAGE);
+				}
+							
 			}
 		});
 	}
@@ -237,7 +297,7 @@ public class NewMedicalExamination extends JDialog {
 		} else if (this.identificationNumberField.getText().equals("")) {
 			this.identificationNumberField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
 			return false;
-		} else if (this.dateOfBirthField.getText().equals("")) {
+		} else if (this.dateOfBirthField.getText().equals("") && ) {
 			this.dateOfBirthField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
 			return false;
 		}

@@ -141,9 +141,6 @@ public class NewMedicationProcedure extends JDialog {
 				examination.setMedication(possibleMedicationsCombo.getSelectedItem().toString());
 				examination.setProcedure(possibleProceduresCombo.getSelectedItem().toString());
 
-				InsertPatient insert = new InsertPatient(examination.getPatient());
-				insert.insert();
-
 				InsertExamination insertExamination = new InsertExamination(examination);
 				insertExamination.insert();
 				examination.setId(insertExamination.getId());
