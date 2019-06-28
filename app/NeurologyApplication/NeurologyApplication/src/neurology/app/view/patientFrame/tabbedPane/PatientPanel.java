@@ -89,6 +89,7 @@ public class PatientPanel extends JPanel {
 		this.rightHandedLabel = new JLabel("Right handed:");
 		this.rightHanded = new JCheckBox();
 		this.rightHanded.setSelected(this.patient.isRightHanded());
+		this.rightHanded.setEnabled(false);
 		this.rightHandedLabel.setPreferredSize(labelDim);
 
 		this.add(rightHandedLabel);

@@ -8,11 +8,15 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+import neurology.app.controller.PatientGetDataAction;
 import neurology.app.model.Patient;
-import neurology.app.view.patientFrame.tabbedPane.AnamnesisPanel;
-import neurology.app.view.patientFrame.tabbedPane.DiagnosisPanel;
+import neurology.app.model.local.AnamnesisFamily;
+import neurology.app.model.local.AnamnesisPersonal;
+import neurology.app.model.local.DiagnosisModels;
 import neurology.app.view.patientFrame.tabbedPane.PatientPanel;
 import neurology.app.view.patientFrame.tabbedPane.TabbedPane;
+import neurology.app.view.patientFrame.tabbedPane.anamnesis.AnamnesisPanel;
+import neurology.app.view.patientFrame.tabbedPane.diagnosis.DiagnosisPanel;
 
 public class PatientFrame extends JFrame {
 
@@ -26,8 +30,13 @@ public class PatientFrame extends JFrame {
 	private AnamnesisPanel anamnesisTab;
 	private DiagnosisPanel diagnosisTab;
 
+	private AnamnesisPersonal personalAnamnesis;
+	private AnamnesisFamily familyAnamnesis;
+	private DiagnosisModels diagnosisModels;
+
 	public PatientFrame(Patient patient) {
 		this.patient = patient;
+		this.action();
 		this.initFrame();
 
 	}
@@ -96,4 +105,38 @@ public class PatientFrame extends JFrame {
 	public void setPatient(Patient patient) {
 		this.patient = patient;
 	}
+
+	public void action() {
+		PatientGetDataAction getData = new PatientGetDataAction(this.patient);
+		getData.action();
+
+		this.personalAnamnesis = getData.getPersonalAnamnesis();
+		this.familyAnamnesis = getData.getFamilyAnamnesis();
+		this.diagnosisModels = getData.getDiagnosisModels();
+	}
+
+	public AnamnesisPersonal getPersonalAnamnesis() {
+		return personalAnamnesis;
+	}
+
+	public void setPersonalAnamnesis(AnamnesisPersonal personalAnamnesis) {
+		this.personalAnamnesis = personalAnamnesis;
+	}
+
+	public AnamnesisFamily getFamilyAnamnesis() {
+		return familyAnamnesis;
+	}
+
+	public void setFamilyAnamnesis(AnamnesisFamily familyAnamnesis) {
+		this.familyAnamnesis = familyAnamnesis;
+	}
+
+	public DiagnosisModels getDiagnosisModels() {
+		return diagnosisModels;
+	}
+
+	public void setDiagnosisModels(DiagnosisModels diagnosisModels) {
+		this.diagnosisModels = diagnosisModels;
+	}
+
 }

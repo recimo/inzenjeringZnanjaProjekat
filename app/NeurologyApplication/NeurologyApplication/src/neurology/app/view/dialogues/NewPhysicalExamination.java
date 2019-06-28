@@ -6,6 +6,10 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -138,7 +142,7 @@ public class NewPhysicalExamination extends JDialog {
 
 		JPanel panel = new JPanel();
 		panel.add(nextButton);
-		//panel.add(resetButton);
+		// panel.add(resetButton);
 		panel.add(backButton);
 
 		this.add(panel, BorderLayout.SOUTH);
@@ -187,25 +191,31 @@ public class NewPhysicalExamination extends JDialog {
 		this.leftPanel.add(apraxiaCheck);
 
 		this.pulse = new JLabel("Pulse:");
-		this.pulseField = new JTextField();
+		this.pulseField = new JTextField("Only numbers are allowed.");
 		this.pulse.setPreferredSize(labelDim);
 		this.pulseField.setPreferredSize(fieldDim);
+		focusListener(this.pulseField);
+		keyListener(this.pulseField);
 
 		this.leftPanel.add(pulse);
 		this.leftPanel.add(pulseField);
 
 		this.lowerBloodPressure = new JLabel("Lower Blood Pressure:");
-		this.lowerBloodPressureField = new JTextField();
+		this.lowerBloodPressureField = new JTextField("Only numbers are allowed.");
 		this.lowerBloodPressure.setPreferredSize(labelDim);
 		this.lowerBloodPressureField.setPreferredSize(fieldDim);
+		focusListener(this.lowerBloodPressureField);
+		keyListener(this.lowerBloodPressureField);
 
 		this.leftPanel.add(lowerBloodPressure);
 		this.leftPanel.add(lowerBloodPressureField);
 
 		this.upperBloodPressure = new JLabel("Upper Blood Pressure:");
-		this.upperBloodPressureField = new JTextField();
+		this.upperBloodPressureField = new JTextField("Only numbers are allowed.");
 		this.upperBloodPressure.setPreferredSize(labelDim);
 		this.upperBloodPressureField.setPreferredSize(fieldDim);
+		focusListener(this.upperBloodPressureField);
+		keyListener(this.upperBloodPressureField);
 
 		this.leftPanel.add(upperBloodPressure);
 		this.leftPanel.add(upperBloodPressureField);
@@ -258,7 +268,6 @@ public class NewPhysicalExamination extends JDialog {
 
 		this.centerPanel.add(focalWeakness);
 		this.centerPanel.add(weaknessCheck);
-
 
 	}
 
@@ -368,15 +377,60 @@ public class NewPhysicalExamination extends JDialog {
 			return false;
 		} else if (this.lowerBloodPressureField.getText().equals("")) {
 			this.lowerBloodPressureField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+			this.lowerBloodPressureField.setToolTipText("The field can not be empty!");
+
 			return false;
-		} else if (this.lowerBloodPressureField.getText().equals("")) {
-			this.lowerBloodPressureField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+		} else if (this.upperBloodPressureField.getText().equals("")) {
+			this.upperBloodPressureField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+			this.upperBloodPressureField.setToolTipText("The field can not be empty!");
+
 			return false;
-		} 
-		
+		}
+
 		return true;
 	}
-	
-	
+
+	public void focusListener(JTextField textField) {
+		textField.addFocusListener(new FocusListener() {
+
+			@Override
+			public void focusLost(FocusEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void focusGained(FocusEvent e) {
+				textField.setText("");
+			}
+		});
+	}
+
+	public void keyListener(JTextField textField) {
+		textField.addKeyListener(new KeyListener() {
+
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (!textField.getText().matches("^[0-9]+$")) {
+					textField.setToolTipText("Only letters are allowed!");
+					textField.setBorder(BorderFactory.createLineBorder(Color.red, 2));
+				} else {
+					textField.setBorder(BorderFactory.createLineBorder(new Color(0, 204, 255), 2));
+				}
+			}
+		});
+	}
 
 }
