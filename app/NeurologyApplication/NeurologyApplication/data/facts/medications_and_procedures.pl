@@ -19,20 +19,20 @@ procedures_for_diagnose(alcohol_abuse,complete_blood_count).
 procedures_for_diagnose(alcohol_abuse,mental_health_counseling).
 procedures_for_diagnose(migraine,intravenous_fluid_replacement).
 procedures_for_diagnose(migraine,x_ray_computed_tomography).
-procedures_for_diagnose(migraine,CAT_scan_of_head).
+procedures_for_diagnose(migraine,cat_scan_of_head).
 procedures_for_diagnose(chronic_sinusitis,x_ray_computed_tomography).
 procedures_for_diagnose(chronic_sinusitis,interview_evaluation).
 procedures_for_diagnose(concussion,radigraphic_imaging).
 procedures_for_diagnose(concussion,x_ray_computed_tomography).
-procedures_for_diagnose(concussion,CAT_scan_of_head).
+procedures_for_diagnose(concussion,cat_scan_of_head).
 procedures_for_diagnose(depression,psychoterapy).
 procedures_for_diagnose(depression,mental_health_counseling).
 procedures_for_diagnose(depression,toxicology_screen).
 procedures_for_diagnose(lumbago,radigraphic_imaging).
-procedures_for_diagnose(lumbago,X_Ray).
+procedures_for_diagnose(lumbago,x_ray).
 procedures_for_diagnose(lumbago,physical_therapy_excercises).
 procedures_for_diagnose(chronic_back_pain,radigraphic_imaging).
-procedures_for_diagnose(chronic_back_pain,X_Ray).
+procedures_for_diagnose(chronic_back_pain,x_ray).
 procedures_for_diagnose(chronic_back_pain,magnetic_resonance_imaging).
 
 medications_for_diagnose(stroke,clopidogrel).

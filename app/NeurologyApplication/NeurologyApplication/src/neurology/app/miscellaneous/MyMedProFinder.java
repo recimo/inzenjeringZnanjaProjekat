@@ -17,7 +17,8 @@ public class MyMedProFinder {
 
 		engine.consultFile("data/facts/medications_and_procedures.pl");
 
-		JIPQuery query = engine.openSynchronousQuery("medications_for_diagnose(" + diagnose.getDiagnosisName().toLowerCase() + ",X)");
+		JIPQuery query = engine
+				.openSynchronousQuery("medications_for_diagnose(" + diagnose.getDiagnosisName().toLowerCase() + ",X)");
 
 		JIPTerm solution;
 		while ((solution = query.nextSolution()) != null) {
@@ -36,12 +37,14 @@ public class MyMedProFinder {
 
 		engine.consultFile("data/facts/medications_and_procedures.pl");
 
-		JIPQuery query = engine.openSynchronousQuery("procedures_for_diagnose(" + diagnose.getDiagnosisName().toLowerCase() + ",X)");
+		JIPQuery query = engine
+				.openSynchronousQuery("procedures_for_diagnose(" + diagnose.getDiagnosisName().toLowerCase() + ",X)");
 
 		JIPTerm solution;
 		while ((solution = query.nextSolution()) != null) {
 			for (JIPVariable var : solution.getVariables()) {
 				retVal.add(var.getValue().toString());
+				System.out.println(var.getValue().toString());
 			}
 		}
 

@@ -331,6 +331,9 @@ public class NewPhysicalExamination extends JDialog {
 				if (validation()) {
 
 					PhysicalExamination physicalExamination = new PhysicalExamination();
+					int pulse = Integer.parseInt(pulseField.getText());
+					int lower = Integer.parseInt(lowerBloodPressureField.getText());
+					int upper = Integer.parseInt(upperBloodPressureField.getText());
 
 					PhysicalExaminationCreateAction createAction = new PhysicalExaminationCreateAction();
 					createAction.action(physicalExamination, musclesRecognitionCheck.isSelected(),
@@ -339,7 +342,8 @@ public class NewPhysicalExamination extends JDialog {
 							disturbanceOfMemoryCheck.isSelected(), dizzinessCheck.isSelected(),
 							weaknessCheck.isSelected(), kneePainCheck.isSelected(), hipPainCheck.isSelected(),
 							backPainCheck.isSelected(), legPainCheck.isSelected(), chestPainCheck.isSelected(),
-							lossOfSensationCheck.isSelected(), apraxiaCheck.isSelected(), examination);
+							lossOfSensationCheck.isSelected(), apraxiaCheck.isSelected(), examination, pulse, lower,
+							upper);
 
 					examination.setPhysicalExamination(physicalExamination);
 

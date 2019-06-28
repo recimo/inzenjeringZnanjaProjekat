@@ -12,6 +12,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
@@ -124,7 +125,17 @@ public class NewDiagnosis extends JDialog {
 			}
 
 		}
-		
+
+		if (dijagnoze.isEmpty()) {
+			for (String bajesFajl : bajesFajlovi) {
+				String[] names = bajesFajl.split("_");
+				DiagnosisModel diagnoses = new DiagnosisModel();
+				diagnoses.setDiagnosisName(names[0]);
+				diagnoses.setDiagnosisPercentage(Float.parseFloat("0.0833"));
+				dijagnoze.add(diagnoses);
+			}
+		}
+
 		Collections.sort(dijagnoze);
 
 //		for (int i = 0; i < dijagnoze.size() - 1; i++) {
