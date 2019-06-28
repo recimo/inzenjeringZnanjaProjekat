@@ -1,0 +1,2 @@
+prvi_deo.webm filter=lfs diff=lfs merge=lfs -text
+drugi_deo.webm filter=lfs diff=lfs merge=lfs -text

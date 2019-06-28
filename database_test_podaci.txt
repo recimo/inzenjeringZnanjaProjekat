@@ -1,0 +1,1763 @@
+@prefix na:    <http://www.neurologyapp.com/na#> .
+@prefix xsd:   <http://w3.org/2001/XMLSchema#> .
+
+na:Id   a       na:Identification ;
+        na:id   na:1patient , na:123patient , na:3patient , na:4patient , na:2patient , na:5patient , na:6patient , na:7patient , na:8patient , na:9patient , na:10patient .
+
+na:IdExam  a    na:ExaminationId ;
+        na:id   na:0Examination , na:1Examination , na:2Examination , na:3Examination , na:4Examination , na:5Examination , na:6Examination , na:7Examination , na:8Examination , na:9Examination , na:10Examination , na:11Examination , na:12Examination .
+
+na:1patient  a        na:Patient ;
+        na:age        "23"^^xsd:string ;
+        na:firstName  "Aleksandar"^^xsd:string ;
+        na:gender     "Male"^^xsd:string ;
+        na:id         "1"^^xsd:string ;
+        na:lastName   "Joksimovic"^^xsd:string ;
+        na:rightHand  "true"^^xsd:string .
+
+na:0Examination  a     na:Examination ;
+        na:id          "0"^^xsd:string ;
+        na:medication  "lorazepam"^^xsd:string ;
+        na:patientId   "1"^^xsd:string ;
+        na:procedure   "psychoterapy"^^xsd:string .
+
+na:123patient  a      na:Patient ;
+        na:age        "27"^^xsd:string ;
+        na:firstName  "Petar"^^xsd:string ;
+        na:gender     "Male"^^xsd:string ;
+        na:id         "123"^^xsd:string ;
+        na:lastName   "Petrovic"^^xsd:string ;
+        na:rightHand  "true"^^xsd:string .
+
+na:3patient  a        na:Patient ;
+        na:age        "23"^^xsd:string ;
+        na:firstName  "Nikola"^^xsd:string ;
+        na:gender     "Male"^^xsd:string ;
+        na:id         "3"^^xsd:string ;
+        na:lastName   "Ilic"^^xsd:string ;
+        na:rightHand  "true"^^xsd:string .
+
+na:4patient  a        na:Patient ;
+        na:age        "23"^^xsd:string ;
+        na:firstName  "Marko"^^xsd:string ;
+        na:gender     "Male"^^xsd:string ;
+        na:id         "4"^^xsd:string ;
+        na:lastName   "Jevtovic"^^xsd:string ;
+        na:rightHand  "true"^^xsd:string .
+
+na:0PersonalAnamnesis
+        a                           na:PersonalAnamnesis ;
+        na:balanceLoss              "false"^^xsd:string ;
+        na:disturbanceOfMemory      "true"^^xsd:string ;
+        na:headacheType             "Pulsating"^^xsd:string ;
+        na:hearingLoss              "true"^^xsd:string ;
+        na:id                       "0"^^xsd:string ;
+        na:lackOfEnergyAndInterest  "false"^^xsd:string ;
+        na:limbsPain                "false"^^xsd:string ;
+        na:sight                    "Blur"^^xsd:string .
+
+na:0FamilyAnamnesis  a      na:FamilyAnamnesis ;
+        na:cerebrovascular  "false"^^xsd:string ;
+        na:diabetes         "false"^^xsd:string ;
+        na:endocrine        "false"^^xsd:string ;
+        na:headache         "false"^^xsd:string ;
+        na:hypertension     "false"^^xsd:string ;
+        na:id               "0"^^xsd:string ;
+        na:menatlIllness    "false"^^xsd:string .
+
+na:0PhysicalExamination
+        a                        na:PhysicalExamination ;
+        na:abnormalInvoluntaryMovements
+                "false"^^xsd:string ;
+        na:apraxia               "false"^^xsd:string ;
+        na:backPain              "true"^^xsd:string ;
+        na:chestPain             "false"^^xsd:string ;
+        na:dizziness             "false"^^xsd:string ;
+        na:focalWeakness         "true"^^xsd:string ;
+        na:hipPain               "false"^^xsd:string ;
+        na:id                    "0"^^xsd:string ;
+        na:kneePain              "false"^^xsd:string ;
+        na:legPain               "false"^^xsd:string ;
+        na:lossOfSensation       "false"^^xsd:string ;
+        na:lowerBloodPressure    "80"^^xsd:string ;
+        na:musclesRecognition    "false"^^xsd:string ;
+        na:musclesStrength       "1"^^xsd:string ;
+        na:problemsWithMovement  "false"^^xsd:string ;
+        na:pulse                 "80"^^xsd:string ;
+        na:seizures              "false"^^xsd:string ;
+        na:upperBloodPressure    "120"^^xsd:string ;
+        na:visualAcuity          "4"^^xsd:string .
+
+na:0weakness  a          na:Symptom ;
+        na:id            "0"^^xsd:string ;
+        na:symptomName   "weakness"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:0difficulty_speaking
+        a                na:Symptom ;
+        na:id            "0"^^xsd:string ;
+        na:symptomName   "difficulty_speaking"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:0DiagnosisModel  a           na:DiagnosisModel ;
+        na:diagnosisName        "anxiety"^^xsd:string ;
+        na:diagnosisPercentage  "1.0"^^xsd:string ;
+        na:id                   "0"^^xsd:string .
+
+na:0depressive_or_psychotic_symptoms
+        a                na:Symptom ;
+        na:id            "0"^^xsd:string ;
+        na:symptomName   "depressive_or_psychotic_symptoms"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:0depression  a        na:Symptom ;
+        na:id            "0"^^xsd:string ;
+        na:symptomName   "depression"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:0insomnia  a          na:Symptom ;
+        na:id            "0"^^xsd:string ;
+        na:symptomName   "insomnia"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:0sleepiness  a        na:Symptom ;
+        na:id            "0"^^xsd:string ;
+        na:symptomName   "sleepiness"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:0difficylty_speaking
+        a                na:Symptom ;
+        na:id            "0"^^xsd:string ;
+        na:symptomName   "difficylty_speaking"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:0delusions_or_hallucinations
+        a                na:Symptom ;
+        na:id            "0"^^xsd:string ;
+        na:symptomName   "delusions_or_hallucinations"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:0temper_problems  a   na:Symptom ;
+        na:id            "0"^^xsd:string ;
+        na:symptomName   "temper_problems"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:0fever  a             na:Symptom ;
+        na:id            "0"^^xsd:string ;
+        na:symptomName   "fever"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:1Examination  a     na:Examination ;
+        na:id          "1"^^xsd:string ;
+        na:medication  "prochlorperazine"^^xsd:string ;
+        na:patientId   "2"^^xsd:string ;
+        na:procedure   "cat_scan_of_head"^^xsd:string .
+
+na:1PersonalAnamnesis
+        a                           na:PersonalAnamnesis ;
+        na:balanceLoss              "true"^^xsd:string ;
+        na:disturbanceOfMemory      "false"^^xsd:string ;
+        na:headacheType             "Pulsating"^^xsd:string ;
+        na:hearingLoss              "false"^^xsd:string ;
+        na:id                       "1"^^xsd:string ;
+        na:lackOfEnergyAndInterest  "true"^^xsd:string ;
+        na:limbsPain                "false"^^xsd:string ;
+        na:sight                    "Blur"^^xsd:string .
+
+na:1FamilyAnamnesis  a      na:FamilyAnamnesis ;
+        na:cerebrovascular  "false"^^xsd:string ;
+        na:diabetes         "false"^^xsd:string ;
+        na:endocrine        "false"^^xsd:string ;
+        na:headache         "false"^^xsd:string ;
+        na:hypertension     "false"^^xsd:string ;
+        na:id               "1"^^xsd:string ;
+        na:menatlIllness    "false"^^xsd:string .
+
+na:1PhysicalExamination
+        a                        na:PhysicalExamination ;
+        na:abnormalInvoluntaryMovements
+                "false"^^xsd:string ;
+        na:apraxia               "false"^^xsd:string ;
+        na:backPain              "false"^^xsd:string ;
+        na:chestPain             "false"^^xsd:string ;
+        na:dizziness             "true"^^xsd:string ;
+        na:focalWeakness         "false"^^xsd:string ;
+        na:hipPain               "false"^^xsd:string ;
+        na:id                    "1"^^xsd:string ;
+        na:kneePain              "false"^^xsd:string ;
+        na:legPain               "false"^^xsd:string ;
+        na:lossOfSensation       "false"^^xsd:string ;
+        na:lowerBloodPressure    "80"^^xsd:string ;
+        na:musclesRecognition    "true"^^xsd:string ;
+        na:musclesStrength       "1"^^xsd:string ;
+        na:problemsWithMovement  "false"^^xsd:string ;
+        na:pulse                 "65"^^xsd:string ;
+        na:seizures              "false"^^xsd:string ;
+        na:upperBloodPressure    "135"^^xsd:string ;
+        na:visualAcuity          "4"^^xsd:string .
+
+na:1DiagnosisModel  a           na:DiagnosisModel ;
+        na:diagnosisName        "migraine"^^xsd:string ;
+        na:diagnosisPercentage  "0.926"^^xsd:string ;
+        na:id                   "1"^^xsd:string .
+
+na:0nausea  a            na:Symptom ;
+        na:id            "0"^^xsd:string ;
+        na:symptomName   "nausea"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:0vomiting  a          na:Symptom ;
+        na:id            "0"^^xsd:string ;
+        na:symptomName   "vomiting"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:0slurring_words  a    na:Symptom ;
+        na:id            "0"^^xsd:string ;
+        na:symptomName   "slurring_words"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:0symptoms_of_the_face
+        a                na:Symptom ;
+        na:id            "0"^^xsd:string ;
+        na:symptomName   "symptoms_of_the_face"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:0arm_weakness  a      na:Symptom ;
+        na:id            "0"^^xsd:string ;
+        na:symptomName   "arm_weakness"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:0symptoms_of_eye  a   na:Symptom ;
+        na:id            "0"^^xsd:string ;
+        na:symptomName   "symptoms_of_eye"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:0eyelid_lesion_or_rash
+        a                na:Symptom ;
+        na:id            "0"^^xsd:string ;
+        na:symptomName   "eyelid_lesion_or_rash"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:1weakness  a          na:Symptom ;
+        na:id            "1"^^xsd:string ;
+        na:symptomName   "weakness"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:1fever  a             na:Symptom ;
+        na:id            "1"^^xsd:string ;
+        na:symptomName   "fever"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:2Examination  a     na:Examination ;
+        na:id          "2"^^xsd:string ;
+        na:medication  "clopidogrel"^^xsd:string ;
+        na:patientId   "3"^^xsd:string ;
+        na:procedure   "radigraphic_imaging"^^xsd:string .
+
+na:2PersonalAnamnesis
+        a                           na:PersonalAnamnesis ;
+        na:balanceLoss              "true"^^xsd:string ;
+        na:disturbanceOfMemory      "false"^^xsd:string ;
+        na:headacheType             "NoHeadche"^^xsd:string ;
+        na:hearingLoss              "true"^^xsd:string ;
+        na:id                       "2"^^xsd:string ;
+        na:lackOfEnergyAndInterest  "false"^^xsd:string ;
+        na:limbsPain                "false"^^xsd:string ;
+        na:sight                    "Blur"^^xsd:string .
+
+na:2FamilyAnamnesis  a      na:FamilyAnamnesis ;
+        na:cerebrovascular  "false"^^xsd:string ;
+        na:diabetes         "false"^^xsd:string ;
+        na:endocrine        "false"^^xsd:string ;
+        na:headache         "false"^^xsd:string ;
+        na:hypertension     "false"^^xsd:string ;
+        na:id               "2"^^xsd:string ;
+        na:menatlIllness    "false"^^xsd:string .
+
+na:2PhysicalExamination
+        a                        na:PhysicalExamination ;
+        na:abnormalInvoluntaryMovements
+                "false"^^xsd:string ;
+        na:apraxia               "false"^^xsd:string ;
+        na:backPain              "false"^^xsd:string ;
+        na:chestPain             "false"^^xsd:string ;
+        na:dizziness             "true"^^xsd:string ;
+        na:focalWeakness         "false"^^xsd:string ;
+        na:hipPain               "false"^^xsd:string ;
+        na:id                    "2"^^xsd:string ;
+        na:kneePain              "false"^^xsd:string ;
+        na:legPain               "false"^^xsd:string ;
+        na:lossOfSensation       "true"^^xsd:string ;
+        na:lowerBloodPressure    "80"^^xsd:string ;
+        na:musclesRecognition    "false"^^xsd:string ;
+        na:musclesStrength       "1"^^xsd:string ;
+        na:problemsWithMovement  "false"^^xsd:string ;
+        na:pulse                 "80"^^xsd:string ;
+        na:seizures              "false"^^xsd:string ;
+        na:upperBloodPressure    "120"^^xsd:string ;
+        na:visualAcuity          "4"^^xsd:string .
+
+na:2nausea  a            na:Symptom ;
+        na:id            "2"^^xsd:string ;
+        na:symptomName   "nausea"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:2weakness  a          na:Symptom ;
+        na:id            "2"^^xsd:string ;
+        na:symptomName   "weakness"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:2sharp_chest_pain  a  na:Symptom ;
+        na:id            "2"^^xsd:string ;
+        na:symptomName   "sharp_chest_pain"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:2vomiting  a          na:Symptom ;
+        na:id            "2"^^xsd:string ;
+        na:symptomName   "vomiting"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:2shortness_of_breath
+        a                na:Symptom ;
+        na:id            "2"^^xsd:string ;
+        na:symptomName   "shortness_of_breath"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:2fainting  a          na:Symptom ;
+        na:id            "2"^^xsd:string ;
+        na:symptomName   "fainting"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:2palpitations  a      na:Symptom ;
+        na:id            "2"^^xsd:string ;
+        na:symptomName   "palpitations"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:2ringing_in_ear  a    na:Symptom ;
+        na:id            "2"^^xsd:string ;
+        na:symptomName   "ringing_in_ear"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:2irregular_heartbeat
+        a                na:Symptom ;
+        na:id            "2"^^xsd:string ;
+        na:symptomName   "irregular_heartbeat"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:2DiagnosisModel  a           na:DiagnosisModel ;
+        na:diagnosisName        "Stroke"^^xsd:string ;
+        na:diagnosisPercentage  "0.6409"^^xsd:string ;
+        na:id                   "2"^^xsd:string .
+
+na:3Examination  a     na:Examination ;
+        na:id          "3"^^xsd:string ;
+        na:medication  "sumatriptan"^^xsd:string ;
+        na:patientId   "3"^^xsd:string ;
+        na:procedure   "x_ray_computed_tomography"^^xsd:string .
+
+na:3PersonalAnamnesis
+        a                           na:PersonalAnamnesis ;
+        na:balanceLoss              "false"^^xsd:string ;
+        na:disturbanceOfMemory      "true"^^xsd:string ;
+        na:headacheType             "Tearing"^^xsd:string ;
+        na:hearingLoss              "true"^^xsd:string ;
+        na:id                       "3"^^xsd:string ;
+        na:lackOfEnergyAndInterest  "false"^^xsd:string ;
+        na:limbsPain                "true"^^xsd:string ;
+        na:sight                    "DoubleVision"^^xsd:string .
+
+na:3FamilyAnamnesis  a      na:FamilyAnamnesis ;
+        na:cerebrovascular  "false"^^xsd:string ;
+        na:diabetes         "false"^^xsd:string ;
+        na:endocrine        "false"^^xsd:string ;
+        na:headache         "false"^^xsd:string ;
+        na:hypertension     "false"^^xsd:string ;
+        na:id               "3"^^xsd:string ;
+        na:menatlIllness    "false"^^xsd:string .
+
+na:3PhysicalExamination
+        a                        na:PhysicalExamination ;
+        na:abnormalInvoluntaryMovements
+                "true"^^xsd:string ;
+        na:apraxia               "false"^^xsd:string ;
+        na:backPain              "false"^^xsd:string ;
+        na:chestPain             "false"^^xsd:string ;
+        na:dizziness             "false"^^xsd:string ;
+        na:focalWeakness         "false"^^xsd:string ;
+        na:hipPain               "false"^^xsd:string ;
+        na:id                    "3"^^xsd:string ;
+        na:kneePain              "false"^^xsd:string ;
+        na:legPain               "true"^^xsd:string ;
+        na:lossOfSensation       "false"^^xsd:string ;
+        na:lowerBloodPressure    "85"^^xsd:string ;
+        na:musclesRecognition    "false"^^xsd:string ;
+        na:musclesStrength       "1"^^xsd:string ;
+        na:problemsWithMovement  "false"^^xsd:string ;
+        na:pulse                 "80"^^xsd:string ;
+        na:seizures              "false"^^xsd:string ;
+        na:upperBloodPressure    "135"^^xsd:string ;
+        na:visualAcuity          "4"^^xsd:string .
+
+na:3DiagnosisModel  a           na:DiagnosisModel ;
+        na:diagnosisName        "migraine"^^xsd:string ;
+        na:diagnosisPercentage  "0.90700006"^^xsd:string ;
+        na:id                   "3"^^xsd:string .
+
+na:4Examination  a     na:Examination ;
+        na:id          "4"^^xsd:string ;
+        na:medication  "clopidogrel"^^xsd:string ;
+        na:patientId   "4"^^xsd:string ;
+        na:procedure   "radigraphic_imaging"^^xsd:string .
+
+na:4PersonalAnamnesis
+        a                           na:PersonalAnamnesis ;
+        na:balanceLoss              "true"^^xsd:string ;
+        na:disturbanceOfMemory      "false"^^xsd:string ;
+        na:headacheType             "NoHeadche"^^xsd:string ;
+        na:hearingLoss              "false"^^xsd:string ;
+        na:id                       "4"^^xsd:string ;
+        na:lackOfEnergyAndInterest  "false"^^xsd:string ;
+        na:limbsPain                "true"^^xsd:string ;
+        na:sight                    "Blur"^^xsd:string .
+
+na:4FamilyAnamnesis  a      na:FamilyAnamnesis ;
+        na:cerebrovascular  "false"^^xsd:string ;
+        na:diabetes         "false"^^xsd:string ;
+        na:endocrine        "false"^^xsd:string ;
+        na:headache         "false"^^xsd:string ;
+        na:hypertension     "false"^^xsd:string ;
+        na:id               "4"^^xsd:string ;
+        na:menatlIllness    "true"^^xsd:string .
+
+na:4PhysicalExamination
+        a                        na:PhysicalExamination ;
+        na:abnormalInvoluntaryMovements
+                "false"^^xsd:string ;
+        na:apraxia               "false"^^xsd:string ;
+        na:backPain              "false"^^xsd:string ;
+        na:chestPain             "false"^^xsd:string ;
+        na:dizziness             "true"^^xsd:string ;
+        na:focalWeakness         "false"^^xsd:string ;
+        na:hipPain               "false"^^xsd:string ;
+        na:id                    "4"^^xsd:string ;
+        na:kneePain              "false"^^xsd:string ;
+        na:legPain               "false"^^xsd:string ;
+        na:lossOfSensation       "false"^^xsd:string ;
+        na:lowerBloodPressure    "75"^^xsd:string ;
+        na:musclesRecognition    "false"^^xsd:string ;
+        na:musclesStrength       "1"^^xsd:string ;
+        na:problemsWithMovement  "false"^^xsd:string ;
+        na:pulse                 "75"^^xsd:string ;
+        na:seizures              "false"^^xsd:string ;
+        na:upperBloodPressure    "115"^^xsd:string ;
+        na:visualAcuity          "4"^^xsd:string .
+
+na:4nausea  a            na:Symptom ;
+        na:id            "4"^^xsd:string ;
+        na:symptomName   "nausea"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:4vomiting  a          na:Symptom ;
+        na:id            "4"^^xsd:string ;
+        na:symptomName   "vomiting"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:4sharp_chest_pain  a  na:Symptom ;
+        na:id            "4"^^xsd:string ;
+        na:symptomName   "sharp_chest_pain"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:4DiagnosisModel  a           na:DiagnosisModel ;
+        na:diagnosisName        "Stroke"^^xsd:string ;
+        na:diagnosisPercentage  "0.61810005"^^xsd:string ;
+        na:id                   "4"^^xsd:string .
+
+na:5Examination  a     na:Examination ;
+        na:id          "5"^^xsd:string ;
+        na:medication  "levetiracetam"^^xsd:string ;
+        na:patientId   "5"^^xsd:string ;
+        na:procedure   "hematologic_test"^^xsd:string .
+
+na:5PersonalAnamnesis
+        a                           na:PersonalAnamnesis ;
+        na:balanceLoss              "true"^^xsd:string ;
+        na:disturbanceOfMemory      "false"^^xsd:string ;
+        na:headacheType             "NoHeadche"^^xsd:string ;
+        na:hearingLoss              "true"^^xsd:string ;
+        na:id                       "5"^^xsd:string ;
+        na:lackOfEnergyAndInterest  "false"^^xsd:string ;
+        na:limbsPain                "true"^^xsd:string ;
+        na:sight                    "Blur"^^xsd:string .
+
+na:5FamilyAnamnesis  a      na:FamilyAnamnesis ;
+        na:cerebrovascular  "false"^^xsd:string ;
+        na:diabetes         "false"^^xsd:string ;
+        na:endocrine        "false"^^xsd:string ;
+        na:headache         "false"^^xsd:string ;
+        na:hypertension     "false"^^xsd:string ;
+        na:id               "5"^^xsd:string ;
+        na:menatlIllness    "false"^^xsd:string .
+
+na:5PhysicalExamination
+        a                        na:PhysicalExamination ;
+        na:abnormalInvoluntaryMovements
+                "false"^^xsd:string ;
+        na:apraxia               "false"^^xsd:string ;
+        na:backPain              "false"^^xsd:string ;
+        na:chestPain             "false"^^xsd:string ;
+        na:dizziness             "false"^^xsd:string ;
+        na:focalWeakness         "false"^^xsd:string ;
+        na:hipPain               "false"^^xsd:string ;
+        na:id                    "5"^^xsd:string ;
+        na:kneePain              "false"^^xsd:string ;
+        na:legPain               "false"^^xsd:string ;
+        na:lossOfSensation       "false"^^xsd:string ;
+        na:lowerBloodPressure    "80"^^xsd:string ;
+        na:musclesRecognition    "false"^^xsd:string ;
+        na:musclesStrength       "1"^^xsd:string ;
+        na:problemsWithMovement  "false"^^xsd:string ;
+        na:pulse                 "80"^^xsd:string ;
+        na:seizures              "true"^^xsd:string ;
+        na:upperBloodPressure    "120"^^xsd:string ;
+        na:visualAcuity          "4"^^xsd:string .
+
+na:5DiagnosisModel  a           na:DiagnosisModel ;
+        na:diagnosisName        "epilepsy"^^xsd:string ;
+        na:diagnosisPercentage  "0.90999997"^^xsd:string ;
+        na:id                   "5"^^xsd:string .
+
+na:6Examination  a     na:Examination ;
+        na:id          "6"^^xsd:string ;
+        na:medication  "lorazepam"^^xsd:string ;
+        na:patientId   "6"^^xsd:string ;
+        na:procedure   "mental_health_counseling"^^xsd:string .
+
+na:6PersonalAnamnesis
+        a                           na:PersonalAnamnesis ;
+        na:balanceLoss              "true"^^xsd:string ;
+        na:disturbanceOfMemory      "false"^^xsd:string ;
+        na:headacheType             "Pulsating"^^xsd:string ;
+        na:hearingLoss              "false"^^xsd:string ;
+        na:id                       "6"^^xsd:string ;
+        na:lackOfEnergyAndInterest  "false"^^xsd:string ;
+        na:limbsPain                "false"^^xsd:string ;
+        na:sight                    "LoosingSightFull"^^xsd:string .
+
+na:6FamilyAnamnesis  a      na:FamilyAnamnesis ;
+        na:cerebrovascular  "false"^^xsd:string ;
+        na:diabetes         "false"^^xsd:string ;
+        na:endocrine        "false"^^xsd:string ;
+        na:headache         "false"^^xsd:string ;
+        na:hypertension     "false"^^xsd:string ;
+        na:id               "6"^^xsd:string ;
+        na:menatlIllness    "false"^^xsd:string .
+
+na:6PhysicalExamination
+        a                        na:PhysicalExamination ;
+        na:abnormalInvoluntaryMovements
+                "false"^^xsd:string ;
+        na:apraxia               "false"^^xsd:string ;
+        na:backPain              "false"^^xsd:string ;
+        na:chestPain             "false"^^xsd:string ;
+        na:dizziness             "true"^^xsd:string ;
+        na:focalWeakness         "false"^^xsd:string ;
+        na:hipPain               "false"^^xsd:string ;
+        na:id                    "6"^^xsd:string ;
+        na:kneePain              "false"^^xsd:string ;
+        na:legPain               "false"^^xsd:string ;
+        na:lossOfSensation       "false"^^xsd:string ;
+        na:lowerBloodPressure    "90"^^xsd:string ;
+        na:musclesRecognition    "false"^^xsd:string ;
+        na:musclesStrength       "1"^^xsd:string ;
+        na:problemsWithMovement  "false"^^xsd:string ;
+        na:pulse                 "85"^^xsd:string ;
+        na:seizures              "false"^^xsd:string ;
+        na:upperBloodPressure    "125"^^xsd:string ;
+        na:visualAcuity          "4"^^xsd:string .
+
+na:6fever  a             na:Symptom ;
+        na:id            "6"^^xsd:string ;
+        na:symptomName   "fever"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:6nausea  a            na:Symptom ;
+        na:id            "6"^^xsd:string ;
+        na:symptomName   "nausea"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:6sore_throat  a       na:Symptom ;
+        na:id            "6"^^xsd:string ;
+        na:symptomName   "sore_throat"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:6vomiting  a          na:Symptom ;
+        na:id            "6"^^xsd:string ;
+        na:symptomName   "vomiting"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:6neck_pain  a         na:Symptom ;
+        na:id            "6"^^xsd:string ;
+        na:symptomName   "neck_pain"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:6cough  a             na:Symptom ;
+        na:id            "6"^^xsd:string ;
+        na:symptomName   "cough"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:6diminished_vision
+        a                na:Symptom ;
+        na:id            "6"^^xsd:string ;
+        na:symptomName   "diminished_vision"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:6facial_pain  a       na:Symptom ;
+        na:id            "6"^^xsd:string ;
+        na:symptomName   "facial_pain"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:6frontal_headache  a  na:Symptom ;
+        na:id            "6"^^xsd:string ;
+        na:symptomName   "frontal_headache"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:6sinus_congestion  a  na:Symptom ;
+        na:id            "6"^^xsd:string ;
+        na:symptomName   "sinus_congestion"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:6neck_stiffness_or_tightness
+        a                na:Symptom ;
+        na:id            "6"^^xsd:string ;
+        na:symptomName   "neck_stiffness_or_tightness"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:6DiagnosisModel  a           na:DiagnosisModel ;
+        na:diagnosisName        "anxiety"^^xsd:string ;
+        na:diagnosisPercentage  "1.0"^^xsd:string ;
+        na:id                   "6"^^xsd:string .
+
+na:7Examination  a     na:Examination ;
+        na:id          "7"^^xsd:string ;
+        na:medication  "donepezil"^^xsd:string ;
+        na:patientId   "7"^^xsd:string ;
+        na:procedure   "electrocardiogram"^^xsd:string .
+
+na:7PersonalAnamnesis
+        a                           na:PersonalAnamnesis ;
+        na:balanceLoss              "false"^^xsd:string ;
+        na:disturbanceOfMemory      "true"^^xsd:string ;
+        na:headacheType             "NoHeadche"^^xsd:string ;
+        na:hearingLoss              "false"^^xsd:string ;
+        na:id                       "7"^^xsd:string ;
+        na:lackOfEnergyAndInterest  "false"^^xsd:string ;
+        na:limbsPain                "false"^^xsd:string ;
+        na:sight                    "Blur"^^xsd:string .
+
+na:7FamilyAnamnesis  a      na:FamilyAnamnesis ;
+        na:cerebrovascular  "false"^^xsd:string ;
+        na:diabetes         "false"^^xsd:string ;
+        na:endocrine        "false"^^xsd:string ;
+        na:headache         "false"^^xsd:string ;
+        na:hypertension     "false"^^xsd:string ;
+        na:id               "7"^^xsd:string ;
+        na:menatlIllness    "false"^^xsd:string .
+
+na:7PhysicalExamination
+        a                        na:PhysicalExamination ;
+        na:abnormalInvoluntaryMovements
+                "false"^^xsd:string ;
+        na:apraxia               "false"^^xsd:string ;
+        na:backPain              "false"^^xsd:string ;
+        na:chestPain             "false"^^xsd:string ;
+        na:dizziness             "true"^^xsd:string ;
+        na:focalWeakness         "true"^^xsd:string ;
+        na:hipPain               "false"^^xsd:string ;
+        na:id                    "7"^^xsd:string ;
+        na:kneePain              "false"^^xsd:string ;
+        na:legPain               "false"^^xsd:string ;
+        na:lossOfSensation       "false"^^xsd:string ;
+        na:lowerBloodPressure    "85"^^xsd:string ;
+        na:musclesRecognition    "false"^^xsd:string ;
+        na:musclesStrength       "1"^^xsd:string ;
+        na:problemsWithMovement  "false"^^xsd:string ;
+        na:pulse                 "76"^^xsd:string ;
+        na:seizures              "false"^^xsd:string ;
+        na:upperBloodPressure    "125"^^xsd:string ;
+        na:visualAcuity          "4"^^xsd:string .
+
+na:7depressive_or_psychotic_symptoms
+        a                na:Symptom ;
+        na:id            "7"^^xsd:string ;
+        na:symptomName   "depressive_or_psychotic_symptoms"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:7depression  a        na:Symptom ;
+        na:id            "7"^^xsd:string ;
+        na:symptomName   "depression"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:7insomnia  a          na:Symptom ;
+        na:id            "7"^^xsd:string ;
+        na:symptomName   "insomnia"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:7sleepiness  a        na:Symptom ;
+        na:id            "7"^^xsd:string ;
+        na:symptomName   "sleepiness"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:7difficylty_speaking
+        a                na:Symptom ;
+        na:id            "7"^^xsd:string ;
+        na:symptomName   "difficylty_speaking"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:7delusions_or_hallucinations
+        a                na:Symptom ;
+        na:id            "7"^^xsd:string ;
+        na:symptomName   "delusions_or_hallucinations"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:7temper_problems  a   na:Symptom ;
+        na:id            "7"^^xsd:string ;
+        na:symptomName   "temper_problems"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:7DiagnosisModel  a           na:DiagnosisModel ;
+        na:diagnosisName        "dementia"^^xsd:string ;
+        na:diagnosisPercentage  "0.7469727"^^xsd:string ;
+        na:id                   "7"^^xsd:string .
+
+na:0sore_throat  a       na:Symptom ;
+        na:id            "0"^^xsd:string ;
+        na:symptomName   "sore_throat"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:0neck_pain  a         na:Symptom ;
+        na:id            "0"^^xsd:string ;
+        na:symptomName   "neck_pain"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:0cough  a             na:Symptom ;
+        na:id            "0"^^xsd:string ;
+        na:symptomName   "cough"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:0diminished_vision
+        a                na:Symptom ;
+        na:id            "0"^^xsd:string ;
+        na:symptomName   "diminished_vision"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:0facial_pain  a       na:Symptom ;
+        na:id            "0"^^xsd:string ;
+        na:symptomName   "facial_pain"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:0frontal_headache  a  na:Symptom ;
+        na:id            "0"^^xsd:string ;
+        na:symptomName   "frontal_headache"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:0sinus_congestion  a  na:Symptom ;
+        na:id            "0"^^xsd:string ;
+        na:symptomName   "sinus_congestion"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:0neck_stiffness_or_tightness
+        a                na:Symptom ;
+        na:id            "0"^^xsd:string ;
+        na:symptomName   "neck_stiffness_or_tightness"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:2patient  a        na:Patient ;
+        na:age        "23"^^xsd:string ;
+        na:firstName  "Dusan"^^xsd:string ;
+        na:gender     "Male"^^xsd:string ;
+        na:id         "2"^^xsd:string ;
+        na:lastName   "Radjenovic"^^xsd:string ;
+        na:rightHand  "false"^^xsd:string .
+
+na:1nausea  a            na:Symptom ;
+        na:id            "1"^^xsd:string ;
+        na:symptomName   "nausea"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:1sore_throat  a       na:Symptom ;
+        na:id            "1"^^xsd:string ;
+        na:symptomName   "sore_throat"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:1vomiting  a          na:Symptom ;
+        na:id            "1"^^xsd:string ;
+        na:symptomName   "vomiting"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:1neck_pain  a         na:Symptom ;
+        na:id            "1"^^xsd:string ;
+        na:symptomName   "neck_pain"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:1cough  a             na:Symptom ;
+        na:id            "1"^^xsd:string ;
+        na:symptomName   "cough"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:1diminished_vision
+        a                na:Symptom ;
+        na:id            "1"^^xsd:string ;
+        na:symptomName   "diminished_vision"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:1facial_pain  a       na:Symptom ;
+        na:id            "1"^^xsd:string ;
+        na:symptomName   "facial_pain"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:1frontal_headache  a  na:Symptom ;
+        na:id            "1"^^xsd:string ;
+        na:symptomName   "frontal_headache"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:1sinus_congestion  a  na:Symptom ;
+        na:id            "1"^^xsd:string ;
+        na:symptomName   "sinus_congestion"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:1neck_stiffness_or_tightness
+        a                na:Symptom ;
+        na:id            "1"^^xsd:string ;
+        na:symptomName   "neck_stiffness_or_tightness"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:1sharp_chest_pain  a  na:Symptom ;
+        na:id            "1"^^xsd:string ;
+        na:symptomName   "sharp_chest_pain"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:1shortness_of_breath
+        a                na:Symptom ;
+        na:id            "1"^^xsd:string ;
+        na:symptomName   "shortness_of_breath"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:1fainting  a          na:Symptom ;
+        na:id            "1"^^xsd:string ;
+        na:symptomName   "fainting"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:1palpitations  a      na:Symptom ;
+        na:id            "1"^^xsd:string ;
+        na:symptomName   "palpitations"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:1ringing_in_ear  a    na:Symptom ;
+        na:id            "1"^^xsd:string ;
+        na:symptomName   "ringing_in_ear"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:1irregular_heartbeat
+        a                na:Symptom ;
+        na:id            "1"^^xsd:string ;
+        na:symptomName   "irregular_heartbeat"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:2symptoms_of_the_face
+        a                na:Symptom ;
+        na:id            "2"^^xsd:string ;
+        na:symptomName   "symptoms_of_the_face"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:2leg_pain  a          na:Symptom ;
+        na:id            "2"^^xsd:string ;
+        na:symptomName   "leg_pain"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:2back_pain  a         na:Symptom ;
+        na:id            "2"^^xsd:string ;
+        na:symptomName   "back_pain"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:2neck_pain  a         na:Symptom ;
+        na:id            "2"^^xsd:string ;
+        na:symptomName   "neck_pain"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:2hand_of_finger_pain
+        a                na:Symptom ;
+        na:id            "2"^^xsd:string ;
+        na:symptomName   "hand_of_finger_pain"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:2arm_pain  a          na:Symptom ;
+        na:id            "2"^^xsd:string ;
+        na:symptomName   "arm_pain"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:2low_back_pain  a     na:Symptom ;
+        na:id            "2"^^xsd:string ;
+        na:symptomName   "low_back_pain"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:3depressive_or_psychotic_symptoms
+        a                na:Symptom ;
+        na:id            "3"^^xsd:string ;
+        na:symptomName   "depressive_or_psychotic_symptoms"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:3depression  a        na:Symptom ;
+        na:id            "3"^^xsd:string ;
+        na:symptomName   "depression"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:3insomnia  a          na:Symptom ;
+        na:id            "3"^^xsd:string ;
+        na:symptomName   "insomnia"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:3sleepiness  a        na:Symptom ;
+        na:id            "3"^^xsd:string ;
+        na:symptomName   "sleepiness"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:3difficylty_speaking
+        a                na:Symptom ;
+        na:id            "3"^^xsd:string ;
+        na:symptomName   "difficylty_speaking"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:3delusions_or_hallucinations
+        a                na:Symptom ;
+        na:id            "3"^^xsd:string ;
+        na:symptomName   "delusions_or_hallucinations"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:3temper_problems  a   na:Symptom ;
+        na:id            "3"^^xsd:string ;
+        na:symptomName   "temper_problems"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:3fever  a             na:Symptom ;
+        na:id            "3"^^xsd:string ;
+        na:symptomName   "fever"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:3nausea  a            na:Symptom ;
+        na:id            "3"^^xsd:string ;
+        na:symptomName   "nausea"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:3sore_throat  a       na:Symptom ;
+        na:id            "3"^^xsd:string ;
+        na:symptomName   "sore_throat"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:3vomiting  a          na:Symptom ;
+        na:id            "3"^^xsd:string ;
+        na:symptomName   "vomiting"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:3neck_pain  a         na:Symptom ;
+        na:id            "3"^^xsd:string ;
+        na:symptomName   "neck_pain"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:3cough  a             na:Symptom ;
+        na:id            "3"^^xsd:string ;
+        na:symptomName   "cough"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:3diminished_vision
+        a                na:Symptom ;
+        na:id            "3"^^xsd:string ;
+        na:symptomName   "diminished_vision"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:3facial_pain  a       na:Symptom ;
+        na:id            "3"^^xsd:string ;
+        na:symptomName   "facial_pain"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:3frontal_headache  a  na:Symptom ;
+        na:id            "3"^^xsd:string ;
+        na:symptomName   "frontal_headache"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:3sinus_congestion  a  na:Symptom ;
+        na:id            "3"^^xsd:string ;
+        na:symptomName   "sinus_congestion"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:3neck_stiffness_or_tightness
+        a                na:Symptom ;
+        na:id            "3"^^xsd:string ;
+        na:symptomName   "neck_stiffness_or_tightness"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:3anxiety_and_nervousness
+        a                na:Symptom ;
+        na:id            "3"^^xsd:string ;
+        na:symptomName   "anxiety_and_nervousness"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:3weakness  a          na:Symptom ;
+        na:id            "3"^^xsd:string ;
+        na:symptomName   "weakness"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:3abnormal_breathing_sounds
+        a                na:Symptom ;
+        na:id            "3"^^xsd:string ;
+        na:symptomName   "abnormal_breathing_sounds"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:4weakness  a          na:Symptom ;
+        na:id            "4"^^xsd:string ;
+        na:symptomName   "weakness"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:4shortness_of_breath
+        a                na:Symptom ;
+        na:id            "4"^^xsd:string ;
+        na:symptomName   "shortness_of_breath"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:4fainting  a          na:Symptom ;
+        na:id            "4"^^xsd:string ;
+        na:symptomName   "fainting"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:4palpitations  a      na:Symptom ;
+        na:id            "4"^^xsd:string ;
+        na:symptomName   "palpitations"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:4ringing_in_ear  a    na:Symptom ;
+        na:id            "4"^^xsd:string ;
+        na:symptomName   "ringing_in_ear"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:4irregular_heartbeat
+        a                na:Symptom ;
+        na:id            "4"^^xsd:string ;
+        na:symptomName   "irregular_heartbeat"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:5patient  a        na:Patient ;
+        na:age        "23"^^xsd:string ;
+        na:firstName  "Darko"^^xsd:string ;
+        na:gender     "Male"^^xsd:string ;
+        na:id         "5"^^xsd:string ;
+        na:lastName   "Krspogacin"^^xsd:string ;
+        na:rightHand  "true"^^xsd:string .
+
+na:6patient  a        na:Patient ;
+        na:age        "23"^^xsd:string ;
+        na:firstName  "Dusan"^^xsd:string ;
+        na:gender     "Male"^^xsd:string ;
+        na:id         "6"^^xsd:string ;
+        na:lastName   "Maksic"^^xsd:string ;
+        na:rightHand  "true"^^xsd:string .
+
+na:6weakness  a          na:Symptom ;
+        na:id            "6"^^xsd:string ;
+        na:symptomName   "weakness"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:6sharp_chest_pain  a  na:Symptom ;
+        na:id            "6"^^xsd:string ;
+        na:symptomName   "sharp_chest_pain"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:6shortness_of_breath
+        a                na:Symptom ;
+        na:id            "6"^^xsd:string ;
+        na:symptomName   "shortness_of_breath"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:6fainting  a          na:Symptom ;
+        na:id            "6"^^xsd:string ;
+        na:symptomName   "fainting"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:6palpitations  a      na:Symptom ;
+        na:id            "6"^^xsd:string ;
+        na:symptomName   "palpitations"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:6ringing_in_ear  a    na:Symptom ;
+        na:id            "6"^^xsd:string ;
+        na:symptomName   "ringing_in_ear"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:6irregular_heartbeat
+        a                na:Symptom ;
+        na:id            "6"^^xsd:string ;
+        na:symptomName   "irregular_heartbeat"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:7patient  a        na:Patient ;
+        na:age        "23"^^xsd:string ;
+        na:firstName  "David"^^xsd:string ;
+        na:gender     "Male"^^xsd:string ;
+        na:id         "7"^^xsd:string ;
+        na:lastName   "Melegi"^^xsd:string ;
+        na:rightHand  "true"^^xsd:string .
+
+na:7nausea  a            na:Symptom ;
+        na:id            "7"^^xsd:string ;
+        na:symptomName   "nausea"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:7weakness  a          na:Symptom ;
+        na:id            "7"^^xsd:string ;
+        na:symptomName   "weakness"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:7sharp_chest_pain  a  na:Symptom ;
+        na:id            "7"^^xsd:string ;
+        na:symptomName   "sharp_chest_pain"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:7vomiting  a          na:Symptom ;
+        na:id            "7"^^xsd:string ;
+        na:symptomName   "vomiting"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:7shortness_of_breath
+        a                na:Symptom ;
+        na:id            "7"^^xsd:string ;
+        na:symptomName   "shortness_of_breath"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:7fainting  a          na:Symptom ;
+        na:id            "7"^^xsd:string ;
+        na:symptomName   "fainting"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:7palpitations  a      na:Symptom ;
+        na:id            "7"^^xsd:string ;
+        na:symptomName   "palpitations"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:7ringing_in_ear  a    na:Symptom ;
+        na:id            "7"^^xsd:string ;
+        na:symptomName   "ringing_in_ear"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:7irregular_heartbeat
+        a                na:Symptom ;
+        na:id            "7"^^xsd:string ;
+        na:symptomName   "irregular_heartbeat"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:7slurring_words  a    na:Symptom ;
+        na:id            "7"^^xsd:string ;
+        na:symptomName   "slurring_words"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:7difficulty_speaking
+        a                na:Symptom ;
+        na:id            "7"^^xsd:string ;
+        na:symptomName   "difficulty_speaking"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:7symptoms_of_the_face
+        a                na:Symptom ;
+        na:id            "7"^^xsd:string ;
+        na:symptomName   "symptoms_of_the_face"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:7arm_weakness  a      na:Symptom ;
+        na:id            "7"^^xsd:string ;
+        na:symptomName   "arm_weakness"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:7symptoms_of_eye  a   na:Symptom ;
+        na:id            "7"^^xsd:string ;
+        na:symptomName   "symptoms_of_eye"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:7eyelid_lesion_or_rash
+        a                na:Symptom ;
+        na:id            "7"^^xsd:string ;
+        na:symptomName   "eyelid_lesion_or_rash"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:8patient  a        na:Patient ;
+        na:age        "23"^^xsd:string ;
+        na:firstName  "Dragan"^^xsd:string ;
+        na:gender     "Male"^^xsd:string ;
+        na:id         "8"^^xsd:string ;
+        na:lastName   "Jovic"^^xsd:string ;
+        na:rightHand  "false"^^xsd:string .
+
+na:8Examination  a     na:Examination ;
+        na:id          "8"^^xsd:string ;
+        na:medication  "donepezil"^^xsd:string ;
+        na:patientId   "8"^^xsd:string ;
+        na:procedure   "electrocardiogram"^^xsd:string .
+
+na:8PersonalAnamnesis
+        a                           na:PersonalAnamnesis ;
+        na:balanceLoss              "false"^^xsd:string ;
+        na:disturbanceOfMemory      "true"^^xsd:string ;
+        na:headacheType             "NoHeadche"^^xsd:string ;
+        na:hearingLoss              "false"^^xsd:string ;
+        na:id                       "8"^^xsd:string ;
+        na:lackOfEnergyAndInterest  "true"^^xsd:string ;
+        na:limbsPain                "false"^^xsd:string ;
+        na:sight                    "Blur"^^xsd:string .
+
+na:8FamilyAnamnesis  a      na:FamilyAnamnesis ;
+        na:cerebrovascular  "false"^^xsd:string ;
+        na:diabetes         "false"^^xsd:string ;
+        na:endocrine        "false"^^xsd:string ;
+        na:headache         "false"^^xsd:string ;
+        na:hypertension     "false"^^xsd:string ;
+        na:id               "8"^^xsd:string ;
+        na:menatlIllness    "false"^^xsd:string .
+
+na:8PhysicalExamination
+        a                        na:PhysicalExamination ;
+        na:abnormalInvoluntaryMovements
+                "false"^^xsd:string ;
+        na:apraxia               "false"^^xsd:string ;
+        na:backPain              "false"^^xsd:string ;
+        na:chestPain             "false"^^xsd:string ;
+        na:dizziness             "false"^^xsd:string ;
+        na:focalWeakness         "false"^^xsd:string ;
+        na:hipPain               "true"^^xsd:string ;
+        na:id                    "8"^^xsd:string ;
+        na:kneePain              "true"^^xsd:string ;
+        na:legPain               "false"^^xsd:string ;
+        na:lossOfSensation       "false"^^xsd:string ;
+        na:lowerBloodPressure    "78"^^xsd:string ;
+        na:musclesRecognition    "false"^^xsd:string ;
+        na:musclesStrength       "1"^^xsd:string ;
+        na:problemsWithMovement  "false"^^xsd:string ;
+        na:pulse                 "78"^^xsd:string ;
+        na:seizures              "false"^^xsd:string ;
+        na:upperBloodPressure    "123"^^xsd:string ;
+        na:visualAcuity          "4"^^xsd:string .
+
+na:8depressive_or_psychotic_symptoms
+        a                na:Symptom ;
+        na:id            "8"^^xsd:string ;
+        na:symptomName   "depressive_or_psychotic_symptoms"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:8depression  a        na:Symptom ;
+        na:id            "8"^^xsd:string ;
+        na:symptomName   "depression"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:8insomnia  a          na:Symptom ;
+        na:id            "8"^^xsd:string ;
+        na:symptomName   "insomnia"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:8sleepiness  a        na:Symptom ;
+        na:id            "8"^^xsd:string ;
+        na:symptomName   "sleepiness"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:8difficylty_speaking
+        a                na:Symptom ;
+        na:id            "8"^^xsd:string ;
+        na:symptomName   "difficylty_speaking"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:8delusions_or_hallucinations
+        a                na:Symptom ;
+        na:id            "8"^^xsd:string ;
+        na:symptomName   "delusions_or_hallucinations"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:8temper_problems  a   na:Symptom ;
+        na:id            "8"^^xsd:string ;
+        na:symptomName   "temper_problems"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:8DiagnosisModel  a           na:DiagnosisModel ;
+        na:diagnosisName        "dementia"^^xsd:string ;
+        na:diagnosisPercentage  "0.53000003"^^xsd:string ;
+        na:id                   "8"^^xsd:string .
+
+na:9patient  a        na:Patient ;
+        na:age        "23"^^xsd:string ;
+        na:firstName  "Aleksandar"^^xsd:string ;
+        na:gender     "Male"^^xsd:string ;
+        na:id         "9"^^xsd:string ;
+        na:lastName   "Jeremic"^^xsd:string ;
+        na:rightHand  "true"^^xsd:string .
+
+na:9Examination  a     na:Examination ;
+        na:id          "9"^^xsd:string ;
+        na:medication  "levetiracetam"^^xsd:string ;
+        na:patientId   "9"^^xsd:string ;
+        na:procedure   "hematologic_test"^^xsd:string .
+
+na:9PersonalAnamnesis
+        a                           na:PersonalAnamnesis ;
+        na:balanceLoss              "false"^^xsd:string ;
+        na:disturbanceOfMemory      "true"^^xsd:string ;
+        na:headacheType             "Tearing"^^xsd:string ;
+        na:hearingLoss              "false"^^xsd:string ;
+        na:id                       "9"^^xsd:string ;
+        na:lackOfEnergyAndInterest  "false"^^xsd:string ;
+        na:limbsPain                "false"^^xsd:string ;
+        na:sight                    "Blur"^^xsd:string .
+
+na:9FamilyAnamnesis  a      na:FamilyAnamnesis ;
+        na:cerebrovascular  "false"^^xsd:string ;
+        na:diabetes         "false"^^xsd:string ;
+        na:endocrine        "false"^^xsd:string ;
+        na:headache         "false"^^xsd:string ;
+        na:hypertension     "false"^^xsd:string ;
+        na:id               "9"^^xsd:string ;
+        na:menatlIllness    "false"^^xsd:string .
+
+na:9PhysicalExamination
+        a                        na:PhysicalExamination ;
+        na:abnormalInvoluntaryMovements
+                "false"^^xsd:string ;
+        na:apraxia               "false"^^xsd:string ;
+        na:backPain              "false"^^xsd:string ;
+        na:chestPain             "false"^^xsd:string ;
+        na:dizziness             "false"^^xsd:string ;
+        na:focalWeakness         "false"^^xsd:string ;
+        na:hipPain               "false"^^xsd:string ;
+        na:id                    "9"^^xsd:string ;
+        na:kneePain              "false"^^xsd:string ;
+        na:legPain               "false"^^xsd:string ;
+        na:lossOfSensation       "false"^^xsd:string ;
+        na:lowerBloodPressure    "90"^^xsd:string ;
+        na:musclesRecognition    "false"^^xsd:string ;
+        na:musclesStrength       "1"^^xsd:string ;
+        na:problemsWithMovement  "true"^^xsd:string ;
+        na:pulse                 "89"^^xsd:string ;
+        na:seizures              "true"^^xsd:string ;
+        na:upperBloodPressure    "127"^^xsd:string ;
+        na:visualAcuity          "4"^^xsd:string .
+
+na:9depressive_or_psychotic_symptoms
+        a                na:Symptom ;
+        na:id            "9"^^xsd:string ;
+        na:symptomName   "depressive_or_psychotic_symptoms"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:9depression  a        na:Symptom ;
+        na:id            "9"^^xsd:string ;
+        na:symptomName   "depression"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:9insomnia  a          na:Symptom ;
+        na:id            "9"^^xsd:string ;
+        na:symptomName   "insomnia"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:9sleepiness  a        na:Symptom ;
+        na:id            "9"^^xsd:string ;
+        na:symptomName   "sleepiness"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:9difficylty_speaking
+        a                na:Symptom ;
+        na:id            "9"^^xsd:string ;
+        na:symptomName   "difficylty_speaking"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:9delusions_or_hallucinations
+        a                na:Symptom ;
+        na:id            "9"^^xsd:string ;
+        na:symptomName   "delusions_or_hallucinations"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:9temper_problems  a   na:Symptom ;
+        na:id            "9"^^xsd:string ;
+        na:symptomName   "temper_problems"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:9fever  a             na:Symptom ;
+        na:id            "9"^^xsd:string ;
+        na:symptomName   "fever"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:9nausea  a            na:Symptom ;
+        na:id            "9"^^xsd:string ;
+        na:symptomName   "nausea"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:9sore_throat  a       na:Symptom ;
+        na:id            "9"^^xsd:string ;
+        na:symptomName   "sore_throat"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:9vomiting  a          na:Symptom ;
+        na:id            "9"^^xsd:string ;
+        na:symptomName   "vomiting"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:9neck_pain  a         na:Symptom ;
+        na:id            "9"^^xsd:string ;
+        na:symptomName   "neck_pain"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:9cough  a             na:Symptom ;
+        na:id            "9"^^xsd:string ;
+        na:symptomName   "cough"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:9diminished_vision
+        a                na:Symptom ;
+        na:id            "9"^^xsd:string ;
+        na:symptomName   "diminished_vision"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:9facial_pain  a       na:Symptom ;
+        na:id            "9"^^xsd:string ;
+        na:symptomName   "facial_pain"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:9frontal_headache  a  na:Symptom ;
+        na:id            "9"^^xsd:string ;
+        na:symptomName   "frontal_headache"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:9sinus_congestion  a  na:Symptom ;
+        na:id            "9"^^xsd:string ;
+        na:symptomName   "sinus_congestion"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:9neck_stiffness_or_tightness
+        a                na:Symptom ;
+        na:id            "9"^^xsd:string ;
+        na:symptomName   "neck_stiffness_or_tightness"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:9weakness  a          na:Symptom ;
+        na:id            "9"^^xsd:string ;
+        na:symptomName   "weakness"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:9leg_pain  a          na:Symptom ;
+        na:id            "9"^^xsd:string ;
+        na:symptomName   "leg_pain"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:9back_pain  a         na:Symptom ;
+        na:id            "9"^^xsd:string ;
+        na:symptomName   "back_pain"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:9knee_pain  a         na:Symptom ;
+        na:id            "9"^^xsd:string ;
+        na:symptomName   "knee_pain"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:9difficulty_speaking
+        a                na:Symptom ;
+        na:id            "9"^^xsd:string ;
+        na:symptomName   "difficulty_speaking"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:9DiagnosisModel  a           na:DiagnosisModel ;
+        na:diagnosisName        "epilepsy"^^xsd:string ;
+        na:diagnosisPercentage  "0.94430804"^^xsd:string ;
+        na:id                   "9"^^xsd:string .
+
+na:10patient  a       na:Patient ;
+        na:age        "23"^^xsd:string ;
+        na:firstName  "Aleksandar"^^xsd:string ;
+        na:gender     "Male"^^xsd:string ;
+        na:id         "10"^^xsd:string ;
+        na:lastName   "Vasiljevic"^^xsd:string ;
+        na:rightHand  "false"^^xsd:string .
+
+na:10Examination  a    na:Examination ;
+        na:id          "10"^^xsd:string ;
+        na:medication  "lorazepam"^^xsd:string ;
+        na:patientId   "10"^^xsd:string ;
+        na:procedure   "psychoterapy"^^xsd:string .
+
+na:10PersonalAnamnesis
+        a                           na:PersonalAnamnesis ;
+        na:balanceLoss              "false"^^xsd:string ;
+        na:disturbanceOfMemory      "true"^^xsd:string ;
+        na:headacheType             "NoHeadche"^^xsd:string ;
+        na:hearingLoss              "true"^^xsd:string ;
+        na:id                       "10"^^xsd:string ;
+        na:lackOfEnergyAndInterest  "false"^^xsd:string ;
+        na:limbsPain                "false"^^xsd:string ;
+        na:sight                    "Blur"^^xsd:string .
+
+na:10FamilyAnamnesis  a     na:FamilyAnamnesis ;
+        na:cerebrovascular  "false"^^xsd:string ;
+        na:diabetes         "false"^^xsd:string ;
+        na:endocrine        "false"^^xsd:string ;
+        na:headache         "false"^^xsd:string ;
+        na:hypertension     "false"^^xsd:string ;
+        na:id               "10"^^xsd:string ;
+        na:menatlIllness    "false"^^xsd:string .
+
+na:10PhysicalExamination
+        a                        na:PhysicalExamination ;
+        na:abnormalInvoluntaryMovements
+                "false"^^xsd:string ;
+        na:apraxia               "false"^^xsd:string ;
+        na:backPain              "false"^^xsd:string ;
+        na:chestPain             "false"^^xsd:string ;
+        na:dizziness             "true"^^xsd:string ;
+        na:focalWeakness         "false"^^xsd:string ;
+        na:hipPain               "false"^^xsd:string ;
+        na:id                    "10"^^xsd:string ;
+        na:kneePain              "false"^^xsd:string ;
+        na:legPain               "false"^^xsd:string ;
+        na:lossOfSensation       "false"^^xsd:string ;
+        na:lowerBloodPressure    "80"^^xsd:string ;
+        na:musclesRecognition    "false"^^xsd:string ;
+        na:musclesStrength       "1"^^xsd:string ;
+        na:problemsWithMovement  "false"^^xsd:string ;
+        na:pulse                 "80"^^xsd:string ;
+        na:seizures              "true"^^xsd:string ;
+        na:upperBloodPressure    "120"^^xsd:string ;
+        na:visualAcuity          "4"^^xsd:string .
+
+na:10depressive_or_psychotic_symptoms
+        a                na:Symptom ;
+        na:id            "10"^^xsd:string ;
+        na:symptomName   "depressive_or_psychotic_symptoms"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:10depression  a       na:Symptom ;
+        na:id            "10"^^xsd:string ;
+        na:symptomName   "depression"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:10insomnia  a         na:Symptom ;
+        na:id            "10"^^xsd:string ;
+        na:symptomName   "insomnia"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:10sleepiness  a       na:Symptom ;
+        na:id            "10"^^xsd:string ;
+        na:symptomName   "sleepiness"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:10difficylty_speaking
+        a                na:Symptom ;
+        na:id            "10"^^xsd:string ;
+        na:symptomName   "difficylty_speaking"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:10delusions_or_hallucinations
+        a                na:Symptom ;
+        na:id            "10"^^xsd:string ;
+        na:symptomName   "delusions_or_hallucinations"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:10temper_problems  a  na:Symptom ;
+        na:id            "10"^^xsd:string ;
+        na:symptomName   "temper_problems"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:10nausea  a           na:Symptom ;
+        na:id            "10"^^xsd:string ;
+        na:symptomName   "nausea"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:10weakness  a         na:Symptom ;
+        na:id            "10"^^xsd:string ;
+        na:symptomName   "weakness"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:10sharp_chest_pain
+        a                na:Symptom ;
+        na:id            "10"^^xsd:string ;
+        na:symptomName   "sharp_chest_pain"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:10vomiting  a         na:Symptom ;
+        na:id            "10"^^xsd:string ;
+        na:symptomName   "vomiting"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:10shortness_of_breath
+        a                na:Symptom ;
+        na:id            "10"^^xsd:string ;
+        na:symptomName   "shortness_of_breath"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:10fainting  a         na:Symptom ;
+        na:id            "10"^^xsd:string ;
+        na:symptomName   "fainting"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:10palpitations  a     na:Symptom ;
+        na:id            "10"^^xsd:string ;
+        na:symptomName   "palpitations"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:10ringing_in_ear  a   na:Symptom ;
+        na:id            "10"^^xsd:string ;
+        na:symptomName   "ringing_in_ear"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:10irregular_heartbeat
+        a                na:Symptom ;
+        na:id            "10"^^xsd:string ;
+        na:symptomName   "irregular_heartbeat"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:10DiagnosisModel  a          na:DiagnosisModel ;
+        na:diagnosisName        "anxiety"^^xsd:string ;
+        na:diagnosisPercentage  "1.0"^^xsd:string ;
+        na:id                   "10"^^xsd:string .
+
+na:11Examination  a    na:Examination ;
+        na:id          "11"^^xsd:string ;
+        na:medication  "donepezil"^^xsd:string ;
+        na:patientId   "1"^^xsd:string ;
+        na:procedure   "mental_health_counseling"^^xsd:string .
+
+na:11PersonalAnamnesis
+        a                           na:PersonalAnamnesis ;
+        na:balanceLoss              "false"^^xsd:string ;
+        na:disturbanceOfMemory      "true"^^xsd:string ;
+        na:headacheType             "NoHeadche"^^xsd:string ;
+        na:hearingLoss              "false"^^xsd:string ;
+        na:id                       "11"^^xsd:string ;
+        na:lackOfEnergyAndInterest  "false"^^xsd:string ;
+        na:limbsPain                "false"^^xsd:string ;
+        na:sight                    "Blur"^^xsd:string .
+
+na:11FamilyAnamnesis  a     na:FamilyAnamnesis ;
+        na:cerebrovascular  "false"^^xsd:string ;
+        na:diabetes         "false"^^xsd:string ;
+        na:endocrine        "false"^^xsd:string ;
+        na:headache         "false"^^xsd:string ;
+        na:hypertension     "false"^^xsd:string ;
+        na:id               "11"^^xsd:string ;
+        na:menatlIllness    "false"^^xsd:string .
+
+na:11PhysicalExamination
+        a                        na:PhysicalExamination ;
+        na:abnormalInvoluntaryMovements
+                "false"^^xsd:string ;
+        na:apraxia               "false"^^xsd:string ;
+        na:backPain              "false"^^xsd:string ;
+        na:chestPain             "false"^^xsd:string ;
+        na:dizziness             "false"^^xsd:string ;
+        na:focalWeakness         "false"^^xsd:string ;
+        na:hipPain               "false"^^xsd:string ;
+        na:id                    "11"^^xsd:string ;
+        na:kneePain              "false"^^xsd:string ;
+        na:legPain               "false"^^xsd:string ;
+        na:lossOfSensation       "false"^^xsd:string ;
+        na:lowerBloodPressure    "80"^^xsd:string ;
+        na:musclesRecognition    "false"^^xsd:string ;
+        na:musclesStrength       "1"^^xsd:string ;
+        na:problemsWithMovement  "false"^^xsd:string ;
+        na:pulse                 "80"^^xsd:string ;
+        na:seizures              "false"^^xsd:string ;
+        na:upperBloodPressure    "120"^^xsd:string ;
+        na:visualAcuity          "4"^^xsd:string .
+
+na:11depressive_or_psychotic_symptoms
+        a                na:Symptom ;
+        na:id            "11"^^xsd:string ;
+        na:symptomName   "depressive_or_psychotic_symptoms"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:11depression  a       na:Symptom ;
+        na:id            "11"^^xsd:string ;
+        na:symptomName   "depression"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:11insomnia  a         na:Symptom ;
+        na:id            "11"^^xsd:string ;
+        na:symptomName   "insomnia"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:11sleepiness  a       na:Symptom ;
+        na:id            "11"^^xsd:string ;
+        na:symptomName   "sleepiness"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:11difficylty_speaking
+        a                na:Symptom ;
+        na:id            "11"^^xsd:string ;
+        na:symptomName   "difficylty_speaking"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:11delusions_or_hallucinations
+        a                na:Symptom ;
+        na:id            "11"^^xsd:string ;
+        na:symptomName   "delusions_or_hallucinations"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:11temper_problems  a  na:Symptom ;
+        na:id            "11"^^xsd:string ;
+        na:symptomName   "temper_problems"^^xsd:string ;
+        na:symptomValue  "true"^^xsd:string .
+
+na:11DiagnosisModel  a          na:DiagnosisModel ;
+        na:diagnosisName        "dementia"^^xsd:string ;
+        na:diagnosisPercentage  "0.53000003"^^xsd:string ;
+        na:id                   "11"^^xsd:string .
+
+na:12Examination  a    na:Examination ;
+        na:id          "12"^^xsd:string ;
+        na:medication  "lorazepam"^^xsd:string ;
+        na:patientId   "1"^^xsd:string ;
+        na:procedure   "hematologic_test"^^xsd:string .
+
+na:12PersonalAnamnesis
+        a                           na:PersonalAnamnesis ;
+        na:balanceLoss              "false"^^xsd:string ;
+        na:disturbanceOfMemory      "true"^^xsd:string ;
+        na:headacheType             "NoHeadche"^^xsd:string ;
+        na:hearingLoss              "false"^^xsd:string ;
+        na:id                       "12"^^xsd:string ;
+        na:lackOfEnergyAndInterest  "false"^^xsd:string ;
+        na:limbsPain                "false"^^xsd:string ;
+        na:sight                    "Blur"^^xsd:string .
+
+na:12FamilyAnamnesis  a     na:FamilyAnamnesis ;
+        na:cerebrovascular  "false"^^xsd:string ;
+        na:diabetes         "false"^^xsd:string ;
+        na:endocrine        "false"^^xsd:string ;
+        na:headache         "false"^^xsd:string ;
+        na:hypertension     "false"^^xsd:string ;
+        na:id               "12"^^xsd:string ;
+        na:menatlIllness    "false"^^xsd:string .
+
+na:12PhysicalExamination
+        a                        na:PhysicalExamination ;
+        na:abnormalInvoluntaryMovements
+                "false"^^xsd:string ;
+        na:apraxia               "false"^^xsd:string ;
+        na:backPain              "false"^^xsd:string ;
+        na:chestPain             "false"^^xsd:string ;
+        na:dizziness             "false"^^xsd:string ;
+        na:focalWeakness         "false"^^xsd:string ;
+        na:hipPain               "false"^^xsd:string ;
+        na:id                    "12"^^xsd:string ;
+        na:kneePain              "false"^^xsd:string ;
+        na:legPain               "false"^^xsd:string ;
+        na:lossOfSensation       "false"^^xsd:string ;
+        na:lowerBloodPressure    "87"^^xsd:string ;
+        na:musclesRecognition    "false"^^xsd:string ;
+        na:musclesStrength       "1"^^xsd:string ;
+        na:problemsWithMovement  "false"^^xsd:string ;
+        na:pulse                 "87"^^xsd:string ;
+        na:seizures              "false"^^xsd:string ;
+        na:upperBloodPressure    "127"^^xsd:string ;
+        na:visualAcuity          "4"^^xsd:string .
+
+na:12DiagnosisModel  a          na:DiagnosisModel ;
+        na:diagnosisName        "anxiety"^^xsd:string ;
+        na:diagnosisPercentage  "0.0"^^xsd:string ;
+        na:id                   "12"^^xsd:string .
