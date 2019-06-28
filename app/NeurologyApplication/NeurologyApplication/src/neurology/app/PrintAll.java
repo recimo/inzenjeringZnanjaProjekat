@@ -20,9 +20,15 @@ public class PrintAll {
 			System.out.println("	PERSONAL: " + examination.getPersonalAnamnesis().getId());
 			System.out.println("	FAMILY: " + examination.getFamilyAnamnesis().getId());
 			System.out.println("	SYMPTOMS: ");
-			for (Symptom symptom : examination.getSymptoms()) {
-				System.out.println("		SYMPTOM: " + symptom.getName());
+
+			try {
+				for (Symptom symptom : examination.getSymptoms()) {
+					System.out.println("		SYMPTOM: " + symptom.getName());
+				}
+			} catch (Exception e) {
+				
 			}
+
 			System.out.println("	DIAGNOSIS: " + examination.getFinalDiagnosisModel().getId());
 			System.out.println("	MEDICATION: " + examination.getMedication());
 			System.out.println("	PROCEDURE: " + examination.getProcedure());

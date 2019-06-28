@@ -2,6 +2,7 @@ package neurology.app.miscellaneous;
 
 import java.util.Collection;
 
+import neurology.app.Singleton;
 import neurology.app.enumerations.HeadacheType;
 import neurology.app.model.Examination;
 import neurology.app.model.ExaminationDescription;
@@ -35,8 +36,8 @@ public class CBRFinder implements StandardCBRApplication {
 	/** KNN configuration */
 
 	public void configure() throws ExecutionException {
-		_connector = new CsvConnector();
-		// _connector = new SparqlConnector(examinations);
+		//_connector = new CsvConnector();
+		_connector = new SparqlConnector(Singleton.getInstance().getExaminations().getExaminations());
 		_caseBase = new LinealCaseBase(); // Create a Lineal case base for in-memory organization
 
 		

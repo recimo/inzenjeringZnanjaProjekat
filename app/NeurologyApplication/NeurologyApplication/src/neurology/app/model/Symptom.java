@@ -2,7 +2,7 @@ package neurology.app.model;
 
 public class Symptom {
 
-	private String id;
+	private int id;
 	private String name;
 	private boolean checked;
 
@@ -30,11 +30,11 @@ public class Symptom {
 		this.checked = checked;
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 }

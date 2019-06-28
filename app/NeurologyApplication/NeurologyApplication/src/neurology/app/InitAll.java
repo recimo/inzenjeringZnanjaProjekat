@@ -42,7 +42,7 @@ public class InitAll {
 	public void initPersonal() {
 		for (Examination examination : this.examinations.getExaminations()) {
 			for (PersonalAnamnesis personal : this.personalAnamnesis.getPersonalAnamnesis()) {
-				if (personal.getId().equals(examination.getId())) {
+				if (personal.getId() == examination.getId()) {
 					examination.setPersonalAnamnesis(personal);
 				}
 			}
@@ -52,7 +52,7 @@ public class InitAll {
 	public void initFamily() {
 		for (Examination examination : this.examinations.getExaminations()) {
 			for (FamilyAnamnesis family : this.familyAnamnesis.getAnamnesisFamily()) {
-				if (family.getId().equals(examination.getId())) {
+				if (family.getId() == examination.getId()) {
 					examination.setFamilyAnamnesis(family);
 				}
 			}
@@ -62,7 +62,7 @@ public class InitAll {
 	public void initPhysical() {
 		for (Examination examination : this.examinations.getExaminations()) {
 			for (PhysicalExamination physical : this.physicalExaminations.getPhysicalExaminations()) {
-				if (physical.getId().equals(examination.getId())) {
+				if (physical.getId() == examination.getId()) {
 					examination.setPhysicalExamination(physical);
 				}
 			}
@@ -72,7 +72,7 @@ public class InitAll {
 	public void initSymptoms() {
 		for (Examination examination : this.examinations.getExaminations()) {
 			for (Symptom symptom : this.symptoms.getSympotms()) {
-				if (symptom.getId().equals(examination.getId())) {
+				if (symptom.getId() == examination.getId()) {
 					examination.getSymptoms().add(symptom);
 				}
 			}
@@ -82,7 +82,7 @@ public class InitAll {
 	public void initDiagnosis() {
 		for (Examination examination : this.examinations.getExaminations()) {
 			for (DiagnosisModel diagnosis : this.diagnosisModels.getDiagnosisModels()) {
-				if (diagnosis.getId().equals(examination.getId())) {
+				if (diagnosis.getId() == examination.getId()) {
 					examination.setFinalDiagnosisModel(diagnosis);
 				}
 			}

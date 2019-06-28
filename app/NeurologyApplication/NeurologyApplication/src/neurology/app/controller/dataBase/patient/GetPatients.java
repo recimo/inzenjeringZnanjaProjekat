@@ -52,6 +52,7 @@ public class GetPatients {
 				Literal literalDesnoruk = solution.getLiteral("desnoruk");
 
 				Patient newPatient = new Patient();
+				newPatient.setId(Integer.parseInt(literalId.getString()));
 				newPatient.setIdentificationNumber(literalId.getString());
 				newPatient.setFirstName(literalIme.getString());
 				newPatient.setLastName(literalPrezime.getString());

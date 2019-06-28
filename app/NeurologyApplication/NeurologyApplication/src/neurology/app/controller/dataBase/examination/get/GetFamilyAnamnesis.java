@@ -53,7 +53,7 @@ public class GetFamilyAnamnesis {
 				Literal literalMental = solution.getLiteral("menatlIllness");
 
 				FamilyAnamnesis newFamilyAnamnesis = new FamilyAnamnesis();
-				newFamilyAnamnesis.setId(literalId.getString());
+				newFamilyAnamnesis.setId(Integer.parseInt(literalId.getString()));
 
 				if (literalCere.getString().equals("true")) {
 					newFamilyAnamnesis.setCerebrovascularDiseases(true);

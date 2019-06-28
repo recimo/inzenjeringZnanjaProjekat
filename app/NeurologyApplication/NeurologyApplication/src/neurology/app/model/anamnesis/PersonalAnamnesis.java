@@ -5,7 +5,7 @@ import neurology.app.enumerations.HeadacheType;
 
 public class PersonalAnamnesis {
 
-	private String id;
+	private int id;
 	private boolean lackOfEnergyAndInterest;
 	private boolean disturbanceOfMemory;
 	private HeadacheType headache;
@@ -75,11 +75,11 @@ public class PersonalAnamnesis {
 		this.limbsPain = limbsPain;
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

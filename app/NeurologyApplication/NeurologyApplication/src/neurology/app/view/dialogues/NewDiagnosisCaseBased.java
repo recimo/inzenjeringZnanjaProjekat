@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
 
+import javax.swing.ComboBoxModel;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
@@ -27,6 +29,7 @@ public class NewDiagnosisCaseBased extends JDialog {
 
 	private JLabel chooseDiagnose;
 
+
 	public JComboBox<String> possibleDiagnosis;
 	public ArrayList<String> calculatedDiagnosis = new ArrayList<>();
 	public ArrayList<Double> calculatedPercenteges = new ArrayList<>();
@@ -43,13 +46,17 @@ public class NewDiagnosisCaseBased extends JDialog {
 	public NewDiagnosisCaseBased(Examination examination) {
 		this.examination = examination;
 
+
 		CBRFinder recommender = new CBRFinder();
-		recommender.predvidjajDijagnozu(0, this.examination); //0 da bi znao cycle za da treba da predvidja dijagnozu, jer cycle ne sme parametre da prima
+		recommender.predvidjajDijagnozu(0, this.examination); // 0 da bi znao cycle za da treba da predvidja dijagnozu,
+																// jer cycle ne sme parametre da prima
 
 		Iterator it = CbrResult.potentialDiagnosis.entrySet().iterator();
 		while (it.hasNext()) {
 			Map.Entry pair = (Map.Entry) it.next();
-			calculatedDiagnosis.add((String) pair.getKey());
+			String temp = (String) pair.getKey() + " " + (Double) pair.getValue();
+
+			calculatedDiagnosis.add(temp);
 			calculatedPercenteges.add((Double) pair.getValue());
 			System.out.println(pair.getKey() + " = " + pair.getValue());
 		}
@@ -105,9 +112,11 @@ public class NewDiagnosisCaseBased extends JDialog {
 		panel.add(okButton);
 		panel.add(cancelButton);
 		this.add(panel, BorderLayout.SOUTH);
-		
-		//kada se baza napravi onda iz baze dijagnoze
-		selectedDiagnosis.setDiagnosisName(possibleDiagnosis.getSelectedItem().toString());
+
+		// kada se baza napravi onda iz baze dijagnoze
+		String[] temp = possibleDiagnosis.getSelectedItem().toString().split(" ");
+
+		selectedDiagnosis.setDiagnosisName(temp[0]);
 		System.out.println("Inicijalno : " + selectedDiagnosis.getDiagnosisName());
 
 	}
@@ -118,7 +127,7 @@ public class NewDiagnosisCaseBased extends JDialog {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				//examination.setFinalDiagnosisModel(baza.getDiagnose(selectedDiagnosis));
+				// examination.setFinalDiagnosisModel(baza.getDiagnose(selectedDiagnosis));
 				examination.setFinalDiagnosisModel(selectedDiagnosis);
 				CbrResult.potentialDiagnosis.clear();
 				NewMedicationProcedureCaseBased newMed = new NewMedicationProcedureCaseBased(examination);
@@ -127,15 +136,18 @@ public class NewDiagnosisCaseBased extends JDialog {
 				dispose();
 			}
 		});
-		
+
 		this.possibleDiagnosis.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				selectedDiagnosis.setDiagnosisName(possibleDiagnosis.getSelectedItem().toString());
-				//selectedDiagnosis = baza.getDiagnosis(possibleDiagnosis.getSelectedItem()) kada se baza uradi
+				String[] temp = possibleDiagnosis.getSelectedItem().toString().split(" ");
+
+				selectedDiagnosis.setDiagnosisName(temp[0]);
+				// selectedDiagnosis = baza.getDiagnosis(possibleDiagnosis.getSelectedItem())
+				// kada se baza uradi
 			}
-			
+
 		});
 
 		this.cancelButton.addActionListener(new ActionListener() {

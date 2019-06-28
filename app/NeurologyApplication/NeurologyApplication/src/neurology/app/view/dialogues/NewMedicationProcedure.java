@@ -57,6 +57,14 @@ public class NewMedicationProcedure extends JDialog {
 		calculatedMedications = MyMedProFinder.findMedications(examination.getFinalDiagnosisModel());
 		calculatedProcedures = MyMedProFinder.findProcedures(examination.getFinalDiagnosisModel());
 
+		for (String med : calculatedMedications) {
+			System.out.println("MEDICATION: " + med);
+		}
+
+		for (String med : calculatedProcedures) {
+			System.out.println("PROCEDURE: " + med);
+		}
+		
 		this.initDialog();
 	}
 
@@ -188,7 +196,7 @@ public class NewMedicationProcedure extends JDialog {
 					nd.setVisible(true);
 					dispose();
 				} catch (IOException e1) {
-					//e1.printStackTrace();
+					// e1.printStackTrace();
 				}
 			}
 		});

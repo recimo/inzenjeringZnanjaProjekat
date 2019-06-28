@@ -2,7 +2,7 @@ package neurology.app.model.anamnesis;
 
 public class FamilyAnamnesis {
 
-	private String id;
+	private int id;
 	private boolean diabetes;
 	private boolean endocrineDiseases;
 	private boolean hypertension;
@@ -62,11 +62,11 @@ public class FamilyAnamnesis {
 		this.mentalIllnesses = mentalIllnesses;
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

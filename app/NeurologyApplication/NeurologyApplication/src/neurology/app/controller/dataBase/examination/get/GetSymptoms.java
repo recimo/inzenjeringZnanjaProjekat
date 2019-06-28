@@ -28,7 +28,7 @@ public class GetSymptoms {
 	public boolean getSymptoms() {
 
 		this.symptoms.getSympotms().clear();
-		
+
 		String selectString = PREFIX + " SELECT ?id ?symptomName ?symptomValue " + "WHERE { "
 				+ "	?examination a na:Symptom; " + "    na:id ?id ; " + "	   na:symptomName ?symptomName; "
 				+ "	   na:symptomValue ?symptomValue . }";
@@ -48,7 +48,7 @@ public class GetSymptoms {
 				Literal literalValue = solution.getLiteral("symptomValue");
 
 				Symptom newSymptom = new Symptom();
-				newSymptom.setId(literalId.getString());
+				newSymptom.setId(Integer.parseInt(literalId.getString()));
 				newSymptom.setName(literalName.getString());
 				if (literalValue.getString().equals("true")) {
 					newSymptom.setChecked(true);

@@ -2,7 +2,7 @@ package neurology.app.model;
 
 public class DiagnosisModel implements Comparable<DiagnosisModel> {
 
-	private String id;
+	private int id;
 	private String diagnosisName;
 	private float diagnosisPercentage;
 
@@ -32,11 +32,11 @@ public class DiagnosisModel implements Comparable<DiagnosisModel> {
 		this.diagnosisPercentage = diagnosisPercentage;
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

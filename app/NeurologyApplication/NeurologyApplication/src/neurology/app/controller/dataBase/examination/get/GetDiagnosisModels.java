@@ -43,7 +43,7 @@ public class GetDiagnosisModels {
 				Literal literalPercentage = solution.getLiteral("diagnosisPercentage");
 
 				DiagnosisModel newDiagnosisModel = new DiagnosisModel();
-				newDiagnosisModel.setId(literalId.getString());
+				newDiagnosisModel.setId(Integer.parseInt(literalId.getString()));
 				newDiagnosisModel.setDiagnosisName(literalName.getString());
 				Float percentage = Float.parseFloat(literalPercentage.getString());
 				newDiagnosisModel.setDiagnosisPercentage(percentage);

@@ -60,7 +60,7 @@ public class GetPersonalAnamnesis {
 
 				PersonalAnamnesis newPersonalAnamnesis = new PersonalAnamnesis();
 
-				newPersonalAnamnesis.setId(literalId.getString());
+				newPersonalAnamnesis.setId(Integer.parseInt(literalId.getString()));
 
 				if (literalBalanceLoss.getString().equals("true")) {
 					newPersonalAnamnesis.setBalanceLoss(true);

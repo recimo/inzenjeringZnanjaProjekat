@@ -4,6 +4,7 @@ import neurology.app.enumerations.Gender;
 
 public class Patient {
 
+	private int id;
 	private String firstName;
 	private String lastName;
 	private String identificationNumber;
@@ -61,6 +62,14 @@ public class Patient {
 
 	public void setRightHanded(boolean rightHanded) {
 		this.rightHanded = rightHanded;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 }

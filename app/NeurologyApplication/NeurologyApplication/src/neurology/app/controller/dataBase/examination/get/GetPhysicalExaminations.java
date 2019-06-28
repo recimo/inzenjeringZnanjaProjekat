@@ -79,7 +79,7 @@ public class GetPhysicalExaminations {
 				Literal literalVisual = solution.getLiteral("visualAcuity");
 
 				PhysicalExamination newPhysicalExamination = new PhysicalExamination();
-				newPhysicalExamination.setId(literalId.getString());
+				newPhysicalExamination.setId(Integer.parseInt(literalId.getString()));
 
 				if (literalAbnormal.getString().equals("true")) {
 					newPhysicalExamination.setAbnormalInvoluntaryMovements(true);
